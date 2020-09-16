@@ -1,0 +1,241 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>My Card Game</title>
+
+    <link rel="stylesheet" href="node_modules/bootstrap/dist/css/bootstrap.min.css"/>
+
+    <link rel="stylesheet" href="node_modules/font-awesome/css/font-awesome.min.css" />
+    <link rel="stylesheet" href="node_modules/bootstrap-social/bootstrap-social.css" />
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Lobster|Open+Sans" />
+    <link rel="stylesheet" href="cardGameCSS/practiceGame3.css" />
+
+</head>
+
+<body>
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12 bg-dark banner">
+                <button type="button" class="rules bg bg-danger text-white" data-toggle="modal" data-target="#rulesModal">See Game Rules</button>
+                <img src="cardGameImages/cardCounters.png"/>
+            </div>
+                <div class="col-md-12 bg-dark" id="round"></div>
+        </div>
+    </div>
+
+    <div class="modal fade" id="rulesModal" role="dialog">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="modalTitle">Game Rules</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                    <div class="modal-body">
+                        Welcome to Card Counters. In this game, two new card suites of Skulls and Swords are added to the normal Hearts, Diamonds, Spades, and Clubs making a deck of 78 cards. Below the logo you will see buttons that you can use to deal hands and below this is where your hand will show up.
+                        Click on the "Show Hand 1" button to get your first five card hand.<br/>Choose two of the buttons below to choose two cards which will be sent to your collection of cards to be evaluated later. The collection is seen below where your hand is dealt and the "See Card Combinations Section". It is made up of six sections representing your final five hands to be evaluated and your 3 excess cards.
+                        <br/> After choosing your two cards click the "Get Hand 2" button to get your second hand. Choose another 2 cards and repeat this for another 12 hands for a total of 14 hands. After this click the "Go To Hand Evaluation" button. Your cards in the collection area can be rearranged at any time by clicking on the "Move Card" buttons under each card but now you will rearrange them for the final time into
+                        five, five card hands and three excess cards. <br/>Click on the "Evaluate Cards" button and then the "Get Bonuses" Button to evaluate each hand for the highest combination possible (these would be your typical flush, straight, etc.) and to evaluate for other combination bonuses.
+                        <br/> Points are awarded due to the card combinations and bonus combinations you have arranged and a final score will be calculated. See if you can earn the highest score. A section called "See Card Combinations" below where your hand is dealt but above your collection will explain all the card combinations and their associated point value.
+
+                    </div>
+                </div>
+            </div>
+            
+        </div>
+      
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12 bg-dark">
+            <!--<div class="buttonControls"><button class="btn btn sm" onclick="hideall()">Hide Excess</button></div>-->
+
+                <div class="buttonControls"><button id="getBtn1" class="btn btn-md" onclick="showHand1()">Show Hand 1</button></div>
+                <div class="buttonControls"><button id="getBtn2C" class="btn btn-md bg-danger text-white" onclick="clearHand1()">Get Hand 2</button></div>
+                
+                <div class="buttonControls"><button id="getBtn2" class="btn btn-md"   onclick="showHand2()">Show Hand 2</button></div>
+                <div class="buttonControls"><button id="getBtn3C" class="btn btn-md  bg-danger text-white" onclick="clearHand2()">Get Hand 3</button></div>
+            
+                <div class="buttonControls"><button id="getBtn3" class="btn btn-md "  onclick="showHand3()">Show Hand 3</button></div>
+                <div class="buttonControls"><button id="getBtn4C" class="btn btn-md  bg-danger text-white" onclick="clearHand3()">Get Hand 4</button></div>
+
+                <div class="buttonControls"><button id="getBtn4" class="btn btn-md " onclick="showHand4 ()">Show Hand 4</button></div>
+                <div class="buttonControls"><button id="getBtn5C" class="btn btn-md  bg-danger text-white" onclick="clearHand4()">Get Hand 5</button></div>
+                
+                <div class="buttonControls"><button id="getBtn5" class="btn btn-md " onclick="showHand5()">Show Hand 5</button></div>
+                <div class="buttonControls"><button id="getBtn6C" class="btn btn-md  bg-danger text-white" onclick="clearHand5()">Get Hand 6</button></div>
+                
+                <div class="buttonControls"><button id="getBtn6" class="btn btn-md " onclick="showHand6()">Show Hand 6</button></div>
+                <div class="buttonControls"><button id="getBtn7C" class="btn btn-md  bg-danger text-white" onclick="clearHand6()">Get Hand 7</button></div>
+                
+                <div class="buttonControls"><button id="getBtn7" class="btn btn-md " onclick="showHand7()">Show Hand 7</button></div>                
+                <div class="buttonControls"><button id="getBtn8C" class="btn btn-md  bg-danger text-white" onclick="clearHand7()">Get Hand 8</button></div>
+                
+                <div class="buttonControls"><button id="getBtn8" class="btn btn-md " onclick="showHand8()">Show Hand 8</button></div>
+                <div class="buttonControls"><button id="getBtn9C" class="btn btn-md  bg-danger text-white" onclick="clearHand8()">Get Hand 9</button> </div>
+
+                <div class="buttonControls"><button id="getBtn9" class="btn btn-md " onclick="showHand9()">Show Hand 9</button></div>
+                <div class="buttonControls"><button id="getBtn10C" class="btn btn-md  bg-danger text-white" onclick="clearHand9()">Get Hand 10</button></div>
+                
+                <div class="buttonControls"><button id="getBtn10" class="btn btn-md " onclick="showHand10()">Show Hand 10</button></div>
+                <div class="buttonControls"><button id="getBtn11C" class="btn btn-md  bg-danger text-white" onclick="clearHand10()">Get Hand 11</button></div>
+               
+                <div class="buttonControls"><button id="getBtn11" class="btn btn-md " onclick="showHand11()">Show Hand 11</button></div>
+                <div class="buttonControls"><button id="getBtn12C" class="btn btn-md  bg-danger text-white" onclick="clearHand11()">Get Hand 12</button></div>
+
+                <div class="buttonControls"><button id="getBtn12" class="btn btn-md " onclick="showHand12()">Show Hand 12</button></div>
+                <div class="buttonControls"><button id="getBtn13C" class="btn btn-md  bg-danger text-white" onclick="clearHand12()">Get Hand 13</button></div>
+               
+                <div class="buttonControls"><button id="getBtn13" class="btn btn-md " onclick="showHand13()">Show Hand 13</button></div>
+                <div class="buttonControls"><button id="getBtn14C" class="btn btn-md  bg-danger text-white" onclick="clearHand13();">Get Hand 14</button></div>
+
+                <div class="buttonControls"><button id="getBtn14" button class="btn btn-md " onclick="showHand14();">Show Hand 14</button></div>
+                <div class="buttonControls"><button id="getBtn15C" class="btn btn-md  bg-danger text-white" onclick="clearHand14();">Clear Hand 14</button></div>
+
+                
+            </div>
+        </div>
+    </div>
+
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12 bg-success"><br/>
+                <h4 id="scoreLabel">Your Score:</h4><h4 id="score">0</h4>
+                        <div id="handAnchor" class="table-row mx-auto">
+                          
+                        </div>
+                    
+            </div>
+        </div>
+                <div class="row">
+                    <div class="col col-md-12 bg bg-success">
+                        <div id="buttonsAnchor" class="col col-md-12">
+                            <div class="buttonControls"><button id="btn1" class="btn btn md">Pick First Card</button></div>
+                            <div class="buttonControls"><button id="btn2" class="btn btn md">Pick Second Card</button></div>
+                            <div class="buttonControls"><button id="btn3"class="btn btn md">Pick Third Card</button></div>
+                            <div class="buttonControls"><button id="btn4"class="btn btn md">Pick Fourth Card</button></div>
+                            <div class="buttonControls"><button id="btn5"class="btn btn md">Pick Fifth Card</button></div>
+                        </div>
+
+                    </div>
+                </div>
+
+                <div class="row">
+                    <div class="col-md-12 bg-danger">
+                        <h2>See Card Combinations</h2>
+                            <div>
+        
+                            </div>
+                    </div>
+                </div>
+        
+            <div class="row">
+                <div class="col col-md-12 bg-dark">
+    
+                    <h3>Your Collection</h3>
+                   <!-- <button id="card1Sel" class="btn btn md buttonControlsCollection">Card 1 Selected</button>
+                    <button id="card2Sel" class="btn btn md buttonControlsCollection">Card 2 Selected</button>-->
+                    <button id="makeSwitch" class="btn btn md buttonControlsCollection" onclick="makeSwitchCards()">Swap Cards</button>
+                    <button id="reset" class="btn btn md buttonControlsCollection" onclick="resetSwap()">Reset</button>
+                    <button id="confirm" class="btn btn md buttonControlsCollection" onclick="goToConfirmation()">Confirm Choices</button>
+                    <!--<button id="evaluation" class="btn btn md buttonControlsCollection" onclick="goToEvaluation()">Go To Evaluation</button>-->
+
+                    <button id="handEvaluation" class="btn btn md buttonControlsCollection" onclick="evaluateHands()">Evaluate Hands</button>
+                    <button id="bonusEvaluation" class="btn btn md buttonControlsCollection" onclick="evaluateBonuses()">Evaluate Bonuses</button>
+
+
+
+                    <div id="collection1" class="col-md-12">
+
+                        <div class="cardWrapperO" id="click1"><div class="card1" id="collectionAnchor1" ></div></div>
+
+                        <div class="cardWrapperO" id="click2"><div class="card1" id="collectionAnchor2" ></div></div>
+                        <div class="cardWrapperO" id="click3" ><div class="card1" id="collectionAnchor3" ></div></div>
+                        <div class="cardWrapperO" id="click4" ><div class="card1" id="collectionAnchor4" ></div></div>
+
+                        <div class="cardWrapperO" id="click5" ><div class="card1" id="collectionAnchor5" ></div></div>
+
+                    </div>
+
+                    <div id="collection2" class="col-md-12">
+
+                        <div class="cardWrapperO" id="click6" ><div class="card1" id="collectionAnchor6" ></div></div>
+
+                        <div class="cardWrapperO" id="click7" ><div class="card1" id="collectionAnchor7" ></div></div>
+
+                        <div class="cardWrapperO" id="click8" ><div class="card1" id="collectionAnchor8" ></div></div>
+                        
+                        <div class="cardWrapperO" id="click9" ><div class="card1" id="collectionAnchor9" ></div></div>
+
+                        <div class="cardWrapperO" id="click10" ><div class="card1" id="collectionAnchor10" ></div></div>
+                    </div>
+
+                    <div id="collection3" class="col-md-12">
+
+                        <div class="cardWrapperO" id="click11" ><div class="card1" id="collectionAnchor11" ></div></div>
+
+                        <div class="cardWrapperO" id="click12" ><div class="card1" id="collectionAnchor12" ></div></div>
+
+                        <div class="cardWrapperO" id="click13" ><div class="card1" id="collectionAnchor13" ></div></div>
+
+                        <div class="cardWrapperO" id="click14" ><div class="card1" id="collectionAnchor14" ></div></div>
+
+                        <div class="cardWrapperO" id="click15" ><div class="card1" id="collectionAnchor15" ></div></div>
+
+                    </div>
+
+                    <div id="collection4" class="col-md-12">
+
+                        <div class="cardWrapperO" id="click16" ><div class="card1" id="collectionAnchor16" ></div></div>
+
+                        <div class="cardWrapperO" id="click17" ><div class="card1" id="collectionAnchor17" ></div></div>
+
+                        <div class="cardWrapperO" id="click18" ><div class="card1" id="collectionAnchor18" ></div></div>
+                        <div class="cardWrapperO" id="click19" ><div class="card1" id="collectionAnchor19" ></div></div>
+
+                        <div class="cardWrapperO" id="click20" ><div class="card1" id="collectionAnchor20" ></div></div>
+                    </div>
+
+                    <div id="collection5" class="col-md-12">
+
+                        <div class="cardWrapperO" id="click21" ><div class="card1" id="collectionAnchor21" ></div></div>
+
+                        <div class="cardWrapperO" id="click22" ><div class="card1" id="collectionAnchor22" ></div></div>
+
+                        <div class="cardWrapperO" id="click23" ><div class="card1" id="collectionAnchor23" ></div></div>
+
+                        <div class="cardWrapperO" id="click24" ><div class="card1" id="collectionAnchor24" ></div></div>
+
+                        <div class="cardWrapperO" id="click25" ><div class="card1" id="collectionAnchor25" ></div></div>
+                    </div>
+
+                    <div id="collection5" class="col-md-12">
+
+                        <div class="cardWrapperO" id="click26" ><div class="card1" id="collectionAnchor26" ></div></div>
+
+                        <div class="cardWrapperO" id="click27" ><div class="card1" id="collectionAnchor27" ></div></div>
+
+                        <div class="cardWrapperO" id="click28" ><div class="card1" id="collectionAnchor28" ></div></div>
+                    </div>
+
+                        
+                    </div>
+                        
+                </div>
+            </div>
+
+        </div>
+
+
+
+
+    <script src="cardGameJavascript/portfolioGameOOtest.js"></script>
+    <script src="node_modules/jquery/dist/jquery.slim.min.js"></script>
+    <script src="node_modules/popper.js/dist/umd/popper.min.js"></script>
+    <script src="node_modules/bootstrap/dist/js/bootstrap.min.js"></script>
+</body>
+
+
+</html>

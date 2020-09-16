@@ -1,0 +1,128 @@
+
+.jumbotron{
+    background-image: linear-gradient(to right,lightgray,gray);
+    margin:0px;
+
+}
+body{
+    background-color:lightgray;
+}
+
+.logo{
+    min-width:230px;
+    min-height:auto;
+    max-width:80%;
+    max-height:auto;}
+
+.navGradient{
+    background-image:linear-gradient(to right,blue,darkblue);
+    background-size:100%;
+    max-height:40px;
+    min-width:100%;
+    min-height:20px;
+    margin-bottom:40px;
+}
+
+a{
+    color:white;
+    font-family: "Quicksand","Source Sans Pro", sans-serif;
+    font-size:20px;
+}
+
+.hWindowa{
+    background-image:linear-gradient(from left, lightgray,white);
+    padding-top:10px;
+    height:100%;
+}
+
+
+.hWindow2{
+    background-image:linear-gradient(to right, gray,darkgray);
+    height:100%;
+    padding:10px;
+}
+
+.card1{
+    background-color: gray;
+    height:200px;
+    width:100%;
+}
+
+.card2{
+    background-color: blue;
+    height:200px;
+    width:100%;
+}
+
+li{
+    margin-right:10px;
+}
+
+.header{
+    background-image:linear-gradient(to right, blue,rgb(4, 4, 204));
+    padding:10px;
+    color:white;
+    font-family: "Source Sans Pro", sans-serif;
+    font-size: 20pt;
+}
+
+.buttonPC{
+    background-color:blue;
+    color:white;
+    margin:5px;
+}
+
+.buttonPCM{
+    background-color:green;
+    color:white;
+    margin:5px;
+}
+
+.PCTask{
+    background-color:lightgray;
+}
+
+.background{
+    background-color:white;
+}
+
+.makeWhite{
+    color:white;
+}
+
+.makeRed{
+    color:red;
+}
+
+.makeRedBack{
+    background-color:red;
+    color:white;
+}
+
+.makeGreenBack{
+    background-color:green;
+    color:white;
+}
+
+.messageButtons{
+    margin:10px;
+}
+
+.inboxPadding{
+    padding-left:20px;
+}
+
+tr th td{
+    font-family: "Source Sans Pro", "Quicksand", sans-serif;
+}
+
+a:hover{
+    color:black;
+}
+
+
+.restrictViewOptions{
+    width:170px;
+    display:inline-block;
+    margin-left:9px;
+}

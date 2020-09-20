@@ -337,18 +337,18 @@ function checkevaluateSet1(){
         if (flushQSp.length===5||flushQH.length===5||flushQD.length===5||flushQC.length===5||flushQSw.length===5||flushQSk.length===5){flushSuccess.push("success")} else{};;
 
         let royalQ=[];
-        if(evaluateSet3[0].value===15||14||13||11||10){royalQ.push(evaluateSet3[0].value)} else{};
-        if(evaluateSet3[1].value===15||14||13||11||10){royalQ.push(evaluateSet3[1].value)} else{};
-        if(evaluateSet3[2].value===15||14||13||11||10){royalQ.push(evaluateSet3[2].value)} else{};
-        if(evaluateSet3[3].value===15||14||13||11||10){royalQ.push(evaluateSet3[3].value)} else{};
-        if(evaluateSet3[4].value===15||14||13||11||10){royalQ.push(evaluateSet3[4].value)} else{};
-        if(evaluateSet3[5].value===15||14||13||11||10){royalQ.push(evaluateSet3[5].value)} else{};
+        if(evaluateSet3[0][0].value===15||14||13||11||10){royalQ.push(evaluateSet3[0][0].value)} else{};
+        if(evaluateSet3[0][1].value===15||14||13||11||10){royalQ.push(evaluateSet3[0][1].value)} else{};
+        if(evaluateSet3[0][2].value===15||14||13||11||10){royalQ.push(evaluateSet3[0][2].value)} else{};
+        if(evaluateSet3[0][3].value===15||14||13||11||10){royalQ.push(evaluateSet3[0][3].value)} else{};
+        if(evaluateSet3[0][4].value===15||14||13||11||10){royalQ.push(evaluateSet3[0][4].value)} else{};
+        if(evaluateSet3[0][5].value===15||14||13||11||10){royalQ.push(evaluateSet3[0][5].value)} else{};
         
         let straightQ=[];
-        if(evaluateSet3[1].value===evaluateFullyGlobal.value[0]+1){straightQ.push("success")} else{};
-        if(evaluateSet3[2].value===evaluateFullyGlobal.value[1]+1){straightQ.push("success")} else{};
-        if(evaluateSet3[3].value===evaluateFullyGlobal.value[2]+1){straightQ.push("success")} else{};
-        if(evaluateSet3[4].value===evaluateFullyGlobal.value[3]+1){straightQ.push("success")} else{};
+        if(evaluateSet3[0][1].value===evaluateFullyGlobal.value[0][0]+1){straightQ.push("success")} else{};
+        if(evaluateSet3[0][2].value===evaluateFullyGlobal.value[0][1]+1){straightQ.push("success")} else{};
+        if(evaluateSet3[0][3].value===evaluateFullyGlobal.value[0][2]+1){straightQ.push("success")} else{};
+        if(evaluateSet3[0][4].value===evaluateFullyGlobal.value[0][3]+1){straightQ.push("success")} else{};
 
         let fourOfKindSuccess=[];
         let valueFilter2=evaluateSet3.filter(item=>item.value===2);
@@ -373,15 +373,7 @@ function checkevaluateSet1(){
         let twoPairSuccess=[];
         let threeKindSuccess=[];
 
-        if(valueFilter2.length===3||valueFilter3.length===3||valueFilter4.length===3||valueFilter5.length===3||valueFilter6.length===3||valueFilter7.length===3||valueFilter8.length===3||valueFilter9.length===3||valueFilter10.length===3||valueFilter11.length===3||valueFilter12.length===3||valueFilter13.length===3||valueFilter14.length===3||valueFilter15.length===3){fullHouseSuccess3.push("success") && threeKindSuccess.push("success")} else {};
-
-
-        if(valueFilter2.length===2||valueFilter3.length===2||valueFilter4.length===2||valueFilter5.length===2||valueFilter6.length===2||valueFilter7.length===2||valueFilter8.length===2||valueFilter9.length===2||valueFilter10.length===2||valueFilter11.length===2||valueFilter12.length===2||valueFilter13.length===2||valueFilter14.length===2||valueFilter15.length===2){fullHouseSuccess2.push("success") && onePairSuccess.push("success") && twoPairSuccess.push("success")} else {};
-
-        if(valueFilter2.length===2||valueFilter3.length===2||valueFilter4.length===2||valueFilter5.length===2||valueFilter6.length===2||valueFilter7.length===2||valueFilter8.length===2||valueFilter9.length===2||valueFilter10.length===2||valueFilter11.length===2||valueFilter12.length===2||valueFilter13.length===2||valueFilter14.length===2||valueFilter15.length===2){twoPairSuccess.push("success") } else {};
-
-        
-        if(royalQ.length===5 && straightQ.length===4) { score + 80} else if (flushSuccess>=1 && straightQ.length===4) { score + 60} else if (fourOfKindSuccess.length===1) { score + 50} else if (fullHouseSuccess2.length===1 && fullHouseSuccess3.length===1) { score + 40} else if (flushSuccess.length>=1) { score + 30} else if (straightQ.length===4) { score + 25} else if (threeKindSuccess.length===1) { score + 15} else if (twoPairSuccess.length===2) { score + 10} else if (onePairSuccess.length===1) { score + 5} else {}
+      
         
     }
 

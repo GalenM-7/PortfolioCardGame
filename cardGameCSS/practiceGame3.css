@@ -18,10 +18,21 @@
 .card1{
     display:inline-block;
     margin:auto;
+    padding: 0;
+    height:240px;
+    width:180px;
     
 }
 
+img {
+    max-width: 100%;
+    max-height: 100%;
+}
 
+.handClass{
+    display:inline-block;
+    height:250px;
+}
 
 .cardWrapperO{
     display:inline-block;
@@ -35,7 +46,11 @@
     padding-top:20px;
 }
 
-
+.collectionRows {
+    padding: 0;
+    margin: 0;
+    height:200px;
+}
 
 .banner{
     height:200px;

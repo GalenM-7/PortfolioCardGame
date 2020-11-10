@@ -5407,7 +5407,7 @@ function EvaluateHands(){
         let FinalScore=score[0] + score[1] + score[2] + score[3] + score[4] + score[5];
         window.alert("Your Final Score is " + FinalScore + " points");
         
-        document.getElementById("scoreLabel").innerText= "Your Score " + FinalScore;
+        document.getElementById("scoreLabel").innerText= FinalScore;
         
     }
 

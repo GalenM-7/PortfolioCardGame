@@ -1,0 +1,190 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>My Card Game</title>
+
+    <link rel="stylesheet" href="node_modules/bootstrap/dist/css/bootstrap.min.css"/>
+    <link rel="stylesheet" href="node_modules/font-awesome/css/font-awesome.min.css" />
+    <link rel="stylesheet" href="node_modules/bootstrap-social/bootstrap-social.css" />
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Lobster|Open+Sans" />
+    <link rel="stylesheet" href="cardGameCSS/portfolioGameFinal.css" />
+
+</head>
+
+<body>
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12 bg-dark banner">
+                <button type="button" class="rules bg bg-danger text-white" data-toggle="modal" data-target="#rulesModal">See Game Rules</button>
+                <img src="cardGameImages/cardCounters.png"/>
+            </div>
+                <div class="col-md-12 bg-dark" id="round"></div>
+        </div>
+    </div>
+
+     
+        <div class="modal fade" id="rulesModal" role="dialog">
+            <div class="modal-dialog" role="document">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="modalTitle">Game Rules</h5>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+                        <div class="modal-body">
+                            Welcome to Card Counters. In this game, two new card suites of Skulls and Swords are added to the normal Hearts, Diamonds, Spades, and Clubs making a deck of 78 cards. Below the logo you will see buttons that you can use to deal hands and below this is where your hand will show up.
+                            Click on the "Show Hand 1" button to get your first five card hand.<br/>Choose two of the buttons below to choose two cards which will be sent to your collection of cards to be evaluated later. The collection is seen below where your hand is dealt and the "See Card Combinations Section". It is made up of six sections representing your final five hands to be evaluated and your 3 excess cards.
+                            <br/> After choosing your two cards click the "Get Hand 2" button to get your second hand. Choose another 2 cards and repeat this for another 12 hands for a total of 14 hands. After this click the "Go To Hand Evaluation" button. Your cards in the collection area can be rearranged at any time by clicking on the "Move Card" buttons under each card but now you will rearrange them for the final time into
+                            five, five card hands and three excess cards. <br/>Click on the "Evaluate Cards" button and then the "Get Bonuses" Button to evaluate each hand for the highest combination possible (these would be your typical flush, straight, etc.) and to evaluate for other combination bonuses.
+                            <br/> Points are awarded due to the card combinations and bonus combinations you have arranged and a final score will be calculated. See if you can earn the highest score. A section called "See Card Combinations" below where your hand is dealt but above your collection will explain all the card combinations and their associated point value.
+                        </div>
+                    
+                </div>
+            </div>
+            
+        </div>
+
+                
+      
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12 bg-dark">
+                <div class="buttonControls"><button id="nextHand" class="btn btn-md" onclick="getHand()">Show Next Hand</button></div>
+                <!--<button onclick="seeAll()">clickckckckjkc</button>-->
+            </div>
+        </div>
+    </div>
+
+    <div class="container">
+        <div class="row">
+            <div id="handBackground" class="col-md-12 bg-success"><br/>
+              
+                    
+                        <div class="card" id="handAnchor1" onclick="addCard1()"></div>
+                        <div class="card" id="handAnchor2" onclick="addCard2()"></div>
+                        <div class="card" id="handAnchor3" onclick="addCard3()"></div>
+                        <div class="card" id="handAnchor4" onclick="addCard4()"></div>
+                        <div class="card" id="handAnchor5" onclick="addCard5()"></div>
+
+                             
+            </div>
+        </div>
+                    <div class="row">
+
+                
+                        <div class="col-md-12 bg-danger">
+                            <h2>See Card Combinations</h2>
+                            
+                        </div>
+                    </div>
+
+        
+            <div class="row">
+                <div class="col col-md-12 bg-dark">
+    
+                    <h3>Your Collection</h3>
+                                <h4 id="score">Your Score:</h4><h4 id="scoreLabel"></h4></br>
+
+                    <button id="makeSwitch" class="btn btn md buttonControlsCollection" onclick="makeSwitchCards()">Swap Cards</button>
+                    <button id="reset" class="btn btn md buttonControlsCollection" onclick="resetSwap()">Reset</button>
+                    <button id="confirmButton" class="btn btn md buttonControlsCollection" onclick="goToConfirmation()">Go To Confirmation Stage</button>
+                   
+                    <button id="FinalEvaluation" class="btn btn md buttonControlsCollection" onclick="evaluateAllSets()">Evaluate Sets and Bonuses</button>
+                    <button id="AddItUp" class="btn btn md buttonControlsCollection" onclick="EvaluateHands()">Get Final Score</button>
+
+
+                    <div id="collection1" class="col-md-12">
+
+                        <div class="card" id="collectionAnchor1" ></div>
+
+                        <div class="card" id="collectionAnchor2" ></div>
+                       <div class="card" id="collectionAnchor3" ></div>
+                        <div class="card" id="collectionAnchor4" ></div>
+
+                       <div class="card" id="collectionAnchor5" ></div>
+
+                    </div>
+
+                    <div id="collection2" class="col-md-12">
+
+                        <div class="card" id="collectionAnchor6" ></div>
+
+                        <div class="card" id="collectionAnchor7" ></div>
+
+                       <div class="card" id="collectionAnchor8" ></div>
+                        
+                      <div class="card" id="collectionAnchor9" ></div>
+
+                        <div class="card" id="collectionAnchor10" ></div>
+                    </div>
+
+                    <div id="collection3" class="col-md-12">
+
+                       <div class="card" id="collectionAnchor11" ></div>
+
+                        <div class="card" id="collectionAnchor12" ></div>
+
+                        <div class="card" id="collectionAnchor13" ></div>
+
+                       <div class="card" id="collectionAnchor14" ></div>
+
+                       <div class="card" id="collectionAnchor15" ></div>
+
+                    </div>
+
+                    <div id="collection4" class="col-md-12">
+
+                       <div class="card" id="collectionAnchor16" ></div>
+
+                       <div class="card" id="collectionAnchor17" ></div>
+
+                       <div class="card" id="collectionAnchor18" ></div>
+                        <div class="card" id="collectionAnchor19" ></div>
+
+                        <div class="card" id="collectionAnchor20" ></div>
+                    </div>
+
+                    <div id="collection5" class="col-md-12">
+
+                        <div class="card" id="collectionAnchor21" ></div>
+
+                       <div class="card" id="collectionAnchor22" ></div>
+
+                        <div class="card" id="collectionAnchor23" ></div>
+
+                        <div class="card" id="collectionAnchor24" ></div>
+
+                        <div class="card" id="collectionAnchor25" ></div>
+                    </div>
+
+                    <div id="collection5" class="col-md-12">
+
+                       <div class="card" id="collectionAnchor26" ></div>
+
+                        <div class="card" id="collectionAnchor27" ></div>
+
+                        <div class="card" id="collectionAnchor28" ></div>
+                    </div>
+                </div>
+
+                
+            </div>
+        </div>
+
+
+    </div>
+
+
+
+
+    <script src="cardGameJavascript/portfolioGameFinal.js"></script>
+    <script src="node_modules/jquery/dist/jquery.slim.min.js"></script>
+    <script src="node_modules/popper.js/dist/umd/popper.min.js"></script>
+    <script src="node_modules/bootstrap/dist/js/bootstrap.min.js"></script>
+</body>
+
+
+</html>

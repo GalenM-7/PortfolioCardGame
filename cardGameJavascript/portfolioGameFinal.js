@@ -403,7 +403,7 @@ function whichAnchor() {
   } else if (collection.length === 17) {
     anchor[0] = "collectionAnchor18";
   } else if (collection.length === 18) {
-    anchor[0] = "collectionAnchor18";
+    anchor[0] = "collectionAnchor19";
   } else if (collection.length === 19) {
     anchor[0] = "collectionAnchor20";
   } else if (collection.length === 20) {
@@ -459,6 +459,30 @@ function changeRound(number) {
   roundCounter.style.color = "white";
 }
 
+function changeColorGetHandG () {
+  document.getElementById("nextHand").style.backgroundColor = "green";
+  document.getElementById("nextHand").style.color = "white";
+}
+
+function changeColorGetHandW () {
+    document.getElementById("nextHand").style.backgroundColor = "white";
+    document.getElementById("nextHand").style.color = "black";
+}
+
+function changeColorGetConfirmG() {
+  if (collection.length === 28) { document.getElementById("confirmButton").style.backgroundColor = "green";
+  document.getElementById("confirmButton").style.color = "white";
+} else {
+  document.getElementById("confirmButton").style.backgroundColor = "white";
+  document.getElementById("confirmButton").style.color = "black";
+}
+}
+
+function changeColorGetConfirmW() {
+  document.getElementById("confirmButton").style.backgroundColor = "white";
+  document.getElementById("confirmButton").style.color = "black";
+}
+
 function clearRound() {
   let anchorRound = document.getElementById("round");
   while (anchorRound.firstChild) {
@@ -505,6 +529,7 @@ function showCard5(currentHand) {
 function getHand() {
   if (collection.length === 0 && drawCounter.length === 0) {
     changeRound("One");
+    changeColorGetHandW();
     showCard1(hand1);
     showCard2(hand1);
     showCard3(hand1);
@@ -517,6 +542,7 @@ function getHand() {
   } else if (collection.length === 2 && drawCounter.length === 1) {
     clearHand();
     clearRound();
+    changeColorGetHandW();
     changeRound("Two");
     showCard1(hand2);
     showCard2(hand2);
@@ -530,6 +556,7 @@ function getHand() {
   } else if (collection.length === 4 && drawCounter.length === 2) {
     clearHand();
     clearRound();
+    changeColorGetHandW();
     changeRound("Three");
     showCard1(hand3);
     showCard2(hand3);
@@ -543,6 +570,7 @@ function getHand() {
   } else if (collection.length === 6 && drawCounter.length === 3) {
     clearHand();
     clearRound();
+    changeColorGetHandW();
     changeRound("Four");
     showCard1(hand4);
     showCard2(hand4);
@@ -556,6 +584,7 @@ function getHand() {
   } else if (collection.length === 8 && drawCounter.length === 4) {
     clearHand();
     clearRound();
+    changeColorGetHandW();
     changeRound("Five");
     showCard1(hand5);
     showCard2(hand5);
@@ -569,6 +598,7 @@ function getHand() {
   } else if (collection.length === 10 && drawCounter.length === 5) {
     clearHand();
     clearRound();
+    changeColorGetHandW();
     changeRound("Six");
     showCard1(hand6);
     showCard2(hand6);
@@ -582,6 +612,7 @@ function getHand() {
   } else if (collection.length === 12 && drawCounter.length === 6) {
     clearHand();
     clearRound();
+    changeColorGetHandW();
     changeRound("Seven");
     showCard1(hand7);
     showCard2(hand7);
@@ -595,6 +626,7 @@ function getHand() {
   } else if (collection.length === 14 && drawCounter.length === 7) {
     clearHand();
     clearRound();
+    changeColorGetHandW();
     changeRound("Eight");
     showCard1(hand8);
     showCard2(hand8);
@@ -608,6 +640,7 @@ function getHand() {
   } else if (collection.length === 16 && drawCounter.length === 8) {
     clearHand();
     clearRound();
+    changeColorGetHandW();
     changeRound("Nine");
     showCard1(hand9);
     showCard2(hand9);
@@ -622,6 +655,7 @@ function getHand() {
     clearHand();
     clearRound();
     changeRound("Ten");
+    changeColorGetHandW();
     showCard1(hand10);
     showCard2(hand10);
     showCard3(hand10);
@@ -634,6 +668,7 @@ function getHand() {
   } else if (collection.length === 20 && drawCounter.length === 10) {
     clearHand();
     clearRound();
+    changeColorGetHandW();
     changeRound("Eleven");
     showCard1(hand11);
     showCard2(hand11);
@@ -647,6 +682,7 @@ function getHand() {
   } else if (collection.length === 22 && drawCounter.length === 11) {
     clearHand();
     clearRound();
+    changeColorGetHandW();
     changeRound("Twelve");
     showCard1(hand12);
     showCard2(hand12);
@@ -660,6 +696,7 @@ function getHand() {
   } else if (collection.length === 24 && drawCounter.length === 12) {
     clearHand();
     clearRound();
+    changeColorGetHandW();
     changeRound("Thirteen");
     showCard1(hand13);
     showCard2(hand13);
@@ -673,6 +710,7 @@ function getHand() {
   } else if (collection.length === 26 && drawCounter.length === 13) {
     clearHand();
     clearRound();
+    changeColorGetHandW();
     changeRound("Fourteen");
     showCard1(hand14);
     showCard2(hand14);
@@ -680,6 +718,8 @@ function getHand() {
     showCard4(hand14);
     showCard5(hand14);
     drawCounter.push("draw");
+    let hideNext = document.getElementById("nextHand");
+    hideNext.style.display = "none";
   } else {
   }
 }
@@ -764,6 +804,8 @@ function Card1(choices, hand, number, number2) {
     toAttach.appendChild(card1);
     console.log("anchor");
     console.log(anchor);
+    changeColorGetHandG();
+    changeColorGetConfirmG();
   } else {
   }
 }
@@ -827,8 +869,7 @@ function Card2(choices, hand, number, number2) {
     card1.src = `cardGameImages/${hand[1].suit}${hand[1].value}.png`;
     toAttach.appendChild(card1);
     console.log("anchor");
-        console.log(anchor);
-
+    console.log(anchor);
   } else if (collection.length === number2) {
     collection.push(hand[1]);
     choices.push("card2");
@@ -839,6 +880,8 @@ function Card2(choices, hand, number, number2) {
     toAttach.appendChild(card1);
     console.log("anchor");
     console.log(anchor);
+    changeColorGetHandG();
+    changeColorGetConfirmG();
   } else {
   }
 }
@@ -913,6 +956,8 @@ function Card3(choices, hand, number, number2) {
     toAttach.appendChild(card1);
     console.log("anchor");
     console.log(anchor);
+    changeColorGetHandG();
+    changeColorGetConfirmG();
   } else {
   }
 }
@@ -985,6 +1030,8 @@ function Card4(choices, hand, number, number2) {
     toAttach.appendChild(card1);
     console.log("anchor");
     console.log(anchor);
+    changeColorGetHandG();
+    changeColorGetConfirmG();
   } else {
   }
 }
@@ -1057,6 +1104,8 @@ function Card5(choices, hand, number, number2) {
     toAttach.appendChild(card1);
     console.log("anchor");
     console.log(anchor);
+    changeColorGetHandG();
+    changeColorGetConfirmG();
   } else {
   }
 }
@@ -1826,9 +1875,6 @@ function goToConfirmation() {
   let hideConfirm = document.getElementById("confirmButton");
   hideConfirm.style.display = "none";
 
-  let hideNext = document.getElementById("nextHand");
-    hideNext.style.display = "none";
-
      let hideBack = document.getElementById("handBackground");
      hideBack.style.display = "none";
 
@@ -2033,7 +2079,7 @@ function OneSetEvaluate() {
   } else {
   }
 
-  Check13 = evaluateSet1.filter((item) => item.value === 13);
+  let Check13 = evaluateSet1.filter((item) => item.value === 13);
   if (Check13.length === 2) {
     Pair1.push("Pair1");
   } else if (Check13.length === 3) {
@@ -2043,7 +2089,7 @@ function OneSetEvaluate() {
   } else {
   }
 
-  Check14 = evaluateSet1.filter((item) => item.value === 14);
+  let Check14 = evaluateSet1.filter((item) => item.value === 14);
   if (Check14.length === 2) {
     Pair1.push("Pair1");
   } else if (Check14.length === 3) {
@@ -2053,7 +2099,7 @@ function OneSetEvaluate() {
   } else {
   }
 
-  CheckVF = [];
+  //CheckVF = [];
 
   let Royal = [];
   for (i = 0; i < evaluateSet1.length; i++) {
@@ -2100,43 +2146,43 @@ function OneSetEvaluate() {
 
 function TwoSetEvaluate() {
   //let flushSuccess=[];
-  CheckClubs = evaluateSet2.filter((item) => item.suit === "Clubs");
+  let CheckClubs = evaluateSet2.filter((item) => item.suit === "Clubs");
   if (CheckClubs.length === 5) {
     Flush2.push("Flush");
   } else {
   }
 
-  CheckDiamonds = evaluateSet2.filter((item) => item.suit === "Diamonds");
+ let CheckDiamonds = evaluateSet2.filter((item) => item.suit === "Diamonds");
   if (CheckDiamonds.length === 5) {
     Flush2.push("Flush");
   } else {
   }
 
-  CheckSpades = evaluateSet2.filter((item) => item.suit === "Spades");
+  let CheckSpades = evaluateSet2.filter((item) => item.suit === "Spades");
   if (CheckSpades.length === 5) {
     Flush2.push("Flush");
   } else {
   }
 
-  CheckHearts = evaluateSet2.filter((item) => item.suit === "Hearts");
+  let CheckHearts = evaluateSet2.filter((item) => item.suit === "Hearts");
   if (CheckHearts.length === 5) {
     Flush2.push("Flush");
   } else {
   }
 
-  CheckSwords = evaluateSet2.filter((item) => item.suit === "Swords");
+  let CheckSwords = evaluateSet2.filter((item) => item.suit === "Swords");
   if (CheckSwords.length === 5) {
     Flush2.push("Flush");
   } else {
   }
 
-  CheckSkulls = evaluateSet2.filter((item) => item.suit === "Skulls");
+  let CheckSkulls = evaluateSet2.filter((item) => item.suit === "Skulls");
   if (CheckSkulls.length === 5) {
     Flush2.push("Flush");
   } else {
   }
 
-  Check2 = evaluateSet2.filter((item) => item.value === 2);
+  let Check2 = evaluateSet2.filter((item) => item.value === 2);
   if (Check2.length === 2) {
     Pair2.push("Pair1");
   } else if (Check2.length === 3) {
@@ -2146,7 +2192,7 @@ function TwoSetEvaluate() {
   } else {
   }
 
-  Check3 = evaluateSet2.filter((item) => item.value === 3);
+  let Check3 = evaluateSet2.filter((item) => item.value === 3);
   if (Check3.length === 2) {
     Pair2.push("Pair1");
   } else if (Check3.length === 3) {
@@ -2156,7 +2202,7 @@ function TwoSetEvaluate() {
   } else {
   }
 
-  Check4 = evaluateSet2.filter((item) => item.value === 4);
+  let Check4 = evaluateSet2.filter((item) => item.value === 4);
   if (Check4.length === 2) {
     Pair2.push("Pair1");
   } else if (Check4.length === 3) {
@@ -2166,7 +2212,7 @@ function TwoSetEvaluate() {
   } else {
   }
 
-  Check5 = evaluateSet2.filter((item) => item.value === 5);
+  let Check5 = evaluateSet2.filter((item) => item.value === 5);
   if (Check5.length === 2) {
     Pair2.push("Pair1");
   } else if (Check5.length === 3) {
@@ -2176,7 +2222,7 @@ function TwoSetEvaluate() {
   } else {
   }
 
-  Check6 = evaluateSet2.filter((item) => item.value === 6);
+  let Check6 = evaluateSet2.filter((item) => item.value === 6);
   if (Check6.length === 2) {
     Pair2.push("Pair1");
   } else if (Check6.length === 3) {
@@ -2186,7 +2232,7 @@ function TwoSetEvaluate() {
   } else {
   }
 
-  Check7 = evaluateSet2.filter((item) => item.value === 7);
+  let Check7 = evaluateSet2.filter((item) => item.value === 7);
   if (Check7.length === 2) {
     Pair2.push("Pair1");
   } else if (Check7.length === 3) {
@@ -2196,7 +2242,7 @@ function TwoSetEvaluate() {
   } else {
   }
 
-  Check8 = evaluateSet2.filter((item) => item.value === 8);
+  let Check8 = evaluateSet2.filter((item) => item.value === 8);
   if (Check8.length === 2) {
     Pair2.push("Pair1");
   } else if (Check8.length === 3) {
@@ -2206,7 +2252,7 @@ function TwoSetEvaluate() {
   } else {
   }
 
-  Check9 = evaluateSet2.filter((item) => item.value === 7);
+  let Check9 = evaluateSet2.filter((item) => item.value === 7);
   if (Check9.length === 2) {
     Pair2.push("Pair1");
   } else if (Check9.length === 3) {
@@ -2216,7 +2262,7 @@ function TwoSetEvaluate() {
   } else {
   }
 
-  Check10 = evaluateSet2.filter((item) => item.value === 10);
+  let Check10 = evaluateSet2.filter((item) => item.value === 10);
   if (Check10.length === 2) {
     Pair2.push("Pair1");
   } else if (Check10.length === 3) {
@@ -2226,7 +2272,7 @@ function TwoSetEvaluate() {
   } else {
   }
 
-  Check11 = evaluateSet2.filter((item) => item.value === 11);
+  let Check11 = evaluateSet2.filter((item) => item.value === 11);
   if (Check11.length === 2) {
     Pair2.push("Pair1");
   } else if (Check11.length === 3) {
@@ -2236,7 +2282,7 @@ function TwoSetEvaluate() {
   } else {
   }
 
-  Check12 = evaluateSet2.filter((item) => item.value === 12);
+  let Check12 = evaluateSet2.filter((item) => item.value === 12);
   if (Check12.length === 2) {
     Pair2.push("Pair1");
   } else if (Check12.length === 3) {
@@ -2246,7 +2292,7 @@ function TwoSetEvaluate() {
   } else {
   }
 
-  Check13 = evaluateSet2.filter((item) => item.value === 13);
+  let Check13 = evaluateSet2.filter((item) => item.value === 13);
   if (Check13.length === 2) {
     Pair2.push("Pair1");
   } else if (Check13.length === 3) {
@@ -2256,7 +2302,7 @@ function TwoSetEvaluate() {
   } else {
   }
 
-  Check14 = evaluateSet2.filter((item) => item.value === 14);
+  let Check14 = evaluateSet2.filter((item) => item.value === 14);
   if (Check14.length === 2) {
     Pair2.push("Pair1");
   } else if (Check14.length === 3) {
@@ -2266,7 +2312,7 @@ function TwoSetEvaluate() {
   } else {
   }
 
-  CheckVF = [];
+  //CheckVF = [];
 
   let Royal = [];
   for (i = 0; i < evaluateSet2.length; i++) {
@@ -2311,37 +2357,37 @@ function TwoSetEvaluate() {
 
 function ThreeSetEvaluate() {
   //let flushSuccess=[];
-  CheckClubs = evaluateSet3.filter((item) => item.suit === "Clubs");
+ let CheckClubs = evaluateSet3.filter((item) => item.suit === "Clubs");
   if (CheckClubs.length === 5) {
     Flush3.push("Flush");
   }
 
-  CheckDiamonds = evaluateSet3.filter((item) => item.suit === "Diamonds");
+ let CheckDiamonds = evaluateSet3.filter((item) => item.suit === "Diamonds");
   if (CheckDiamonds.length === 5) {
     Flush3.push("Flush");
   }
 
-  CheckSpades = evaluateSet3.filter((item) => item.suit === "Spades");
+  let CheckSpades = evaluateSet3.filter((item) => item.suit === "Spades");
   if (CheckSpades.length === 5) {
     Flush3.push("Flush");
   }
 
-  CheckHearts = evaluateSet3.filter((item) => item.suit === "Hearts");
+ let CheckHearts = evaluateSet3.filter((item) => item.suit === "Hearts");
   if (CheckHearts.length === 5) {
     Flush3.push("Flush");
   }
 
-  CheckSwords = evaluateSet3.filter((item) => item.suit === "Swords");
+ let CheckSwords = evaluateSet3.filter((item) => item.suit === "Swords");
   if (CheckSwords.length === 5) {
     Flush3.push("Flush");
   }
 
-  CheckSkulls = evaluateSet3.filter((item) => item.suit === "Skulls");
+ let CheckSkulls = evaluateSet3.filter((item) => item.suit === "Skulls");
   if (CheckSkulls.length === 5) {
     Flush3.push("Flush");
   }
 
-  Check2 = evaluateSet3.filter((item) => item.value === 2);
+ let Check2 = evaluateSet3.filter((item) => item.value === 2);
   if (Check2.length === 2) {
     Pair3.push("Pair1");
   } else if (Check2.length === 3) {
@@ -2351,7 +2397,7 @@ function ThreeSetEvaluate() {
   } else {
   }
 
-  Check3 = evaluateSet3.filter((item) => item.value === 3);
+ let Check3 = evaluateSet3.filter((item) => item.value === 3);
   if (Check3.length === 2) {
     Pair3.push("Pair1");
   } else if (Check3.length === 3) {
@@ -2361,7 +2407,7 @@ function ThreeSetEvaluate() {
   } else {
   }
 
-  Check4 = evaluateSet3.filter((item) => item.value === 4);
+ let Check4 = evaluateSet3.filter((item) => item.value === 4);
   if (Check4.length === 2) {
     Pair3.push("Pair1");
   } else if (Check4.length === 3) {
@@ -2371,7 +2417,7 @@ function ThreeSetEvaluate() {
   } else {
   }
 
-  Check5 = evaluateSet3.filter((item) => item.value === 5);
+ let Check5 = evaluateSet3.filter((item) => item.value === 5);
   if (Check5.length === 2) {
     Pair3.push("Pair1");
   } else if (Check5.length === 3) {
@@ -2381,7 +2427,7 @@ function ThreeSetEvaluate() {
   } else {
   }
 
-  Check6 = evaluateSet3.filter((item) => item.value === 6);
+ let Check6 = evaluateSet3.filter((item) => item.value === 6);
   if (Check6.length === 2) {
     Pair3.push("Pair1");
   } else if (Check6.length === 3) {
@@ -2391,7 +2437,7 @@ function ThreeSetEvaluate() {
   } else {
   }
 
-  Check7 = evaluateSet3.filter((item) => item.value === 7);
+ let Check7 = evaluateSet3.filter((item) => item.value === 7);
   if (Check7.length === 2) {
     Pair3.push("Pair1");
   } else if (Check7.length === 3) {
@@ -2401,7 +2447,7 @@ function ThreeSetEvaluate() {
   } else {
   }
 
-  Check8 = evaluateSet3.filter((item) => item.value === 8);
+ let Check8 = evaluateSet3.filter((item) => item.value === 8);
   if (Check8.length === 2) {
     Pair3.push("Pair1");
   } else if (Check8.length === 3) {
@@ -2411,7 +2457,7 @@ function ThreeSetEvaluate() {
   } else {
   }
 
-  Check9 = evaluateSet3.filter((item) => item.value === 7);
+ let Check9 = evaluateSet3.filter((item) => item.value === 7);
   if (Check9.length === 2) {
     Pair3.push("Pair1");
   } else if (Check9.length === 3) {
@@ -2421,7 +2467,7 @@ function ThreeSetEvaluate() {
   } else {
   }
 
-  Check10 = evaluateSet3.filter((item) => item.value === 10);
+ let Check10 = evaluateSet3.filter((item) => item.value === 10);
   if (Check10.length === 2) {
     Pair3.push("Pair1");
   } else if (Check10.length === 3) {
@@ -2431,7 +2477,7 @@ function ThreeSetEvaluate() {
   } else {
   }
 
-  Check11 = evaluateSet3.filter((item) => item.value === 11);
+ let Check11 = evaluateSet3.filter((item) => item.value === 11);
   if (Check11.length === 2) {
     Pair3.push("Pair1");
   } else if (Check11.length === 3) {
@@ -2441,7 +2487,7 @@ function ThreeSetEvaluate() {
   } else {
   }
 
-  Check12 = evaluateSet3.filter((item) => item.value === 12);
+ let Check12 = evaluateSet3.filter((item) => item.value === 12);
   if (Check12.length === 2) {
     Pair3.push("Pair1");
   } else if (Check12.length === 3) {
@@ -2451,7 +2497,7 @@ function ThreeSetEvaluate() {
   } else {
   }
 
-  Check13 = evaluateSet3.filter((item) => item.value === 13);
+ let Check13 = evaluateSet3.filter((item) => item.value === 13);
   if (Check13.length === 2) {
     Pair3.push("Pair1");
   } else if (Check13.length === 3) {
@@ -2461,7 +2507,7 @@ function ThreeSetEvaluate() {
   } else {
   }
 
-  Check14 = evaluateSet3.filter((item) => item.value === 14);
+ let Check14 = evaluateSet3.filter((item) => item.value === 14);
   if (Check14.length === 2) {
     Pair3.push("Pair1");
   } else if (Check14.length === 3) {
@@ -2471,7 +2517,7 @@ function ThreeSetEvaluate() {
   } else {
   }
 
-  CheckVF = [];
+ // CheckVF = [];
 
   let Royal = [];
   for (i = 0; i < evaluateSet3.length; i++) {
@@ -2517,37 +2563,37 @@ function ThreeSetEvaluate() {
 
 function FourSetEvaluate() {
   //let flushSuccess=[];
-  CheckClubs = evaluateSet4.filter((item) => item.suit === "Clubs");
+ let CheckClubs = evaluateSet4.filter((item) => item.suit === "Clubs");
   if (CheckClubs.length === 5) {
     Flush4.push("Flush");
   }
 
-  CheckDiamonds = evaluateSet4.filter((item) => item.suit === "Diamonds");
+ let CheckDiamonds = evaluateSet4.filter((item) => item.suit === "Diamonds");
   if (CheckDiamonds.length === 5) {
     Flush4.push("Flush");
   }
 
-  CheckSpades = evaluateSet4.filter((item) => item.suit === "Spades");
+ let CheckSpades = evaluateSet4.filter((item) => item.suit === "Spades");
   if (CheckSpades.length === 5) {
     Flush4.push("Flush");
   }
 
-  CheckHearts = evaluateSet4.filter((item) => item.suit === "Hearts");
+ let CheckHearts = evaluateSet4.filter((item) => item.suit === "Hearts");
   if (CheckHearts.length === 5) {
     Flush4.push("Flush");
   }
 
-  CheckSwords = evaluateSet4.filter((item) => item.suit === "Swords");
+ let CheckSwords = evaluateSet4.filter((item) => item.suit === "Swords");
   if (CheckSwords.length === 5) {
     Flush4.push("Flush");
   }
 
-  CheckSkulls = evaluateSet4.filter((item) => item.suit === "Skulls");
+ let CheckSkulls = evaluateSet4.filter((item) => item.suit === "Skulls");
   if (CheckSkulls.length === 5) {
     Flush4.push("Flush");
   }
 
-  Check2 = evaluateSet4.filter((item) => item.value === 2);
+ let Check2 = evaluateSet4.filter((item) => item.value === 2);
   if (Check2.length === 2) {
     Pair4.push("Pair1");
   } else if (Check2.length === 3) {
@@ -2557,7 +2603,7 @@ function FourSetEvaluate() {
   } else {
   }
 
-  Check3 = evaluateSet4.filter((item) => item.value === 3);
+ let Check3 = evaluateSet4.filter((item) => item.value === 3);
   if (Check3.length === 2) {
     Pair4.push("Pair1");
   } else if (Check3.length === 3) {
@@ -2567,7 +2613,7 @@ function FourSetEvaluate() {
   } else {
   }
 
-  Check4 = evaluateSet4.filter((item) => item.value === 4);
+ let Check4 = evaluateSet4.filter((item) => item.value === 4);
   if (Check4.length === 2) {
     Pair4.push("Pair1");
   } else if (Check4.length === 3) {
@@ -2577,7 +2623,7 @@ function FourSetEvaluate() {
   } else {
   }
 
-  Check5 = evaluateSet4.filter((item) => item.value === 5);
+ let Check5 = evaluateSet4.filter((item) => item.value === 5);
   if (Check5.length === 2) {
     Pair4.push("Pair1");
   } else if (Check5.length === 3) {
@@ -2587,7 +2633,7 @@ function FourSetEvaluate() {
   } else {
   }
 
-  Check6 = evaluateSet4.filter((item) => item.value === 6);
+ let Check6 = evaluateSet4.filter((item) => item.value === 6);
   if (Check6.length === 2) {
     Pair4.push("Pair1");
   } else if (Check6.length === 3) {
@@ -2597,7 +2643,7 @@ function FourSetEvaluate() {
   } else {
   }
 
-  Check7 = evaluateSet4.filter((item) => item.value === 7);
+let Check7 = evaluateSet4.filter((item) => item.value === 7);
   if (Check7.length === 2) {
     Pair4.push("Pair1");
   } else if (Check7.length === 3) {
@@ -2607,7 +2653,7 @@ function FourSetEvaluate() {
   } else {
   }
 
-  Check8 = evaluateSet4.filter((item) => item.value === 8);
+ let Check8 = evaluateSet4.filter((item) => item.value === 8);
   if (Check8.length === 2) {
     Pair4.push("Pair1");
   } else if (Check8.length === 3) {
@@ -2617,7 +2663,7 @@ function FourSetEvaluate() {
   } else {
   }
 
-  Check9 = evaluateSet4.filter((item) => item.value === 7);
+ let Check9 = evaluateSet4.filter((item) => item.value === 7);
   if (Check9.length === 2) {
     Pair4.push("Pair1");
   } else if (Check9.length === 3) {
@@ -2627,7 +2673,7 @@ function FourSetEvaluate() {
   } else {
   }
 
-  Check10 = evaluateSet4.filter((item) => item.value === 10);
+ let Check10 = evaluateSet4.filter((item) => item.value === 10);
   if (Check10.length === 2) {
     Pair4.push("Pair1");
   } else if (Check10.length === 3) {
@@ -2637,7 +2683,7 @@ function FourSetEvaluate() {
   } else {
   }
 
-  Check11 = evaluateSet4.filter((item) => item.value === 11);
+ let Check11 = evaluateSet4.filter((item) => item.value === 11);
   if (Check11.length === 2) {
     Pair4.push("Pair1");
   } else if (Check11.length === 3) {
@@ -2647,7 +2693,7 @@ function FourSetEvaluate() {
   } else {
   }
 
-  Check12 = evaluateSet4.filter((item) => item.value === 12);
+ let Check12 = evaluateSet4.filter((item) => item.value === 12);
   if (Check12.length === 2) {
     Pair4.push("Pair1");
   } else if (Check12.length === 3) {
@@ -2657,7 +2703,7 @@ function FourSetEvaluate() {
   } else {
   }
 
-  Check13 = evaluateSet4.filter((item) => item.value === 13);
+ let Check13 = evaluateSet4.filter((item) => item.value === 13);
   if (Check13.length === 2) {
     Pair4.push("Pair1");
   } else if (Check13.length === 3) {
@@ -2667,7 +2713,7 @@ function FourSetEvaluate() {
   } else {
   }
 
-  Check14 = evaluateSet4.filter((item) => item.value === 14);
+ let Check14 = evaluateSet4.filter((item) => item.value === 14);
   if (Check14.length === 2) {
     Pair4.push("Pair1");
   } else if (Check14.length === 3) {
@@ -2677,7 +2723,7 @@ function FourSetEvaluate() {
   } else {
   }
 
-  CheckVF = [];
+  //CheckVF = [];
 
   let Royal = [];
   for (i = 0; i < evaluateSet4.length; i++) {
@@ -2723,37 +2769,37 @@ function FourSetEvaluate() {
 
 function FiveSetEvaluate() {
   //let flushSuccess=[];
-  CheckClubs = evaluateSet5.filter((item) => item.suit === "Clubs");
+ let CheckClubs = evaluateSet5.filter((item) => item.suit === "Clubs");
   if (CheckClubs.length === 5) {
     Flush4.push("Flush");
   }
 
-  CheckDiamonds = evaluateSet5.filter((item) => item.suit === "Diamonds");
+ let CheckDiamonds = evaluateSet5.filter((item) => item.suit === "Diamonds");
   if (CheckDiamonds.length === 5) {
     Flush4.push("Flush");
   }
 
-  CheckSpades = evaluateSet5.filter((item) => item.suit === "Spades");
+ let CheckSpades = evaluateSet5.filter((item) => item.suit === "Spades");
   if (CheckSpades.length === 5) {
     Flush4.push("Flush");
   }
 
-  CheckHearts = evaluateSet5.filter((item) => item.suit === "Hearts");
+ let CheckHearts = evaluateSet5.filter((item) => item.suit === "Hearts");
   if (CheckHearts.length === 5) {
     Flush4.push("Flush");
   }
 
-  CheckSwords = evaluateSet5.filter((item) => item.suit === "Swords");
+ let CheckSwords = evaluateSet5.filter((item) => item.suit === "Swords");
   if (CheckSwords.length === 5) {
     Flush4.push("Flush");
   }
 
-  CheckSkulls = evaluateSet5.filter((item) => item.suit === "Skulls");
+ let CheckSkulls = evaluateSet5.filter((item) => item.suit === "Skulls");
   if (CheckSkulls.length === 5) {
     Flush4.push("Flush");
   }
 
-  Check2 = evaluateSet5.filter((item) => item.value === 2);
+ let Check2 = evaluateSet5.filter((item) => item.value === 2);
   if (Check2.length === 2) {
     Pair5.push("Pair1");
   } else if (Check2.length === 3) {
@@ -2763,7 +2809,7 @@ function FiveSetEvaluate() {
   } else {
   }
 
-  Check3 = evaluateSet5.filter((item) => item.value === 3);
+ let Check3 = evaluateSet5.filter((item) => item.value === 3);
   if (Check3.length === 2) {
     Pair5.push("Pair1");
   } else if (Check3.length === 3) {
@@ -2773,7 +2819,7 @@ function FiveSetEvaluate() {
   } else {
   }
 
-  Check4 = evaluateSet5.filter((item) => item.value === 4);
+ let Check4 = evaluateSet5.filter((item) => item.value === 4);
   if (Check4.length === 2) {
     Pair5.push("Pair1");
   } else if (Check4.length === 3) {
@@ -2783,7 +2829,7 @@ function FiveSetEvaluate() {
   } else {
   }
 
-  Check5 = evaluateSet5.filter((item) => item.value === 5);
+ let Check5 = evaluateSet5.filter((item) => item.value === 5);
   if (Check5.length === 2) {
     Pair5.push("Pair1");
   } else if (Check5.length === 3) {
@@ -2793,7 +2839,7 @@ function FiveSetEvaluate() {
   } else {
   }
 
-  Check6 = evaluateSet5.filter((item) => item.value === 6);
+ let Check6 = evaluateSet5.filter((item) => item.value === 6);
   if (Check6.length === 2) {
     Pair5.push("Pair1");
   } else if (Check6.length === 3) {
@@ -2803,7 +2849,7 @@ function FiveSetEvaluate() {
   } else {
   }
 
-  Check7 = evaluateSet5.filter((item) => item.value === 7);
+ let Check7 = evaluateSet5.filter((item) => item.value === 7);
   if (Check7.length === 2) {
     Pair5.push("Pair1");
   } else if (Check7.length === 3) {
@@ -2813,7 +2859,7 @@ function FiveSetEvaluate() {
   } else {
   }
 
-  Check8 = evaluateSet5.filter((item) => item.value === 8);
+ let Check8 = evaluateSet5.filter((item) => item.value === 8);
   if (Check8.length === 2) {
     Pair5.push("Pair1");
   } else if (Check8.length === 3) {
@@ -2823,7 +2869,7 @@ function FiveSetEvaluate() {
   } else {
   }
 
-  Check9 = evaluateSet5.filter((item) => item.value === 7);
+ let Check9 = evaluateSet5.filter((item) => item.value === 7);
   if (Check9.length === 2) {
     Pair5.push("Pair1");
   } else if (Check9.length === 3) {
@@ -2833,7 +2879,7 @@ function FiveSetEvaluate() {
   } else {
   }
 
-  Check10 = evaluateSet5.filter((item) => item.value === 10);
+ let Check10 = evaluateSet5.filter((item) => item.value === 10);
   if (Check10.length === 2) {
     Pair5.push("Pair1");
   } else if (Check10.length === 3) {
@@ -2843,7 +2889,7 @@ function FiveSetEvaluate() {
   } else {
   }
 
-  Check11 = evaluateSet5.filter((item) => item.value === 11);
+ let Check11 = evaluateSet5.filter((item) => item.value === 11);
   if (Check11.length === 2) {
     Pair5.push("Pair1");
   } else if (Check11.length === 3) {
@@ -2853,7 +2899,7 @@ function FiveSetEvaluate() {
   } else {
   }
 
-  Check12 = evaluateSet5.filter((item) => item.value === 12);
+ let Check12 = evaluateSet5.filter((item) => item.value === 12);
   if (Check12.length === 2) {
     Pair5.push("Pair1");
   } else if (Check12.length === 3) {
@@ -2863,7 +2909,7 @@ function FiveSetEvaluate() {
   } else {
   }
 
-  Check13 = evaluateSet5.filter((item) => item.value === 13);
+ let Check13 = evaluateSet5.filter((item) => item.value === 13);
   if (Check13.length === 2) {
     Pair5.push("Pair1");
   } else if (Check13.length === 3) {
@@ -2873,7 +2919,7 @@ function FiveSetEvaluate() {
   } else {
   }
 
-  Check14 = evaluateSet5.filter((item) => item.value === 14);
+ let Check14 = evaluateSet5.filter((item) => item.value === 14);
   if (Check14.length === 2) {
     Pair5.push("Pair1");
   } else if (Check14.length === 3) {
@@ -2883,7 +2929,7 @@ function FiveSetEvaluate() {
   } else {
   }
 
-  CheckVF = [];
+  //CheckVF = [];
 
   let Royal = [];
   for (i = 0; i < evaluateSet5.length; i++) {

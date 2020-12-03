@@ -18,9 +18,10 @@
         <div class="row">
             <div class="col-md-12 bg-dark banner">
                 <button type="button" class="rules bg bg-danger text-white" data-toggle="modal" data-target="#rulesModal">See Game Rules</button>
-                <img src="cardGameImages/cardCounters.png"/>
+                <button type="button" class="rules bg bg-danger text-white" data-toggle="modal" data-target="#pointsModal">See Point Values</button>
+
+                <div class="logo"><img src="cardGameImages/cardCounters.png"/></div>
             </div>
-                <div class="col-md-12 bg-dark" id="round"></div>
         </div>
     </div>
 
@@ -29,31 +30,74 @@
             <div class="modal-dialog" role="document">
                 <div class="modal-content">
                     <div class="modal-header">
-                        <h5 class="modal-title" id="modalTitle">Game Rules</h5>
+                        <h5 class="modal-title" id="modalTitle"><b>Game Rules</b></h5>
                         <button type="button" class="close" data-dismiss="modal" aria-label="close">
                             <span aria-hidden="true">&times;</span>
                         </button>
                     </div>
                         <div class="modal-body">
-                            Welcome to Card Counters. In this game, two new card suites of Skulls and Swords are added to the normal Hearts, Diamonds, Spades, and Clubs making a deck of 78 cards. Below the logo you will see buttons that you can use to deal hands and below this is where your hand will show up.
-                            Click on the "Show Hand 1" button to get your first five card hand.<br/>Choose two of the buttons below to choose two cards which will be sent to your collection of cards to be evaluated later. The collection is seen below where your hand is dealt and the "See Card Combinations Section". It is made up of six sections representing your final five hands to be evaluated and your 3 excess cards.
-                            <br/> After choosing your two cards click the "Get Hand 2" button to get your second hand. Choose another 2 cards and repeat this for another 12 hands for a total of 14 hands. After this click the "Go To Hand Evaluation" button. Your cards in the collection area can be rearranged at any time by clicking on the "Move Card" buttons under each card but now you will rearrange them for the final time into
-                            five, five card hands and three excess cards. <br/>Click on the "Evaluate Cards" button and then the "Get Bonuses" Button to evaluate each hand for the highest combination possible (these would be your typical flush, straight, etc.) and to evaluate for other combination bonuses.
-                            <br/> Points are awarded due to the card combinations and bonus combinations you have arranged and a final score will be calculated. See if you can earn the highest score. A section called "See Card Combinations" below where your hand is dealt but above your collection will explain all the card combinations and their associated point value.
+                            <h5><b>The Deck</b></h5>
+                            <p>In this game, there six suites. They include Hearts, Diamonds, Spades, Clubs and two new suites of Skulls and Swords.Each suite has the normal card ranks (2,3,4,5,6,7,8,9,10,Jack,Queen,King,Ace) with Ace being a high card following King to make up a deck of 84 cards.</p>
+                            <h5><b>The Hands</b></h5>
+                            <p>You will go through 14 hands by clicking the "show next hand" button. When you see the five cards of your hand, click on two. Those cards will be sent to your collection which can be seen below your hand.</p>
+                            <h5><b>Changing Collection Order</b></h5>
+                            <p>At any time, you can go down to your collection and click on two cards. Two additional buttons will show up next to the "Go To Confirmation Stage" button, the "Swap" and "Reset" buttons. If you click the "Reset" button, the buttons will disappear and nothing will happen. If you click the "Swap " button, the two cards will switch positions.</p>
+                            <h5><b>Scoring and Confirmation</b></h5>
+                            <p>The goal of the game is to score the most points. Click the see point values to see how much points each card combination is worth. At the end of the game, when your collection is in the order you wish click the "Go To Confirmation Stage" button. At this point you will be unable to change the position of the cards in your collection. Two more buttons will appear, the "Evaluate Sets and Bonuses" and "Get Final Score" buttons. Clicking on the "Evaluate Sets and Bonuses" button will calculate your final score based on the first 25 cards of your collection. The first set of 5 will evaluate to add a point value to your total score. The second, third, fourth, and fifth sets will do the same. Then your whole collection will be evaluated for any available bonuses. Then click on the "Get Final Score" button to see your final score.</p>
                         </div>
                     
                 </div>
             </div>
-            
         </div>
+
+        
+        <div class="modal fade" id="pointsModal" role="dialog">
+            <div class="modal-dialog" role="document">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="modalTitle"><b>Point Values</b></h5>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+                        <div class="modal-body">
+                            <p>You will get awarded a certain amount of points for each hand depending on the highest card combination attained. These are listed below.</p>
+                                <ol>
+                                    <li><b>Royal Flush</b> (five cards same suit, values of 10, Jack, Queen, King, and Ace): <b>80 points</b></li>
+                                    <li><b>Straight Flush</b> (five cards same suite, five sequential rank): <b>60 points</b></li>
+                                    <li><b>Four of a Kind</b> (four cards with same rank): <b>50 points</b></li>
+                                    <li><b>Full House</b> (three cards with same rank and two other cards with same rank): <b>40 points</b></li>
+                                    <li><b>Flush </b>(five cards with same suite): <b>35 points</b></li>
+                                    <li><b>Straight</b> (three cards with same rank): <b>30 points</b></li>
+                                    <li><b>Three of a Kind</b> (three cards with same rank): <b>25 points</b></li>
+                                    <li><b>Two Pair</b> (two cards with same rank and another two cards with same rank): <b>15 points</b></li>
+                                    <li><b>One Pair</b> (two cards with same rank): <b>10 points</b></li>
+
+                                </ol>
+                            <p>You can also earn bonus points by attained one of the bonuses listed below.</p>
+                                <ol>
+                                    <li>Earned When all available cards with the rank of <b>Ace, King, Queen, and Jack</b> are in your collection: <b>60 points</b></li>
+                                    <li>Earned When all available cards with the rank of <b>King, Queen, and Jack</b> are in your collection: <b>50 points</b></li>
+                                    <li>Earned When all available cards with the rank of <b>Queen, and Jack</b> are in your collection: <b>40 points</b></li>
+                                    <li>Earned When all available cards with the rank of <b>Jack</b> are in your collection: <b>30 points</b></li>
+                                </ol> 
+                        </div>
+                    
+                </div>
+            </div>
+        </div>
+
 
                 
       
     <div class="container">
         <div class="row">
-            <div class="col-md-12 bg-dark">
-                <div class="buttonControls"><button id="nextHand" class="btn btn-md" onclick="getHand()">Show Next Hand</button></div>
+            <div class="col-md-12 bg-dark heading">
+                                                <div class="col-md-12 bg-dark round" id="round"></div>
+
+                <div class="button"><button id="nextHand" class="btn btn-md" onclick="getHand()">Show Next Hand</button></div>
                 <!--<button onclick="seeAll()">clickckckckjkc</button>-->
+
             </div>
         </div>
     </div>
@@ -72,25 +116,18 @@
                              
             </div>
         </div>
-                    <div class="row">
-
-                
-                        <div class="col-md-12 bg-danger">
-                            <h2>See Card Combinations</h2>
-                            
-                        </div>
-                    </div>
+                 
 
         
             <div class="row">
                 <div class="col col-md-12 bg-dark">
     
-                    <h3>Your Collection</h3>
-                                <h4 id="score">Your Score:</h4><h4 id="scoreLabel"></h4></br>
+                    <h4>Your Collection</h4>
+                                <h3 id="score">Your Score:</h3><h3 id="scoreLabel"></h3></br>
 
                     <button id="makeSwitch" class="btn btn md buttonControlsCollection" onclick="makeSwitchCards()">Swap Cards</button>
                     <button id="reset" class="btn btn md buttonControlsCollection" onclick="resetSwap()">Reset</button>
-                    <button id="confirmButton" class="btn btn md buttonControlsCollection" onclick="goToConfirmation()">Go To Confirmation Stage</button>
+                    <button id="confirmButton" class="btn btn md button2" onclick="goToConfirmation()">Go To Confirmation Stage</button>
                    
                     <button id="FinalEvaluation" class="btn btn md buttonControlsCollection" onclick="evaluateAllSets()">Evaluate Sets and Bonuses</button>
                     <button id="AddItUp" class="btn btn md buttonControlsCollection" onclick="EvaluateHands()">Get Final Score</button>
@@ -98,75 +135,75 @@
 
                     <div id="collection1" class="col-md-12">
 
-                        <div class="card" id="collectionAnchor1" ></div>
+                        <div class="card2" id="collectionAnchor1" ></div>
 
-                        <div class="card" id="collectionAnchor2" ></div>
-                       <div class="card" id="collectionAnchor3" ></div>
-                        <div class="card" id="collectionAnchor4" ></div>
+                        <div class="card2" id="collectionAnchor2" ></div>
+                       <div class="card2" id="collectionAnchor3" ></div>
+                        <div class="card2" id="collectionAnchor4" ></div>
 
-                       <div class="card" id="collectionAnchor5" ></div>
+                       <div class="card2" id="collectionAnchor5" ></div>
 
                     </div>
 
                     <div id="collection2" class="col-md-12">
 
-                        <div class="card" id="collectionAnchor6" ></div>
+                        <div class="card2" id="collectionAnchor6" ></div>
 
-                        <div class="card" id="collectionAnchor7" ></div>
+                        <div class="card2" id="collectionAnchor7" ></div>
 
-                       <div class="card" id="collectionAnchor8" ></div>
+                       <div class="card2" id="collectionAnchor8" ></div>
                         
-                      <div class="card" id="collectionAnchor9" ></div>
+                      <div class="card2" id="collectionAnchor9" ></div>
 
-                        <div class="card" id="collectionAnchor10" ></div>
+                        <div class="card2" id="collectionAnchor10" ></div>
                     </div>
 
                     <div id="collection3" class="col-md-12">
 
-                       <div class="card" id="collectionAnchor11" ></div>
+                       <div class="card2" id="collectionAnchor11" ></div>
 
-                        <div class="card" id="collectionAnchor12" ></div>
+                        <div class="card2" id="collectionAnchor12" ></div>
 
-                        <div class="card" id="collectionAnchor13" ></div>
+                        <div class="card2" id="collectionAnchor13" ></div>
 
-                       <div class="card" id="collectionAnchor14" ></div>
+                       <div class="card2" id="collectionAnchor14" ></div>
 
-                       <div class="card" id="collectionAnchor15" ></div>
+                       <div class="card2" id="collectionAnchor15" ></div>
 
                     </div>
 
                     <div id="collection4" class="col-md-12">
 
-                       <div class="card" id="collectionAnchor16" ></div>
+                       <div class="card2" id="collectionAnchor16" ></div>
 
-                       <div class="card" id="collectionAnchor17" ></div>
+                       <div class="card2" id="collectionAnchor17" ></div>
 
-                       <div class="card" id="collectionAnchor18" ></div>
-                        <div class="card" id="collectionAnchor19" ></div>
+                       <div class="card2" id="collectionAnchor18" ></div>
+                        <div class="card2" id="collectionAnchor19" ></div>
 
-                        <div class="card" id="collectionAnchor20" ></div>
+                        <div class="card2" id="collectionAnchor20" ></div>
                     </div>
 
                     <div id="collection5" class="col-md-12">
 
-                        <div class="card" id="collectionAnchor21" ></div>
+                        <div class="card2" id="collectionAnchor21" ></div>
 
-                       <div class="card" id="collectionAnchor22" ></div>
+                       <div class="card2" id="collectionAnchor22" ></div>
 
-                        <div class="card" id="collectionAnchor23" ></div>
+                        <div class="card2" id="collectionAnchor23" ></div>
 
-                        <div class="card" id="collectionAnchor24" ></div>
+                        <div class="card2" id="collectionAnchor24" ></div>
 
-                        <div class="card" id="collectionAnchor25" ></div>
+                        <div class="card2" id="collectionAnchor25" ></div>
                     </div>
 
                     <div id="collection5" class="col-md-12">
 
-                       <div class="card" id="collectionAnchor26" ></div>
+                       <div class="card2" id="collectionAnchor26" ></div>
 
-                        <div class="card" id="collectionAnchor27" ></div>
+                        <div class="card2" id="collectionAnchor27" ></div>
 
-                        <div class="card" id="collectionAnchor28" ></div>
+                        <div class="card2" id="collectionAnchor28" ></div>
                     </div>
                 </div>
 

@@ -1,5 +1,5 @@
 //create arrays for hands, suits, and values
-
+//this is tested version
 let suits = ["Hearts", "Diamonds", "Clubs", "Spades", "Skulls", "Swords"];
 let values = [2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14];
 
@@ -83,10 +83,6 @@ let FullHouse5 = [];
 let ThreeKind5 = [];
 let Pair5 = [];
 let Flush5 = [];
-
-let finalCountBonuses = [];
-let finalCountBonuses2 = [];
-let finalCountBonusesGrand = [];
 
 
 let handCounter = [];
@@ -2073,7 +2069,7 @@ function OneSetEvaluate() {
   } else {
   }
 
-  let Check9 = evaluateSet1.filter((item) => item.value === 7);
+  let Check9 = evaluateSet1.filter((item) => item.value === 9);
   if (Check9.length === 2) {
     Pair1.push("Pair1");
   } else if (Check9.length === 3) {
@@ -2136,32 +2132,36 @@ function OneSetEvaluate() {
   //CheckVF = [];
 
   let Royal = [];
-  for (i = 0; i < evaluateSet1.length; i++) {
-    if (evaluateSet1.value === 10) {
+    if (evaluateSet1[0].value === 10) {
       Royal.push("success");
     } else {
     }
-    if (evaluateSet1.value === 11) {
+
+    if (evaluateSet1[1].value === 11) {
       Royal.push("success");
     } else {
     }
-    if (evaluateSet1.value === 12) {
+
+    if (evaluateSet1[2].value === 12) {
       Royal.push("success");
     } else {
     }
-    if (evaluateSet1.value === 13) {
+
+    if (evaluateSet1[3].value === 13) {
       Royal.push("success");
     } else {
     }
-    if (evaluateSet1.value === 14) {
+
+    if (evaluateSet1[4].value === 14) {
       Royal.push("success");
     } else {
     }
+
     if (Royal.length === 5) {
       Royal1.push("Royal");
     } else {
     }
-  }
+  
 
   if (
     evaluateSet1[1].value === evaluateSet1[0].value + 1 &&
@@ -2286,7 +2286,7 @@ function TwoSetEvaluate() {
   } else {
   }
 
-  let Check9 = evaluateSet2.filter((item) => item.value === 7);
+  let Check9 = evaluateSet2.filter((item) => item.value === 9);
   if (Check9.length === 2) {
     Pair2.push("Pair1");
   } else if (Check9.length === 3) {
@@ -2349,32 +2349,36 @@ function TwoSetEvaluate() {
   //CheckVF = [];
 
   let Royal = [];
-  for (i = 0; i < evaluateSet2.length; i++) {
-    if (evaluateSet2.value === 10) {
+    if (evaluateSet2[0].value === 10) {
       Royal.push("success");
     } else {
     }
-    if (evaluateSet2.value === 11) {
+
+    if (evaluateSet2[1].value === 11) {
       Royal.push("success");
     } else {
     }
-    if (evaluateSet2.value === 12) {
+
+    if (evaluateSet2[2].value === 12) {
       Royal.push("success");
     } else {
     }
-    if (evaluateSet2.value === 13) {
+
+    if (evaluateSet2[3].value === 13) {
       Royal.push("success");
     } else {
     }
-    if (evaluateSet2.value === 14) {
+
+    if (evaluateSet2[4].value === 14) {
       Royal.push("success");
     } else {
     }
+    
     if (Royal.length === 5) {
-      evaluateSet2.push("Royal");
+      Royal2.push("Royal");
     } else {
     }
-  }
+  
 
   if (
     evaluateSet2[1].value === evaluateSet2[0].value + 1 &&
@@ -2491,7 +2495,7 @@ function ThreeSetEvaluate() {
   } else {
   }
 
- let Check9 = evaluateSet3.filter((item) => item.value === 7);
+ let Check9 = evaluateSet3.filter((item) => item.value === 9);
   if (Check9.length === 2) {
     Pair3.push("Pair1");
   } else if (Check9.length === 3) {
@@ -2554,32 +2558,36 @@ function ThreeSetEvaluate() {
  // CheckVF = [];
 
   let Royal = [];
-  for (i = 0; i < evaluateSet3.length; i++) {
-    if (evaluateSet3.value === 10) {
+    if (evaluateSet3[0].value === 10) {
       Royal.push("success");
     } else {
     }
-    if (evaluateSet3.value === 11) {
+
+    if (evaluateSet3[1].value === 11) {
       Royal.push("success");
     } else {
     }
-    if (evaluateSet3.value === 12) {
+
+    if (evaluateSet3[2].value === 12) {
       Royal.push("success");
     } else {
     }
-    if (evaluateSet3.value === 13) {
+
+    if (evaluateSet3[3].value === 13) {
       Royal.push("success");
     } else {
     }
-    if (evaluateSet3.value === 14) {
+
+    if (evaluateSet3[4].value === 14) {
       Royal.push("success");
     } else {
     }
+
     if (Royal.length === 5) {
-      evaluateSet2.push("Royal");
+      Royal3.push("Royal");
     } else {
     }
-  }
+  
 
   if (
     evaluateSet3[1].value === evaluateSet3[0].value + 1 &&
@@ -2697,7 +2705,7 @@ let Check7 = evaluateSet4.filter((item) => item.value === 7);
   } else {
   }
 
- let Check9 = evaluateSet4.filter((item) => item.value === 7);
+ let Check9 = evaluateSet4.filter((item) => item.value === 9);
   if (Check9.length === 2) {
     Pair4.push("Pair1");
   } else if (Check9.length === 3) {
@@ -2760,32 +2768,37 @@ let Check7 = evaluateSet4.filter((item) => item.value === 7);
   //CheckVF = [];
 
   let Royal = [];
-  for (i = 0; i < evaluateSet4.length; i++) {
-    if (evaluateSet4.value === 10) {
+  
+    if (evaluateSet4[0].value === 10) {
       Royal.push("success");
     } else {
     }
-    if (evaluateSet4.value === 11) {
+
+    if (evaluateSet4[1].value === 11) {
       Royal.push("success");
     } else {
     }
-    if (evaluateSet4.value === 12) {
+
+    if (evaluateSet4[2].value === 12) {
       Royal.push("success");
     } else {
     }
-    if (evaluateSet4.value === 13) {
+
+    if (evaluateSet4[3].value === 13) {
       Royal.push("success");
     } else {
     }
-    if (evaluateSet4.value === 14) {
+
+    if (evaluateSet4[4].value === 14) {
       Royal.push("success");
     } else {
     }
+
     if (Royal.length === 5) {
-      evaluateSet2.push("Royal");
+      Royal4.push("Royal");
     } else {
     }
-  }
+  
 
   if (
     evaluateSet4[1].value === evaluateSet4[0].value + 1 &&
@@ -2805,32 +2818,32 @@ function FiveSetEvaluate() {
   //let flushSuccess=[];
  let CheckClubs = evaluateSet5.filter((item) => item.suit === "Clubs");
   if (CheckClubs.length === 5) {
-    Flush4.push("Flush");
+    Flush5.push("Flush");
   }
 
  let CheckDiamonds = evaluateSet5.filter((item) => item.suit === "Diamonds");
   if (CheckDiamonds.length === 5) {
-    Flush4.push("Flush");
+    Flush5.push("Flush");
   }
 
  let CheckSpades = evaluateSet5.filter((item) => item.suit === "Spades");
   if (CheckSpades.length === 5) {
-    Flush4.push("Flush");
+    Flush5.push("Flush");
   }
 
  let CheckHearts = evaluateSet5.filter((item) => item.suit === "Hearts");
   if (CheckHearts.length === 5) {
-    Flush4.push("Flush");
+    Flush5.push("Flush");
   }
 
  let CheckSwords = evaluateSet5.filter((item) => item.suit === "Swords");
   if (CheckSwords.length === 5) {
-    Flush4.push("Flush");
+    Flush5.push("Flush");
   }
 
  let CheckSkulls = evaluateSet5.filter((item) => item.suit === "Skulls");
   if (CheckSkulls.length === 5) {
-    Flush4.push("Flush");
+    Flush5.push("Flush");
   }
 
  let Check2 = evaluateSet5.filter((item) => item.value === 2);
@@ -2903,7 +2916,7 @@ function FiveSetEvaluate() {
   } else {
   }
 
- let Check9 = evaluateSet5.filter((item) => item.value === 7);
+ let Check9 = evaluateSet5.filter((item) => item.value === 9);
   if (Check9.length === 2) {
     Pair5.push("Pair1");
   } else if (Check9.length === 3) {
@@ -2966,32 +2979,36 @@ function FiveSetEvaluate() {
   //CheckVF = [];
 
   let Royal = [];
-  for (i = 0; i < evaluateSet5.length; i++) {
-    if (evaluateSet5.value === 10) {
+    if (evaluateSet5[0].value === 10) {
       Royal.push("success");
     } else {
     }
-    if (evaluateSet5.value === 11) {
+
+    if (evaluateSet5[1].value === 11) {
       Royal.push("success");
     } else {
     }
-    if (evaluateSet5.value === 12) {
+
+    if (evaluateSet5[2].value === 12) {
       Royal.push("success");
     } else {
     }
-    if (evaluateSet5.value === 13) {
+
+    if (evaluateSet5[3].value === 13) {
       Royal.push("success");
     } else {
     }
-    if (evaluateSet5.value === 14) {
+
+    if (evaluateSet5[4].value === 14) {
       Royal.push("success");
     } else {
     }
+
     if (Royal.length === 5) {
       Royal5.push("Royal");
     } else {
     }
-  }
+  
 
   if (
     evaluateSet5[1].value === evaluateSet5[0].value + 1 &&
@@ -3007,74 +3024,13 @@ function FiveSetEvaluate() {
   console.log(Pair5);
 }
 
-function BonusChoices() {
-  collectionNew.push(evaluateSet1
-    .concat(evaluateSet2)
-    .concat(evaluateSet3)
-    .concat(evaluateSet4)
-    .concat(evaluateSet5)
-    .concat(end3));
-  
 
-
-  let filter11 = collectionNew.filter((item) => item.value === 11);
-  if (filter11.length > 2) {
-    finalCountBonuses.push("Jack");
-  } else {
-  } 
-
-  if (filter11.length > 3) {
-    finalCountBonuses2.push("Jack");
-  } else {
-  } 
-
-  if (filter11.length > 4) {
-    finalCountBonusesGrand.push("Jack");
-  } else {
-
-  }
-
-  let filter12 = collectionNew.filter((item) => item.value === 12);
-  if (filter12.length > 2) {
-    finalCountBonuses.push("Queen");
-  } else {
-  }
-  
-  if (filter12.length > 3) {
-    finalCountBonuses2.push("Queen");
-  } else {
-  }
-  
-  if (filter12.length > 4) {
-    finalCountBonusesGrand.push("Queen");
-  } else {
-
-  }
-
-
-  let filter13 = collectionNew.filter((item) => item.value === 13);
-  if (filter13.length > 2) {
-    finalCountBonuses.push("King");
-  } else {
-  } 
-  
-  if (filter13.length > 3) {
-    finalCountBonuses2.push("King");
-  } else {
-  }
-  
-  if (filter13.length > 4) {
-    finalCountBonusesGrand.push("King");
-  } else {
-  }
-
-}
 
 function EvaluateHands() {
 
     console.log("scores");
 
-  if (Royal1.length === 5 && Flush1.length === 1) {
+  if (Royal1.length === 1 && Flush1.length === 1) {
     score1.push(80);
   } else if (Straight1.length === 1 && Flush1.length == 1) {
     score1.push(60);
@@ -3097,7 +3053,7 @@ function EvaluateHands() {
   }
 
       
-  if (Royal2.length === 5 && Flush2.length === 1) {
+  if (Royal2.length === 1 && Flush2.length === 1) {
     score2.push(80);
   } else if (Straight2.length === 1 && Flush2.length == 1) {
     score2.push(60);
@@ -3120,7 +3076,7 @@ function EvaluateHands() {
   }
 
 
-  if (Royal3.length === 5 && Flush3.length === 1) {
+  if (Royal3.length === 1 && Flush3.length === 1) {
     score3.push(80);
   } else if (Straight3.length === 1 && Flush3.length == 1) {
     score3.push(60);
@@ -3144,7 +3100,7 @@ function EvaluateHands() {
 
 
    
-  if (Royal4.length === 5 && Flush4.length === 1) {
+  if (Royal4.length === 1 && Flush4.length === 1) {
     score4.push(80);
   } else if (Straight4.length === 1 && Flush4.length == 1) {
     score4.push(60);
@@ -3169,7 +3125,7 @@ function EvaluateHands() {
 
    
 
-  if (Royal5.length === 5 && Flush5.length === 1) {
+  if (Royal5.length === 1 && Flush5.length === 1) {
     score5.push(80);
   } else if (Straight5.length === 1 && Flush5.length == 1) {
     score5.push(60);
@@ -3191,29 +3147,8 @@ function EvaluateHands() {
     score5.push(0);
   }
 
-   
-
-   if (
-    finalCountBonuses.length === 3 && finalCountBonusesGrand.length > 0
-  ) {
-    scoreB.push(60);
-  } else if (
-    finalCountBonuses.length === 3 && finalCountBonuses2.length > 0
-  ) {
-    scoreB.push(50);
-  } else if (
-    finalCountBonuses.length === 3
-  ) {
-    scoreB.push(40);
-  } else {
-    scoreB.push(0);
-  }
-
- console.log("bonuses");
- console.log(score);
-
   let FinalScore =
-    score1[0] + score2[0] + score3[0] + score4[0] + score5[0] + scoreB[0];
+    score1[0] + score2[0] + score3[0] + score4[0] + score5[0];
   window.alert("Your Final Score is " + FinalScore + " points");
 
   document.getElementById("scoreLabel").innerText = FinalScore;
@@ -3234,28 +3169,102 @@ function EvaluateHands() {
 
     console.log("evaluateSet5");
   console.log(evaluateSet5);
-
-
+/*
+  let Royal1 = [];
+  let Straight1 = [];
+  let FourKind1 = [];
+  let FullHouse1 = [];
+  let ThreeKind1 = [];
+  let Pair1 = [];
+  let Flush1 = [];
+*/
   console.log("collectionNew")
   console.log(collectionNew)
 
    console.log("scoresHand1");
    console.log(score1);
+   
+   console.log("Royal1");
+   console.log(Royal1);
+  console.log("Straight1");
+  console.log(Straight1);
+    console.log("FourKind1");
+    console.log(FourKind1);
+    console.log("ThreeKind1");
+      console.log(ThreeKind1);
+            console.log("Pair1");
+
+            console.log(Pair1);
+            console.log("Flush1");
+                console.log(Flush1);
 
   console.log("scoresHand2");
   console.log(score2);
 
+     console.log("Royal2");
+     console.log(Royal2);
+     console.log("Straight2");
+     console.log(Straight2);
+     console.log("FourKind2");
+     console.log(FourKind2);
+     console.log("ThreeKind2");
+     console.log(ThreeKind2);
+          console.log("Pair2");
+
+     console.log(Pair2);
+     console.log("Flush2");
+     console.log(Flush2);
+
   console.log("scoresHand3");
   console.log(score3);
+
+   console.log("Royal3");
+   console.log(Royal3);
+   console.log("Straight3");
+   console.log(Straight3);
+   console.log("FourKind3");
+   console.log(FourKind3);
+   console.log("ThreeKind3");
+   console.log(ThreeKind3);
+      console.log("Pair3");
+
+   console.log(Pair3);
+   console.log("Flush3");
+   console.log(Flush3);
 
   console.log("scoresHand4");
   console.log(score4);
 
+   console.log("Royal4");
+   console.log(Royal4);
+   console.log("Straight4");
+   console.log(Straight4);
+   console.log("FourKind4");
+   console.log(FourKind4);
+   console.log("ThreeKind4");
+   console.log(ThreeKind4);
+      console.log("Pair4");
+   console.log(Pair4);
+   console.log("Flush4");
+   console.log(Flush4);
+
   console.log("scoresHand5");
   console.log(score5);
 
-  console.log("bonus");
-  console.log(scoreB);
+   console.log("Royal5");
+   console.log(Royal5);
+   console.log("Straight5");
+   console.log(Straight5);
+   console.log("FourKind5");
+   console.log(FourKind5);
+   console.log("ThreeKind5");
+   console.log(ThreeKind5);
+      console.log("Pair5");
+   console.log(Pair5);
+   console.log("Flush5");
+   console.log(Flush5);
+
+ 
 }
 
 /*

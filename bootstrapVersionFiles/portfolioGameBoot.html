@@ -4,38 +4,28 @@
 <head>
     <meta charset="UTF-8">
     <title>My Card Game</title>
-<!--
+
     <link rel="stylesheet" href="node_modules/bootstrap/dist/css/bootstrap.min.css"/>
     <link rel="stylesheet" href="node_modules/font-awesome/css/font-awesome.min.css" />
     <link rel="stylesheet" href="node_modules/bootstrap-social/bootstrap-social.css" />
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Lobster|Open+Sans" />
--->
     <link rel="stylesheet" href="cardGameCSS/portfolioGameFinal.css" />
 
 </head>
 
 <body>
-
-            <div id="rulesModal" class="rulesModal">
-                <div class="modal-content">
-                    <span class="close">&times;</span>
-                        <h5><b>The Deck</b></h5>
-                </div>
-            </div>
-
-            
-    <!--<div class="container">
+    <div class="container">
         <div class="row">
             <div class="col-md-12 bg-dark banner">
                 <button type="button" class="rules bg bg-danger text-white" data-toggle="modal" data-target="#rulesModal">See Game Rules</button>
                 <button type="button" class="rules bg bg-danger text-white" data-toggle="modal" data-target="#pointsModal">See Point Values</button>
-                </div>
-        </div>
-            -->
-                <div class="logo"><img src="cardGameImages/cardCounters.png"/></div>
-            
 
-     <!--
+                <div class="logo"><img src="cardGameImages/cardCounters.png"/></div>
+            </div>
+        </div>
+    </div>
+
+     
         <div class="modal fade" id="rulesModal" role="dialog">
             <div class="modal-dialog" role="document">
                 <div class="modal-content">
@@ -90,7 +80,7 @@
             </div>
         </div>
 
--->
+
                 
       
     <div class="container">
@@ -110,11 +100,11 @@
             <div id="handBackground" class="col-md-12 bg-success"><br/>
               
                     
-                        <div class="card2" id="handAnchor1" onclick="addCard1()"></div>
-                        <div class="card2" id="handAnchor2" onclick="addCard2()"></div>
-                        <div class="card2" id="handAnchor3" onclick="addCard3()"></div>
-                        <div class="card2" id="handAnchor4" onclick="addCard4()"></div>
-                        <div class="card2" id="handAnchor5" onclick="addCard5()"></div>
+                        <div class="card" id="handAnchor1" onclick="addCard1()"></div>
+                        <div class="card" id="handAnchor2" onclick="addCard2()"></div>
+                        <div class="card" id="handAnchor3" onclick="addCard3()"></div>
+                        <div class="card" id="handAnchor4" onclick="addCard4()"></div>
+                        <div class="card" id="handAnchor5" onclick="addCard5()"></div>
 
                              
             </div>
@@ -221,11 +211,9 @@
 
 
     <script src="cardGameJavascript/portfolioGameFinal.js"></script>
-    <!--
     <script src="node_modules/jquery/dist/jquery.slim.min.js"></script>
     <script src="node_modules/popper.js/dist/umd/popper.min.js"></script>
     <script src="node_modules/bootstrap/dist/js/bootstrap.min.js"></script>
-    -->
 </body>
 
 

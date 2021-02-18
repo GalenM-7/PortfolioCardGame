@@ -1,5 +1,3 @@
-
-
 //create arrays for hands, suits, and values
 //this is tested version
 let suits = ["Hearts", "Diamonds", "Clubs", "Spades", "Skulls", "Swords"];
@@ -376,35 +374,6 @@ function hideall() {
 
 window.onload = hideall();
 
-let rulesModal = document.getElementById("rulesModal");
-let rulesBtn = document.getElementById("rulesBtn");
-
-rulesBtn.onclick = function () {
-  rulesModal.style.display = "block";
-};
-
-let rulesSpan = document.getElementsByClassName("close1")[0];
-
-rulesSpan.onclick = function () {
-    rulesModal.style.display = "none";
-}
-
-let pointValuesModal = document.getElementById("pointValuesModal");
-let pointValuesBtn = document.getElementById("pointValuesBtn");
-
-pointValuesBtn.onclick = function () {
-  pointValuesModal.style.display = "block";
-};
-
-let pointValuesSpan = document.getElementsByClassName("close2")[0];
-
-pointValuesSpan.onclick = function () {
-  pointValuesModal.style.display = "none";
-};
-
-
-
-
 function whichAnchor() {
   if (collection.length === 0) {
     anchor[0] = "collectionAnchor1";
@@ -494,16 +463,13 @@ function changeRound(number) {
   let roundCounter = document.createElement("p");
   round.appendChild(roundCounter);
   roundCounter.innerHTML = `Hand ${number}`;
- // roundCounter.setAttribute("style", "font-size: 50px");
- // roundCounter.setAttribute("style", "margin: 0px");
+  roundCounter.setAttribute("style", "font-size: 50px");
   roundCounter.style.textAlign = "right";
   roundCounter.style.color = "white";
-  roundCounter.className += "hand";
-
 }
 
 function changeColorGetHandG () {
-  document.getElementById("nextHand").style.backgroundColor = "darkred";
+  document.getElementById("nextHand").style.backgroundColor = "green";
   document.getElementById("nextHand").style.color = "white";
 }
 
@@ -513,7 +479,7 @@ function changeColorGetHandW () {
 }
 
 function changeColorGetConfirmG() {
-  if (collection.length === 28) { document.getElementById("confirmButton").style.backgroundColor = "darkred";
+  if (collection.length === 28) { document.getElementById("confirmButton").style.backgroundColor = "green";
   document.getElementById("confirmButton").style.color = "white";
 } else {
   document.getElementById("confirmButton").style.backgroundColor = "white";
@@ -1083,7 +1049,6 @@ function addCard5() {
   if (handChoices.length < 2 && drawCounter.length === 1) {
     whichAnchor();
     Card5(handChoices, hand1, 0, 1);
-    getRedOutline("handAnchor5");
   } else if (handChoices2.length < 2 && drawCounter.length === 2) {
     whichAnchor();
     Card5(handChoices2, hand2, 2, 3);
@@ -1156,9 +1121,7 @@ function Card5(choices, hand, number, number2) {
 
 ////////////////////////////////////////////////
 
-//function getRedOutline(anchor) {
-//  document.getElementById(anchor).style.border= "thick solid red";
-//}
+
 
 function getValue1() {
   if (valuesTest1.length < 2) {
@@ -1760,7 +1723,6 @@ function takeAway() {
 
 function switchAdd() {
   if (valuesTest1[0] === valuesTest2[0]) {
-    
   } else {
     let addVar = document.getElementById(valuesTest1[0]);
     let newSwitchAdd1 = document.createElement("img");
@@ -3189,12 +3151,7 @@ function EvaluateHands() {
     score1[0] + score2[0] + score3[0] + score4[0] + score5[0];
   window.alert("Your Final Score is " + FinalScore + " points");
 
-  document.getElementById("scoreLabel");
-  let finalScore = document.createElement("p");
-  scoreLabel.appendChild(finalScore);
-  finalScore.innerHTML = FinalScore;
-  finalScore.className += "scoreFinal";
-
+  document.getElementById("scoreLabel").innerText = FinalScore;
 
   console.log(score);
 

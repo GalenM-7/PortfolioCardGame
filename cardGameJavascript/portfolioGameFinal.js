@@ -19,6 +19,8 @@ let hand11 = [];
 let hand12 = [];
 let hand13 = [];
 let hand14 = [];
+let hand15 = [];
+
 
 let collection = [];
 let collectionNew = [];
@@ -32,6 +34,7 @@ let evaluateSet2 = [];
 let evaluateSet3 = [];
 let evaluateSet4 = [];
 let evaluateSet5 = [];
+let evaluateSet6 = [];
 
 let evalSuit = [];
 let storeBonuses = [];
@@ -40,7 +43,7 @@ let score2 = [];
 let score3 = [];
 let score4 = [];
 let score5 = [];
-let scoreB = [];
+let score6 = [];
 
 let end3 = [];
 
@@ -86,6 +89,14 @@ let ThreeKind5 = [];
 let Pair5 = [];
 let Flush5 = [];
 
+let Royal6 = [];
+let Straight6 = [];
+let FourKind6 = [];
+let FullHouse6 = [];
+let ThreeKind6 = [];
+let Pair6 = [];
+let Flush6 = [];
+
 
 let handCounter = [];
 
@@ -103,6 +114,9 @@ let handChoices11 = [];
 let handChoices12 = [];
 let handChoices13 = [];
 let handChoices14 = [];
+let handChoices15 = [];
+
+
 
 let drawCounter = [];
 
@@ -246,6 +260,13 @@ class Deck {
     }
     return hand14;
   }
+
+  deal15() {
+    for (let i = 0; i < 5; i++) {
+      hand15.push(this.deck.pop());
+    }
+    return hand15;
+  }
 }
 
 let deck = new Deck();
@@ -265,6 +286,8 @@ deck.deal11();
 deck.deal12();
 deck.deal13();
 deck.deal14();
+deck.deal15();
+
 
 //show first hand,
 function hideall() {
@@ -287,7 +310,6 @@ function hideall() {
   AddUp.style.display = "none";
 
   
-
   document
     .getElementById("collectionAnchor1")
     .addEventListener("click", getValue1);
@@ -372,6 +394,12 @@ function hideall() {
   document
     .getElementById("collectionAnchor28")
     .addEventListener("click", getValue28);
+    document
+      .getElementById("collectionAnchor29")
+      .addEventListener("click", getValue29);
+    document
+      .getElementById("collectionAnchor30")
+      .addEventListener("click", getValue30);
 }
 
 window.onload = hideall();
@@ -402,6 +430,29 @@ pointValuesSpan.onclick = function () {
   pointValuesModal.style.display = "none";
 };
 
+
+function makeRedBorder(anchor) {
+  let border1 = document.getElementById(anchor);
+  border1.style.backgroundColor = "red"
+}
+
+function makeGreenBorder() {
+  let border1 = document.getElementById("handAnchor1");
+  border1.style.backgroundColor = "green";
+  let border2 = document.getElementById("handAnchor2");
+  border2.style.backgroundColor = "green";
+  let border3 = document.getElementById("handAnchor3");
+  border3.style.backgroundColor = "green";
+  let border4 = document.getElementById("handAnchor4");
+  border4.style.backgroundColor = "green";
+  let border5 = document.getElementById("handAnchor5");
+  border5.style.backgroundColor = "green";
+}
+
+function makeDarkGreenBorder(anchor) {
+  let border1 = document.getElementById(anchor);
+  border1.style.backgroundColor = "darkgreen";
+}
 
 
 
@@ -462,6 +513,10 @@ function whichAnchor() {
     anchor[0] = "collectionAnchor27";
   } else if (collection.length === 27) {
     anchor[0] = "collectionAnchor28";
+  } else if (collection.length === 28) {
+    anchor[0] = "collectionAnchor29";
+  } else if (collection.length === 29) {
+    anchor[0] = "collectionAnchor30";
   } else {
   }
 }
@@ -502,7 +557,7 @@ function changeRound(number) {
 
 }
 
-function changeColorGetHandG () {
+function changeColorGetHandR () {
   document.getElementById("nextHand").style.backgroundColor = "darkred";
   document.getElementById("nextHand").style.color = "white";
 }
@@ -512,8 +567,8 @@ function changeColorGetHandW () {
     document.getElementById("nextHand").style.color = "black";
 }
 
-function changeColorGetConfirmG() {
-  if (collection.length === 28) { document.getElementById("confirmButton").style.backgroundColor = "darkred";
+function changeColorGetConfirmR() {
+  if (collection.length === 30) { document.getElementById("confirmButton").style.backgroundColor = "darkred";
   document.getElementById("confirmButton").style.color = "white";
 } else {
   document.getElementById("confirmButton").style.backgroundColor = "white";
@@ -573,6 +628,7 @@ function getHand() {
   if (collection.length === 0 && drawCounter.length === 0) {
     changeRound("One");
     changeColorGetHandW();
+    makeGreenBorder();
     showCard1(hand1);
     showCard2(hand1);
     showCard3(hand1);
@@ -586,6 +642,7 @@ function getHand() {
     clearHand();
     clearRound();
     changeColorGetHandW();
+    makeGreenBorder();
     changeRound("Two");
     showCard1(hand2);
     showCard2(hand2);
@@ -600,6 +657,7 @@ function getHand() {
     clearHand();
     clearRound();
     changeColorGetHandW();
+    makeGreenBorder();
     changeRound("Three");
     showCard1(hand3);
     showCard2(hand3);
@@ -614,6 +672,7 @@ function getHand() {
     clearHand();
     clearRound();
     changeColorGetHandW();
+    makeGreenBorder();
     changeRound("Four");
     showCard1(hand4);
     showCard2(hand4);
@@ -628,6 +687,7 @@ function getHand() {
     clearHand();
     clearRound();
     changeColorGetHandW();
+    makeGreenBorder();
     changeRound("Five");
     showCard1(hand5);
     showCard2(hand5);
@@ -642,6 +702,7 @@ function getHand() {
     clearHand();
     clearRound();
     changeColorGetHandW();
+    makeGreenBorder();
     changeRound("Six");
     showCard1(hand6);
     showCard2(hand6);
@@ -656,6 +717,7 @@ function getHand() {
     clearHand();
     clearRound();
     changeColorGetHandW();
+    makeGreenBorder();
     changeRound("Seven");
     showCard1(hand7);
     showCard2(hand7);
@@ -670,6 +732,7 @@ function getHand() {
     clearHand();
     clearRound();
     changeColorGetHandW();
+    makeGreenBorder();
     changeRound("Eight");
     showCard1(hand8);
     showCard2(hand8);
@@ -684,6 +747,7 @@ function getHand() {
     clearHand();
     clearRound();
     changeColorGetHandW();
+    makeGreenBorder();
     changeRound("Nine");
     showCard1(hand9);
     showCard2(hand9);
@@ -699,6 +763,7 @@ function getHand() {
     clearRound();
     changeRound("Ten");
     changeColorGetHandW();
+    makeGreenBorder();
     showCard1(hand10);
     showCard2(hand10);
     showCard3(hand10);
@@ -712,6 +777,7 @@ function getHand() {
     clearHand();
     clearRound();
     changeColorGetHandW();
+    makeGreenBorder();
     changeRound("Eleven");
     showCard1(hand11);
     showCard2(hand11);
@@ -726,6 +792,7 @@ function getHand() {
     clearHand();
     clearRound();
     changeColorGetHandW();
+    makeGreenBorder();
     changeRound("Twelve");
     showCard1(hand12);
     showCard2(hand12);
@@ -740,6 +807,7 @@ function getHand() {
     clearHand();
     clearRound();
     changeColorGetHandW();
+    makeGreenBorder();
     changeRound("Thirteen");
     showCard1(hand13);
     showCard2(hand13);
@@ -754,12 +822,25 @@ function getHand() {
     clearHand();
     clearRound();
     changeColorGetHandW();
+    makeGreenBorder();
     changeRound("Fourteen");
     showCard1(hand14);
     showCard2(hand14);
     showCard3(hand14);
     showCard4(hand14);
     showCard5(hand14);
+    drawCounter.push("draw");
+  } else if (collection.length === 28 && drawCounter.length === 14) {
+    clearHand();
+    clearRound();
+    changeColorGetHandW();
+    makeGreenBorder();
+    changeRound("Fifteen");
+    showCard1(hand15);
+    showCard2(hand15);
+    showCard3(hand15);
+    showCard4(hand15);
+    showCard5(hand15);
     drawCounter.push("draw");
     let hideNext = document.getElementById("nextHand");
     hideNext.style.display = "none";
@@ -819,6 +900,9 @@ function addCard1() {
   } else if (handChoices14.length < 2 && drawCounter.length === 14) {
     whichAnchor();
     Card1(handChoices14, hand14, 26, 27);
+  } else if (handChoices15.length < 2 && drawCounter.length === 15) {
+    whichAnchor();
+    Card1(handChoices15, hand15, 28, 29);
   } else {
   }
 }
@@ -837,6 +921,7 @@ function Card1(choices, hand, number, number2) {
     toAttach.appendChild(card1);
     console.log("anchor");
     console.log(anchor);
+    makeRedBorder("handAnchor1");
   } else if (collection.length === number2) {
     collection.push(hand[0]);
     choices.push("card1");
@@ -847,8 +932,9 @@ function Card1(choices, hand, number, number2) {
     toAttach.appendChild(card1);
     console.log("anchor");
     console.log(anchor);
-    changeColorGetHandG();
-    changeColorGetConfirmG();
+    makeRedBorder("handAnchor1");
+    changeColorGetHandR();
+    changeColorGetConfirmR();
   } else {
   }
 }
@@ -896,6 +982,9 @@ function addCard2() {
   } else if (handChoices14.length < 2 && drawCounter.length === 14) {
     whichAnchor();
     Card2(handChoices14, hand14, 26, 27);
+  } else if (handChoices15.length < 2 && drawCounter.length === 15) {
+    whichAnchor();
+    Card2(handChoices15, hand15, 28, 29);
   } else {
   }
 }
@@ -913,6 +1002,8 @@ function Card2(choices, hand, number, number2) {
     toAttach.appendChild(card1);
     console.log("anchor");
     console.log(anchor);
+    makeRedBorder("handAnchor2");
+
   } else if (collection.length === number2) {
     collection.push(hand[1]);
     choices.push("card2");
@@ -923,8 +1014,9 @@ function Card2(choices, hand, number, number2) {
     toAttach.appendChild(card1);
     console.log("anchor");
     console.log(anchor);
-    changeColorGetHandG();
-    changeColorGetConfirmG();
+    makeRedBorder("handAnchor2");
+    changeColorGetHandR();
+    changeColorGetConfirmR();
   } else {
   }
 }
@@ -972,6 +1064,9 @@ function addCard3() {
   } else if (handChoices14.length < 2 && drawCounter.length === 14) {
     whichAnchor();
     Card3(handChoices14, hand14, 26, 27);
+  } else if (handChoices15.length < 2 && drawCounter.length === 15) {
+    whichAnchor();
+    Card3(handChoices15, hand15, 28, 29);
   } else {
   }
 }
@@ -989,6 +1084,7 @@ function Card3(choices, hand, number, number2) {
     toAttach.appendChild(card1);
     console.log("anchor");
     console.log(anchor);
+    makeRedBorder("handAnchor3");
   } else if (collection.length === number2) {
     collection.push(hand[2]);
     choices.push("card3");
@@ -999,8 +1095,9 @@ function Card3(choices, hand, number, number2) {
     toAttach.appendChild(card1);
     console.log("anchor");
     console.log(anchor);
-    changeColorGetHandG();
-    changeColorGetConfirmG();
+    changeColorGetHandR();
+    changeColorGetConfirmR();
+    makeRedBorder("handAnchor3");
   } else {
   }
 }
@@ -1048,6 +1145,9 @@ function addCard4() {
   } else if (handChoices14.length < 2 && drawCounter.length === 14) {
     whichAnchor();
     Card4(handChoices14, hand14, 26, 27);
+  } else if (handChoices15.length < 2 && drawCounter.length === 15) {
+    whichAnchor();
+    Card4(handChoices15, hand15, 28, 29);
   } else {
   }
 }
@@ -1064,6 +1164,7 @@ function Card4(choices, hand, number, number2) {
     toAttach.appendChild(card1);
     console.log("anchor");
     console.log(anchor);
+    makeRedBorder("handAnchor4");
   } else if (collection.length === number2) {
     collection.push(hand[3]);
     choices.push("card4");
@@ -1073,8 +1174,9 @@ function Card4(choices, hand, number, number2) {
     toAttach.appendChild(card1);
     console.log("anchor");
     console.log(anchor);
-    changeColorGetHandG();
-    changeColorGetConfirmG();
+    changeColorGetHandR();
+    changeColorGetConfirmR();
+    makeRedBorder("handAnchor4");
   } else {
   }
 }
@@ -1123,6 +1225,9 @@ function addCard5() {
   } else if (handChoices14.length < 2 && drawCounter.length === 14) {
     whichAnchor();
     Card5(handChoices14, hand14, 26, 27);
+  } else if (handChoices15.length < 2 && drawCounter.length === 15) {
+    whichAnchor();
+    Card5(handChoices15, hand15, 28, 29);
   } else {
   }
 }
@@ -1139,6 +1244,7 @@ function Card5(choices, hand, number, number2) {
     toAttach.appendChild(card1);
     console.log("anchor");
     console.log(anchor);
+    makeRedBorder("handAnchor5");
   } else if (collection.length === number2) {
     collection.push(hand[4]);
     choices.push("card5");
@@ -1148,8 +1254,9 @@ function Card5(choices, hand, number, number2) {
     toAttach.appendChild(card1);
     console.log("anchor");
     console.log(anchor);
-    changeColorGetHandG();
-    changeColorGetConfirmG();
+    changeColorGetHandR();
+    changeColorGetConfirmR();
+    makeRedBorder("handAnchor5");
   } else {
   }
 }
@@ -1166,23 +1273,23 @@ function getValue1() {
     valuesTest1.push("0");
     valuesTest1.push(collection[0]);
       console.log(valuesTest1);
+    makeRedBorder("collectionAnchor1");
 
   } else if (valuesTest2.length < 2) {
     valuesTest2.push("collectionAnchor1");
     valuesTest2.push("0");
     valuesTest2.push(collection[0]);
-          console.log(valuesTest2);
-
-  } else {
-  }
-
-  if (valuesTest1.length > 1 && valuesTest2.length > 1) {
+    console.log(valuesTest2);
+    makeRedBorder("collectionAnchor1");
     let SwapShow = document.getElementById("makeSwitch");
     SwapShow.style.display = "inline-block";
     let resetShow = document.getElementById("reset");
     resetShow.style.display = "inline-block";
+
   } else {
   }
+
+ 
 }
 
 function getValue2() {
@@ -1190,9 +1297,8 @@ function getValue2() {
     valuesTest1.push("collectionAnchor2");
     valuesTest1.push("1");
     valuesTest1.push(collection[1]);
-          console.log(valuesTest1);
-
-
+      console.log(valuesTest1);
+      makeRedBorder("collectionAnchor2");
     //document.getElementById("card1Sel").style.backgroundColor="red";
     //document.body.style.backgroundColor="red";
     // btnColor.style.backgroundColor="red";
@@ -1201,18 +1307,16 @@ function getValue2() {
     valuesTest2.push("collectionAnchor2");
     valuesTest2.push("1");
     valuesTest2.push(collection[1]);
-          console.log(valuesTest2);
-
-  } else {
-  }
-
-  if (valuesTest1.length > 1 && valuesTest2.length > 1) {
+      console.log(valuesTest2);
+      makeRedBorder("collectionAnchor2");
     let SwapShow = document.getElementById("makeSwitch");
     SwapShow.style.display = "inline-block";
     let resetShow = document.getElementById("reset");
     resetShow.style.display = "inline-block";
+
   } else {
   }
+
 }
 
 function getValue3() {
@@ -1221,20 +1325,20 @@ function getValue3() {
     valuesTest1.push("collectionAnchor3");
     valuesTest1.push("2");
     valuesTest1.push(collection[2]);
+        makeRedBorder("collectionAnchor3");
   } else if (valuesTest2.length < 2) {
     valuesTest2.push("collectionAnchor3");
     valuesTest2.push("2");
     valuesTest2.push(collection[2]);
+            makeRedBorder("collectionAnchor3");
+      let SwapShow = document.getElementById("makeSwitch");
+      SwapShow.style.display = "inline-block";
+      let resetShow = document.getElementById("reset");
+      resetShow.style.display = "inline-block";
   } else {
   }
 
-  if (valuesTest1.length > 1 && valuesTest2.length > 1) {
-    let SwapShow = document.getElementById("makeSwitch");
-    SwapShow.style.display = "inline-block";
-    let resetShow = document.getElementById("reset");
-    resetShow.style.display = "inline-block";
-  } else {
-  }
+ 
 }
 
 function getValue4() {
@@ -1242,20 +1346,19 @@ function getValue4() {
     valuesTest1.push("collectionAnchor4");
     valuesTest1.push("3");
     valuesTest1.push(collection[3]);
+      makeRedBorder("collectionAnchor4");
   } else if (valuesTest2.length < 2) {
     valuesTest2.push("collectionAnchor4");
     valuesTest2.push("3");
     valuesTest2.push(collection[3]);
+          makeRedBorder("collectionAnchor4");
+        let SwapShow = document.getElementById("makeSwitch");
+        SwapShow.style.display = "inline-block";
+        let resetShow = document.getElementById("reset");
+        resetShow.style.display = "inline-block";
   } else {
   }
 
-  if (valuesTest1.length > 1 && valuesTest2.length > 1) {
-    let SwapShow = document.getElementById("makeSwitch");
-    SwapShow.style.display = "inline-block";
-    let resetShow = document.getElementById("reset");
-    resetShow.style.display = "inline-block";
-  } else {
-  }
 }
 
 function getValue5() {
@@ -1263,20 +1366,20 @@ function getValue5() {
     valuesTest1.push("collectionAnchor5");
     valuesTest1.push("4");
     valuesTest1.push(collection[4]);
+      makeRedBorder("collectionAnchor5");
   } else if (valuesTest2.length < 2) {
     valuesTest2.push("collectionAnchor5");
     valuesTest2.push("4");
     valuesTest2.push(collection[4]);
+          makeRedBorder("collectionAnchor5");
+     let SwapShow = document.getElementById("makeSwitch");
+     SwapShow.style.display = "inline-block";
+     let resetShow = document.getElementById("reset");
+     resetShow.style.display = "inline-block";
   } else {
   }
 
-  if (valuesTest1.length > 1 && valuesTest2.length > 1) {
-    let SwapShow = document.getElementById("makeSwitch");
-    SwapShow.style.display = "inline-block";
-    let resetShow = document.getElementById("reset");
-    resetShow.style.display = "inline-block";
-  } else {
-  }
+
 }
 
 function getValue6() {
@@ -1284,20 +1387,19 @@ function getValue6() {
     valuesTest1.push("collectionAnchor6");
     valuesTest1.push("5");
     valuesTest1.push(collection[5]);
+      makeRedBorder("collectionAnchor6");
   } else if (valuesTest2.length < 2) {
     valuesTest2.push("collectionAnchor6");
     valuesTest2.push("5");
     valuesTest2.push(collection[5]);
+          makeRedBorder("collectionAnchor6");
+      let SwapShow = document.getElementById("makeSwitch");
+      SwapShow.style.display = "inline-block";
+      let resetShow = document.getElementById("reset");
+      resetShow.style.display = "inline-block";
   } else {
   }
 
-  if (valuesTest1.length > 1 && valuesTest2.length > 1) {
-    let SwapShow = document.getElementById("makeSwitch");
-    SwapShow.style.display = "inline-block";
-    let resetShow = document.getElementById("reset");
-    resetShow.style.display = "inline-block";
-  } else {
-  }
 }
 
 function getValue7() {
@@ -1305,20 +1407,19 @@ function getValue7() {
     valuesTest1.push("collectionAnchor7");
     valuesTest1.push("6");
     valuesTest1.push(collection[6]);
+          makeRedBorder("collectionAnchor7");
   } else if (valuesTest2.length < 2) {
     valuesTest2.push("collectionAnchor7");
     valuesTest2.push("6");
     valuesTest2.push(collection[6]);
-  } else {
-  }
-
-  if (valuesTest1.length > 1 && valuesTest2.length > 1) {
+              makeRedBorder("collectionAnchor7");
     let SwapShow = document.getElementById("makeSwitch");
     SwapShow.style.display = "inline-block";
     let resetShow = document.getElementById("reset");
     resetShow.style.display = "inline-block";
   } else {
   }
+
 }
 
 function getValue8() {
@@ -1326,20 +1427,21 @@ function getValue8() {
     valuesTest1.push("collectionAnchor8");
     valuesTest1.push("7");
     valuesTest1.push(collection[7]);
+      makeRedBorder("collectionAnchor8");
+
   } else if (valuesTest2.length < 2) {
     valuesTest2.push("collectionAnchor8");
     valuesTest2.push("7");
     valuesTest2.push(collection[7]);
+          makeRedBorder("collectionAnchor8");
+      let SwapShow = document.getElementById("makeSwitch");
+      SwapShow.style.display = "inline-block";
+      let resetShow = document.getElementById("reset");
+      resetShow.style.display = "inline-block";
   } else {
   }
 
-  if (valuesTest1.length > 1 && valuesTest1.length > 1) {
-    let SwapShow = document.getElementById("makeSwitch");
-    SwapShow.style.display = "inline-block";
-    let resetShow = document.getElementById("reset");
-    resetShow.style.display = "inline-block";
-  } else {
-  }
+ 
 }
 
 function getValue9() {
@@ -1347,20 +1449,20 @@ function getValue9() {
     valuesTest1.push("collectionAnchor9");
     valuesTest1.push("8");
     valuesTest1.push(collection[8]);
+        makeRedBorder("collectionAnchor9");
   } else if (valuesTest2.length < 2) {
     valuesTest2.push("collectionAnchor9");
     valuesTest2.push("8");
     valuesTest2.push(collection[8]);
-  } else {
-  }
-
-  if (valuesTest1.length > 1 && valuesTest1.length > 1) {
+            makeRedBorder("collectionAnchor9");
     let SwapShow = document.getElementById("makeSwitch");
     SwapShow.style.display = "inline-block";
     let resetShow = document.getElementById("reset");
     resetShow.style.display = "inline-block";
   } else {
   }
+
+  
 }
 
 function getValue10() {
@@ -1368,20 +1470,20 @@ function getValue10() {
     valuesTest1.push("collectionAnchor10");
     valuesTest1.push("9");
     valuesTest1.push(collection[9]);
+        makeRedBorder("collectionAnchor10");
   } else if (valuesTest2.length < 2) {
     valuesTest2.push("collectionAnchor10");
     valuesTest2.push("9");
     valuesTest2.push(collection[9]);
+         makeRedBorder("collectionAnchor10");
+      let SwapShow = document.getElementById("makeSwitch");
+      SwapShow.style.display = "inline-block";
+      let resetShow = document.getElementById("reset");
+      resetShow.style.display = "inline-block";
   } else {
   }
 
-  if (valuesTest1.length > 1 && valuesTest1.length > 1) {
-    let SwapShow = document.getElementById("makeSwitch");
-    SwapShow.style.display = "inline-block";
-    let resetShow = document.getElementById("reset");
-    resetShow.style.display = "inline-block";
-  } else {
-  }
+ 
 }
 
 function getValue11() {
@@ -1389,18 +1491,21 @@ function getValue11() {
     valuesTest1.push("collectionAnchor11");
     valuesTest1.push("10");
     valuesTest1.push(collection[10]);
+        makeRedBorder("collectionAnchor11");
   } else if (valuesTest2.length < 2) {
     valuesTest2.push("collectionAnchor11");
     valuesTest2.push("10");
     valuesTest2.push(collection[10]);
+        makeRedBorder("collectionAnchor11");
+     let SwapShow = document.getElementById("makeSwitch");
+     SwapShow.style.display = "inline-block";
+     let resetShow = document.getElementById("reset");
+     resetShow.style.display = "inline-block";
   } else {
   }
 
   if (valuesTest1.length > 1 && valuesTest1.length > 1) {
-    let SwapShow = document.getElementById("makeSwitch");
-    SwapShow.style.display = "inline-block";
-    let resetShow = document.getElementById("reset");
-    resetShow.style.display = "inline-block";
+   
   } else {
   }
 }
@@ -1410,19 +1515,19 @@ function getValue12() {
     valuesTest1.push("collectionAnchor12");
     valuesTest1.push("11");
     valuesTest1.push(collection[11]);
+        makeRedBorder("collectionAnchor12");
   } else if (valuesTest2.length < 2) {
     valuesTest2.push("collectionAnchor12");
     valuesTest2.push("11");
     valuesTest2.push(collection[11]);
+          makeRedBorder("collectionAnchor12");
+     let SwapShow = document.getElementById("makeSwitch");
+     SwapShow.style.display = "inline-block";
+     let resetShow = document.getElementById("reset");
+     resetShow.style.display = "inline-block";
   } else {
   }
-  if (valuesTest1.length > 1 && valuesTest1.length > 1) {
-    let SwapShow = document.getElementById("makeSwitch");
-    SwapShow.style.display = "inline-block";
-    let resetShow = document.getElementById("reset");
-    resetShow.style.display = "inline-block";
-  } else {
-  }
+
 }
 
 function getValue13() {
@@ -1430,14 +1535,12 @@ function getValue13() {
     valuesTest1.push("collectionAnchor13");
     valuesTest1.push("12");
     valuesTest1.push(collection[12]);
+        makeRedBorder("collectionAnchor13");
   } else if (valuesTest2.length < 2) {
     valuesTest2.push("collectionAnchor13");
     valuesTest2.push("12");
     valuesTest2.push(collection[12]);
-  } else {
-  }
-
-  if (valuesTest1.length > 1 && valuesTest1.length > 1) {
+          makeRedBorder("collectionAnchor13");
     let SwapShow = document.getElementById("makeSwitch");
     SwapShow.style.display = "inline-block";
     let resetShow = document.getElementById("reset");
@@ -1451,19 +1554,19 @@ function getValue14() {
     valuesTest1.push("collectionAnchor14");
     valuesTest1.push("13");
     valuesTest1.push(collection[13]);
+        makeRedBorder("collectionAnchor14");
   } else if (valuesTest2.length < 2) {
     valuesTest2.push("collectionAnchor14");
     valuesTest2.push("13");
     valuesTest2.push(collection[13]);
+            makeRedBorder("collectionAnchor14");
+        let SwapShow = document.getElementById("makeSwitch");
+        SwapShow.style.display = "inline-block";
+        let resetShow = document.getElementById("reset");
+        resetShow.style.display = "inline-block";
   } else {
   }
-  if (valuesTest1.length > 1 && valuesTest2.length > 1) {
-    let SwapShow = document.getElementById("makeSwitch");
-    SwapShow.style.display = "inline-block";
-    let resetShow = document.getElementById("reset");
-    resetShow.style.display = "inline-block";
-  } else {
-  }
+
 }
 
 function getValue15() {
@@ -1471,19 +1574,19 @@ function getValue15() {
     valuesTest1.push("collectionAnchor15");
     valuesTest1.push("14");
     valuesTest1.push(collection[14]);
+            makeRedBorder("collectionAnchor15");
   } else if (valuesTest2.length < 2) {
     valuesTest2.push("collectionAnchor15");
     valuesTest2.push("14");
     valuesTest2.push(collection[14]);
+            makeRedBorder("collectionAnchor15");
+      let SwapShow = document.getElementById("makeSwitch");
+      SwapShow.style.display = "inline-block";
+      let resetShow = document.getElementById("reset");
+      resetShow.style.display = "inline-block";
   } else {
   }
-  if (valuesTest1.length > 1 && valuesTest2.length > 1) {
-    let SwapShow = document.getElementById("makeSwitch");
-    SwapShow.style.display = "inline-block";
-    let resetShow = document.getElementById("reset");
-    resetShow.style.display = "inline-block";
-  } else {
-  }
+
 }
 
 function getValue16() {
@@ -1491,19 +1594,20 @@ function getValue16() {
     valuesTest1.push("collectionAnchor16");
     valuesTest1.push("15");
     valuesTest1.push(collection[15]);
+            makeRedBorder("collectionAnchor16");
   } else if (valuesTest2.length < 2) {
     valuesTest2.push("collectionAnchor16");
     valuesTest2.push("15");
     valuesTest2.push(collection[15]);
+            makeRedBorder("collectionAnchor16");
+
+      let SwapShow = document.getElementById("makeSwitch");
+      SwapShow.style.display = "inline-block";
+      let resetShow = document.getElementById("reset");
+      resetShow.style.display = "inline-block";
   } else {
   }
-  if (valuesTest1.length > 1 && valuesTest2.length > 1) {
-    let SwapShow = document.getElementById("makeSwitch");
-    SwapShow.style.display = "inline-block";
-    let resetShow = document.getElementById("reset");
-    resetShow.style.display = "inline-block";
-  } else {
-  }
+
 }
 
 function getValue17() {
@@ -1511,19 +1615,21 @@ function getValue17() {
     valuesTest1.push("collectionAnchor17");
     valuesTest1.push("16");
     valuesTest1.push(collection[16]);
+          makeRedBorder("collectionAnchor17");
+
   } else if (valuesTest2.length < 2) {
     valuesTest2.push("collectionAnchor17");
     valuesTest2.push("16");
     valuesTest2.push(collection[16]);
-  } else {
-  }
-  if (valuesTest1.length > 1 && valuesTest2.length > 1) {
+          makeRedBorder("collectionAnchor17");
+
     let SwapShow = document.getElementById("makeSwitch");
     SwapShow.style.display = "inline-block";
     let resetShow = document.getElementById("reset");
     resetShow.style.display = "inline-block";
   } else {
   }
+ 
 }
 
 function getValue18() {
@@ -1531,19 +1637,21 @@ function getValue18() {
     valuesTest1.push("collectionAnchor18");
     valuesTest1.push("17");
     valuesTest1.push(collection[17]);
+              makeRedBorder("collectionAnchor18");
+
   } else if (valuesTest2.length < 2) {
     valuesTest2.push("collectionAnchor18");
     valuesTest2.push("17");
     valuesTest2.push(collection[17]);
+                  makeRedBorder("collectionAnchor18");
+
+     let SwapShow = document.getElementById("makeSwitch");
+     SwapShow.style.display = "inline-block";
+     let resetShow = document.getElementById("reset");
+     resetShow.style.display = "inline-block";
   } else {
   }
-  if (valuesTest1.length > 1 && valuesTest2.length > 1) {
-    let SwapShow = document.getElementById("makeSwitch");
-    SwapShow.style.display = "inline-block";
-    let resetShow = document.getElementById("reset");
-    resetShow.style.display = "inline-block";
-  } else {
-  }
+ 
 }
 
 function getValue19() {
@@ -1551,152 +1659,169 @@ function getValue19() {
     valuesTest1.push("collectionAnchor19");
     valuesTest1.push("18");
     valuesTest1.push(collection[18]);
+                  makeRedBorder("collectionAnchor19");
+
   } else if (valuesTest2.length < 2) {
     valuesTest2.push("collectionAnchor19");
     valuesTest2.push("18");
     valuesTest2.push(collection[18]);
+                      makeRedBorder("collectionAnchor19");
+
+      let SwapShow = document.getElementById("makeSwitch");
+      SwapShow.style.display = "inline-block";
+      let resetShow = document.getElementById("reset");
+      resetShow.style.display = "inline-block";
   } else {
   }
-  if (valuesTest1.length > 1 && valuesTest2.length > 1) {
-    let SwapShow = document.getElementById("makeSwitch");
-    SwapShow.style.display = "inline-block";
-    let resetShow = document.getElementById("reset");
-    resetShow.style.display = "inline-block";
-  } else {
-  }
+ 
 }
 function getValue20() {
   if (valuesTest1.length < 2) {
     valuesTest1.push("collectionAnchor20");
     valuesTest1.push("19");
     valuesTest1.push(collection[19]);
+          makeRedBorder("collectionAnchor20");
+
   } else if (valuesTest2.length < 2) {
     valuesTest2.push("collectionAnchor20");
     valuesTest2.push("19");
     valuesTest2.push(collection[19]);
+          makeRedBorder("collectionAnchor20");
+
+     let SwapShow = document.getElementById("makeSwitch");
+     SwapShow.style.display = "inline-block";
+     let resetShow = document.getElementById("reset");
+     resetShow.style.display = "inline-block";
   } else {
   }
-  if (valuesTest1.length > 1 && valuesTest2.length > 1) {
-    let SwapShow = document.getElementById("makeSwitch");
-    SwapShow.style.display = "inline-block";
-    let resetShow = document.getElementById("reset");
-    resetShow.style.display = "inline-block";
-  } else {
-  }
+  
 }
 function getValue21() {
   if (valuesTest1.length < 2) {
     valuesTest1.push("collectionAnchor21");
     valuesTest1.push("20");
     valuesTest1.push(collection[20]);
+              makeRedBorder("collectionAnchor21");
+
+    
   } else if (valuesTest2.length < 2) {
     valuesTest2.push("collectionAnchor21");
     valuesTest2.push("20");
     valuesTest2.push(collection[20]);
+                  makeRedBorder("collectionAnchor21");
+
+     let SwapShow = document.getElementById("makeSwitch");
+     SwapShow.style.display = "inline-block";
+     let resetShow = document.getElementById("reset");
+     resetShow.style.display = "inline-block";
   } else {
   }
-  if (valuesTest1.length > 1 && valuesTest2.length > 1) {
-    let SwapShow = document.getElementById("makeSwitch");
-    SwapShow.style.display = "inline-block";
-    let resetShow = document.getElementById("reset");
-    resetShow.style.display = "inline-block";
-  } else {
-  }
+
 }
 function getValue22() {
   if (valuesTest1.length < 2) {
     valuesTest1.push("collectionAnchor22");
     valuesTest1.push("21");
     valuesTest1.push(collection[21]);
+          makeRedBorder("collectionAnchor22");
+
   } else if (valuesTest2.length < 2) {
     valuesTest2.push("collectionAnchor22");
     valuesTest2.push("21");
     valuesTest2.push(collection[21]);
+            makeRedBorder("collectionAnchor22");
+
+       let SwapShow = document.getElementById("makeSwitch");
+       SwapShow.style.display = "inline-block";
+       let resetShow = document.getElementById("reset");
+       resetShow.style.display = "inline-block";
   } else {
   }
-  if (valuesTest1.length > 1 && valuesTest2.length > 1) {
-    let SwapShow = document.getElementById("makeSwitch");
-    SwapShow.style.display = "inline-block";
-    let resetShow = document.getElementById("reset");
-    resetShow.style.display = "inline-block";
-  } else {
-  }
+ 
 }
 function getValue23() {
   if (valuesTest1.length < 2) {
     valuesTest1.push("collectionAnchor23");
     valuesTest1.push("22");
     valuesTest1.push(collection[22]);
+        makeRedBorder("collectionAnchor23");
+
   } else if (valuesTest2.length < 2) {
     valuesTest2.push("collectionAnchor23");
     valuesTest2.push("22");
     valuesTest2.push(collection[22]);
-  } else {
-  }
-  if (valuesTest1.length > 1 && valuesTest2.length > 1) {
+        makeRedBorder("collectionAnchor23");
+
     let SwapShow = document.getElementById("makeSwitch");
     SwapShow.style.display = "inline-block";
     let resetShow = document.getElementById("reset");
     resetShow.style.display = "inline-block";
   } else {
   }
+
 }
 function getValue24() {
   if (valuesTest1.length < 2) {
     valuesTest1.push("collectionAnchor24");
     valuesTest1.push("23");
     valuesTest1.push(collection[23]);
+            makeRedBorder("collectionAnchor24");
+
   } else if (valuesTest2.length < 2) {
     valuesTest2.push("collectionAnchor24");
     valuesTest2.push("23");
     valuesTest2.push(collection[23]);
-  } else {
-  }
-  if (valuesTest1.length > 1 && valuesTest2.length > 1) {
+            makeRedBorder("collectionAnchor24");
+
     let SwapShow = document.getElementById("makeSwitch");
     SwapShow.style.display = "inline-block";
     let resetShow = document.getElementById("reset");
     resetShow.style.display = "inline-block";
   } else {
   }
+  
 }
 function getValue25() {
   if (valuesTest1.length < 2) {
     valuesTest1.push("collectionAnchor25");
     valuesTest1.push("24");
     valuesTest1.push(collection[24]);
+         makeRedBorder("collectionAnchor25");
+
   } else if (valuesTest2.length < 2) {
     valuesTest2.push("collectionAnchor25");
     valuesTest2.push("24");
     valuesTest2.push(collection[24]);
+           makeRedBorder("collectionAnchor25");
+
+       let SwapShow = document.getElementById("makeSwitch");
+       SwapShow.style.display = "inline-block";
+       let resetShow = document.getElementById("reset");
+       resetShow.style.display = "inline-block";
   } else {
   }
-  if (valuesTest1.length > 1 && valuesTest2.length > 1) {
-    let SwapShow = document.getElementById("makeSwitch");
-    SwapShow.style.display = "inline-block";
-    let resetShow = document.getElementById("reset");
-    resetShow.style.display = "inline-block";
-  } else {
-  }
+  
 }
 function getValue26() {
   if (valuesTest1.length < 2) {
     valuesTest1.push("collectionAnchor26");
     valuesTest1.push("25");
     valuesTest1.push(collection[25]);
+         makeRedBorder("collectionAnchor26");
+
   } else if (valuesTest2.length < 2) {
     valuesTest2.push("collectionAnchor26");
     valuesTest2.push("25");
     valuesTest2.push(collection[25]);
+          makeRedBorder("collectionAnchor26");
+
+     let SwapShow = document.getElementById("makeSwitch");
+     SwapShow.style.display = "inline-block";
+     let resetShow = document.getElementById("reset");
+     resetShow.style.display = "inline-block";
   } else {
   }
-  if (valuesTest1.length > 1 && valuesTest2.length > 1) {
-    let SwapShow = document.getElementById("makeSwitch");
-    SwapShow.style.display = "inline-block";
-    let resetShow = document.getElementById("reset");
-    resetShow.style.display = "inline-block";
-  } else {
-  }
+
 }
 
 function getValue27() {
@@ -1704,13 +1829,57 @@ function getValue27() {
     valuesTest1.push("collectionAnchor27");
     valuesTest1.push("26");
     valuesTest1.push(collection[26]);
+           makeRedBorder("collectionAnchor27");
+
   } else if (valuesTest2.length < 2) {
     valuesTest2.push("collectionAnchor27");
     valuesTest2.push("26");
     valuesTest2.push(collection[26]);
+          makeRedBorder("collectionAnchor27");
+
+     let SwapShow = document.getElementById("makeSwitch");
+     SwapShow.style.display = "inline-block";
+     let resetShow = document.getElementById("reset");
+     resetShow.style.display = "inline-block";
   } else {
   }
-  if (valuesTest1.length > 1 && valuesTest2.length > 1) {
+
+}
+
+function getValue28() {
+  if (valuesTest1.length < 2) {
+    valuesTest1.push("collectionAnchor28");
+    valuesTest1.push("27");
+    valuesTest1.push(collection[27]);
+          makeRedBorder("collectionAnchor28");
+
+  } else if (valuesTest2.length < 2) {
+    valuesTest2.push("collectionAnchor28");
+    valuesTest2.push("27");
+    valuesTest2.push(collection[27]);
+           makeRedBorder("collectionAnchor28");
+
+      let SwapShow = document.getElementById("makeSwitch");
+      SwapShow.style.display = "inline-block";
+      let resetShow = document.getElementById("reset");
+      resetShow.style.display = "inline-block";
+  } else {
+  }
+}
+
+function getValue29() {
+  if (valuesTest1.length < 2) {
+    valuesTest1.push("collectionAnchor29");
+    valuesTest1.push("28");
+    valuesTest1.push(collection[28]);
+         makeRedBorder("collectionAnchor29");
+
+  } else if (valuesTest2.length < 2) {
+    valuesTest2.push("collectionAnchor29");
+    valuesTest2.push("28");
+    valuesTest2.push(collection[28]);
+        makeRedBorder("collectionAnchor29");
+
     let SwapShow = document.getElementById("makeSwitch");
     SwapShow.style.display = "inline-block";
     let resetShow = document.getElementById("reset");
@@ -1719,19 +1888,19 @@ function getValue27() {
   }
 }
 
-function getValue28() {
+function getValue30() {
   if (valuesTest1.length < 2) {
-    valuesTest1.push("collectionAnchor28");
-    valuesTest1.push("27");
-    valuesTest1.push(collection[27]);
-  } else if (valuesTest2.length < 2) {
-    valuesTest2.push("collectionAnchor28");
-    valuesTest2.push("27");
-    valuesTest2.push(collection[27]);
-  } else {
-  }
+    valuesTest1.push("collectionAnchor30");
+    valuesTest1.push("29");
+    valuesTest1.push(collection[29]);
+        makeRedBorder("collectionAnchor30");
 
-  if (valuesTest1.length > 1 && valuesTest2.length > 1) {
+  } else if (valuesTest2.length < 2) {
+    valuesTest2.push("collectionAnchor30");
+    valuesTest2.push("29");
+    valuesTest2.push(collection[29]);
+        makeRedBorder("collectionAnchor30");
+
     let SwapShow = document.getElementById("makeSwitch");
     SwapShow.style.display = "inline-block";
     let resetShow = document.getElementById("reset");
@@ -1742,13 +1911,21 @@ function getValue28() {
 
 function makeSwitchCards() {
   console.log(collection);
+  console.log("this is values test 1");
+  console.log(valuesTest1);
+  console.log("this is values test 2");
+  console.log(valuesTest2)
+  makeDarkGreenBorder(valuesTest1[0]);
+  makeDarkGreenBorder(valuesTest2[0]);
   takeAway();
   switchAdd();
   switchCollection();
   resetSwap();
+  
 }
 
 function takeAway() {
+  
   if (valuesTest1[0] === valuesTest2[0]) {
   } else {
     newSwitchA = document.getElementById(valuesTest1[0]);
@@ -1756,6 +1933,7 @@ function takeAway() {
     newSwitchB = document.getElementById(valuesTest2[0]);
     newSwitchB.removeChild(newSwitchB.firstChild);
   }
+
 }
 
 function switchAdd() {
@@ -1785,6 +1963,8 @@ function switchCollection() {
 }
 
 function resetSwap() {
+    makeDarkGreenBorder(valuesTest1[0]);
+    makeDarkGreenBorder(valuesTest2[0]);
   valuesTest1.pop();
   valuesTest1.pop();
   valuesTest1.pop();
@@ -1918,6 +2098,13 @@ function goToConfirmation() {
   document
     .getElementById("collectionAnchor28")
     .removeEventListener("click", getValue28);
+     document
+       .getElementById("collectionAnchor29")
+       .removeEventListener("click", getValue29);
+     document
+       .getElementById("collectionAnchor30")
+       .removeEventListener("click", getValue30);
+
 
   let hideConfirm = document.getElementById("confirmButton");
   hideConfirm.style.display = "none";
@@ -1968,9 +2155,12 @@ function goToConfirmation() {
   evaluateSet5.push(collection[24]);
   console.log(evaluateSet5);
 
-  end3.push(collection[25]);
-  end3.push(collection[26]);
-  end3.push(collection[27]);
+  evaluateSet6.push(collection[25]);
+  evaluateSet6.push(collection[26]);
+  evaluateSet6.push(collection[27]);
+  evaluateSet6.push(collection[28]);
+  evaluateSet6.push(collection[29]);
+
 
 
 }
@@ -3062,6 +3252,213 @@ function FiveSetEvaluate() {
   console.log(Pair5);
 }
 
+function SixSetEvaluate() {
+  //let flushSuccess=[];
+  let CheckClubs = evaluateSet6.filter((item) => item.suit === "Clubs");
+  if (CheckClubs.length === 5) {
+    Flush6.push("Flush");
+  }
+
+  let CheckDiamonds = evaluateSet6.filter((item) => item.suit === "Diamonds");
+  if (CheckDiamonds.length === 5) {
+    Flush6.push("Flush");
+  }
+
+  let CheckSpades = evaluateSet6.filter((item) => item.suit === "Spades");
+  if (CheckSpades.length === 5) {
+    Flush6.push("Flush");
+  }
+
+  let CheckHearts = evaluateSet6.filter((item) => item.suit === "Hearts");
+  if (CheckHearts.length === 5) {
+    Flush6.push("Flush");
+  }
+
+  let CheckSwords = evaluateSet6.filter((item) => item.suit === "Swords");
+  if (CheckSwords.length === 5) {
+    Flush6.push("Flush");
+  }
+
+  let CheckSkulls = evaluateSet6.filter((item) => item.suit === "Skulls");
+  if (CheckSkulls.length === 5) {
+    Flush6.push("Flush");
+  }
+
+  let Check2 = evaluateSet6.filter((item) => item.value === 2);
+  if (Check2.length === 2) {
+    Pair6.push("Pair1");
+  } else if (Check2.length === 3) {
+    ThreeKind6.push("ThreeKind");
+  } else if (Check2.length === 4) {
+    FourKind6.push("FourKind");
+  } else {
+  }
+
+  let Check3 = evaluateSet6.filter((item) => item.value === 3);
+  if (Check3.length === 2) {
+    Pair6.push("Pair1");
+  } else if (Check3.length === 3) {
+    ThreeKind6.push("ThreeKind");
+  } else if (Check3.length === 4) {
+    FourKind6.push("FourKind");
+  } else {
+  }
+
+  let Check4 = evaluateSet6.filter((item) => item.value === 4);
+  if (Check4.length === 2) {
+    Pair6.push("Pair1");
+  } else if (Check4.length === 3) {
+    ThreeKind6.push("ThreeKind");
+  } else if (Check4.length === 4) {
+    FourKind6.push("FourKind");
+  } else {
+  }
+
+  let Check5 = evaluateSet6.filter((item) => item.value === 5);
+  if (Check5.length === 2) {
+    Pair6.push("Pair1");
+  } else if (Check5.length === 3) {
+    ThreeKind6.push("ThreeKind");
+  } else if (Check5.length === 4) {
+    FourKind6.push("FourKind");
+  } else {
+  }
+
+  let Check6 = evaluateSet6.filter((item) => item.value === 6);
+  if (Check6.length === 2) {
+    Pair6.push("Pair1");
+  } else if (Check6.length === 3) {
+    ThreeKind6.push("ThreeKind");
+  } else if (Check6.length === 4) {
+    FourKind6.push("FourKind");
+  } else {
+  }
+
+  let Check7 = evaluateSet6.filter((item) => item.value === 7);
+  if (Check7.length === 2) {
+    Pair6.push("Pair1");
+  } else if (Check7.length === 3) {
+    ThreeKind6.push("ThreeKind");
+  } else if (Check7.length === 4) {
+    FourKind6.push("FourKind");
+  } else {
+  }
+
+  let Check8 = evaluateSet6.filter((item) => item.value === 8);
+  if (Check8.length === 2) {
+    Pair6.push("Pair1");
+  } else if (Check8.length === 3) {
+    ThreeKind6.push("ThreeKind");
+  } else if (Check8.length === 4) {
+    FourKind6.push("FourKind");
+  } else {
+  }
+
+  let Check9 = evaluateSet6.filter((item) => item.value === 9);
+  if (Check9.length === 2) {
+    Pair6.push("Pair1");
+  } else if (Check9.length === 3) {
+    ThreeKind6.push("ThreeKind");
+  } else if (Check9.length === 4) {
+    FourKind6.push("FourKind");
+  } else {
+  }
+
+  let Check10 = evaluateSet6.filter((item) => item.value === 10);
+  if (Check10.length === 2) {
+    Pair6.push("Pair1");
+  } else if (Check10.length === 3) {
+    ThreeKind6.push("ThreeKind");
+  } else if (Check10.length === 4) {
+    FourKind6.push("FourKind");
+  } else {
+  }
+
+  let Check11 = evaluateSet6.filter((item) => item.value === 11);
+  if (Check11.length === 2) {
+    Pair6.push("Pair1");
+  } else if (Check11.length === 3) {
+    ThreeKind6.push("ThreeKind");
+  } else if (Check11.length === 4) {
+    FourKind6.push("FourKind");
+  } else {
+  }
+
+  let Check12 = evaluateSet6.filter((item) => item.value === 12);
+  if (Check12.length === 2) {
+    Pair6.push("Pair1");
+  } else if (Check12.length === 3) {
+    ThreeKind6.push("ThreeKind");
+  } else if (Check12.length === 4) {
+    FourKind6.push("FourKind");
+  } else {
+  }
+
+  let Check13 = evaluateSet6.filter((item) => item.value === 13);
+  if (Check13.length === 2) {
+    Pair6.push("Pair1");
+  } else if (Check13.length === 3) {
+    ThreeKind6.push("ThreeKind");
+  } else if (Check13.length === 4) {
+    FourKind6.push("FourKind");
+  } else {
+  }
+
+  let Check14 = evaluateSet6.filter((item) => item.value === 14);
+  if (Check14.length === 2) {
+    Pair6.push("Pair1");
+  } else if (Check14.length === 3) {
+    ThreeKind6.push("ThreeKind");
+  } else if (Check14.length === 4) {
+    FourKind6.push("FourKind");
+  } else {
+  }
+
+  //CheckVF = [];
+
+  let Royal = [];
+  if (evaluateSet6[0].value === 10) {
+    Royal.push("success");
+  } else {
+  }
+
+  if (evaluateSet6[1].value === 11) {
+    Royal.push("success");
+  } else {
+  }
+
+  if (evaluateSet6[2].value === 12) {
+    Royal.push("success");
+  } else {
+  }
+
+  if (evaluateSet6[3].value === 13) {
+    Royal.push("success");
+  } else {
+  }
+
+  if (evaluateSet6[4].value === 14) {
+    Royal.push("success");
+  } else {
+  }
+
+  if (Royal.length === 5) {
+    Royal6.push("Royal");
+  } else {
+  }
+
+  if (
+    evaluateSet6[1].value === evaluateSet6[0].value + 1 &&
+    evaluateSet6[2].value === evaluateSet6[1].value + 1 &&
+    evaluateSet6[3].value === evaluateSet6[2].value + 1 &&
+    evaluateSet6[4].value === evaluateSet6[3].value + 1
+  ) {
+    Straight6.push("Straight");
+  } else {
+  }
+
+}
+
 
 
 function EvaluateHands() {
@@ -3185,8 +3582,31 @@ function EvaluateHands() {
     score5.push(0);
   }
 
+  if (Royal6.length === 1 && Flush6.length === 1) {
+    score6.push(80);
+  } else if (Straight6.length === 1 && Flush6.length == 1) {
+    score6.push(60);
+  } else if (FourKind6.length === 1) {
+    score6.push(50);
+  } else if (ThreeKind6.length === 1 && Pair6.length === 1) {
+    score6.push(40);
+  } else if (Flush6.length === 1) {
+    score6.push(35);
+  } else if (Straight6.length === 1) {
+    score6.push(30);
+  } else if (ThreeKind6.length === 1) {
+    score6.push(25);
+  } else if (Pair6.length === 2) {
+    score6.push(15);
+  } else if (Pair6.length === 1) {
+    score6.push(10);
+  } else {
+    score6.push(0);
+  }
+
+
   let FinalScore =
-    score1[0] + score2[0] + score3[0] + score4[0] + score5[0];
+    score1[0] + score2[0] + score3[0] + score4[0] + score5[0] + score6[0];
   window.alert("Your Final Score is " + FinalScore + " points");
 
   document.getElementById("scoreLabel");
@@ -3198,7 +3618,36 @@ function EvaluateHands() {
 
   console.log(score);
 
-  console.log("evaluateSet1");
+  console.log("score1");
+  console.log(score1);
+  console.log("score2");
+  console.log(score2);
+  console.log("score3");
+  console.log(score3);
+  console.log("score4");
+   console.log(score4);
+   console.log("score5");
+  console.log (score5);
+    console.log("score6");
+        console.log(score6);
+
+
+                                                                              
+
+
+
+
+
+
+
+
+
+ 
+}
+
+/*
+
+console.log("evaluateSet1");
     console.log(evaluateSet1);
 
       console.log("evaluateSet2");
@@ -3212,15 +3661,7 @@ function EvaluateHands() {
 
     console.log("evaluateSet5");
   console.log(evaluateSet5);
-/*
-  let Royal1 = [];
-  let Straight1 = [];
-  let FourKind1 = [];
-  let FullHouse1 = [];
-  let ThreeKind1 = [];
-  let Pair1 = [];
-  let Flush1 = [];
-*/
+
   console.log("collectionNew")
   console.log(collectionNew)
 
@@ -3306,13 +3747,6 @@ function EvaluateHands() {
    console.log(Pair5);
    console.log("Flush5");
    console.log(Flush5);
-
- 
-}
-
-/*
-
-
 
 console.log("hand1");
 console.log(hand1);

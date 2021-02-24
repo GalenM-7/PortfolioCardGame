@@ -3,7 +3,7 @@
 //create arrays for hands, suits, and values
 //this is tested version
 let suits = ["Hearts", "Diamonds", "Clubs", "Spades", "Skulls", "Swords"];
-let values = [2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14];
+let values = [3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14];
 
 let hand1 = [];
 let hand2 = [];
@@ -45,8 +45,9 @@ let score4 = [];
 let score5 = [];
 let score6 = [];
 
-let end3 = [];
-
+let bonusScore = [];
+let cocktailNegativeScore = [];
+let cocktailPositiveScore = [];
 
 let Royal1 = [];
 let Straight1 = [];
@@ -120,6 +121,21 @@ let handChoices15 = [];
 
 let drawCounter = [];
 
+let send3Choices = [];
+let send3Choices2 = [];
+let send3Choices3 = [];
+let send3Choices4 = [];
+let send3Choices5 = [];
+let send3Choices6 = [];
+let send3Choices7 = [];
+let send3Choices8 = [];
+let send3Choices9 = [];
+let send3Choices10 = [];
+let send3Choices11 = [];
+let send3Choices12 = [];
+let send3Choices13 = [];
+let send3Choices14 = [];
+let send3Choices15 = [];
 
 
 let check2 = [];
@@ -127,6 +143,31 @@ let check2 = [];
 let anchor = [];
 
 //create deck and deal functions
+let bonusDeck = [];
+
+class cardBonus {
+  constructor(suit, value) {
+    this.suit = suit;
+    this.value = value;
+  }
+}
+
+let bonus1 = new cardBonus("Bonus", "15");
+let bonus2 = new cardBonus("Bonus", "15");
+let bonus3 = new cardBonus("Bonus", "15");
+let bonus4 = new cardBonus("Bonus", "15");
+let bonus5 = new cardBonus("Bonus", "15");
+
+function createBonusDeck() {
+  bonusDeck.push(bonus1);
+  bonusDeck.push(bonus2);
+  bonusDeck.push(bonus3);
+  bonusDeck.push(bonus4);
+  bonusDeck.push(bonus5);
+}
+
+createBonusDeck();
+
 
 class Card {
   constructor(suit, value) {
@@ -161,38 +202,43 @@ class Deck {
       this.deck[i] = temp;
     }
     return this.deck;
-  }
-
+    }
+  
   deal1() {
-    for (let i = 0; i < 5; i++) {
+    hand1.push(bonusDeck[0]);
+    for (let i = 0; i < 4; i++) {
       hand1.push(this.deck.pop());
     }
     return hand1;
   }
 
   deal2() {
-    for (let i = 0; i < 5; i++) {
+      hand2.push(bonusDeck[0]);
+    for (let i = 0; i < 4; i++) {
       hand2.push(this.deck.pop());
     }
     return hand2;
   }
 
   deal3() {
-    for (let i = 0; i < 5; i++) {
+      hand3.push(bonusDeck[0]);
+    for (let i = 0; i < 4; i++) {
       hand3.push(this.deck.pop());
     }
     return hand3;
   }
 
   deal4() {
-    for (let i = 0; i < 5; i++) {
+        hand4.push(bonusDeck[0]);
+    for (let i = 0; i < 4; i++) {
       hand4.push(this.deck.pop());
     }
     return hand4;
   }
 
   deal5() {
-    for (let i = 0; i < 5; i++) {
+        hand5.push(bonusDeck[0]);
+    for (let i = 0; i < 4; i++) {
       hand5.push(this.deck.pop());
     }
     return hand5;
@@ -267,10 +313,170 @@ class Deck {
     }
     return hand15;
   }
+
+  add3Cocktail(LandingArray){
+    this.deck.push(LandingArray[0]);
+    this.deck.push(LandingArray[0]);
+    this.deck.push(LandingArray[0]);
+    console.log(this.deck)
+  }
+
 }
 
 let deck = new Deck();
 deck.createDeck(suits, values);
+
+function deal() {
+  deck.shuffle();
+  if (collection.length === 0) {
+    deck.deal1();
+  } else if (collection.length === 2) {
+    deck.deal2();
+  } else if (collection.length === 4) {
+    deck.deal3();
+  } else if (collection.length === 6) {
+    deck.deal4();
+  } else if (collection.length === 8) {
+    deck.deal5();
+  } else if (collection.length === 10) {
+    deck.deal6();
+  } else if (collection.length === 12) {
+    deck.deal7();
+  } else if (collection.length === 14) {
+    deck.deal8();
+  } else if (collection.length === 16) {
+    deck.deal9();
+  } else if (collection.length === 18) {
+    deck.deal10();
+  } else if (collection.length === 20) {
+    deck.deal11();
+  } else if (collection.length === 22) {
+    deck.deal12();
+  } else if (collection.length === 24) {
+    deck.deal13();
+  } else if (collection.length === 26) {
+    deck.deal14();
+  } else if (collection.length === 28) {
+    deck.deal15();
+  } else {
+  }
+}
+
+
+
+class cardCocktail {
+  constructor(suit, value, polarity) {
+    this.suit = suit;
+    this.value = value;
+    this.polarity = polarity;
+  }
+}
+
+
+
+
+
+class cocktailDeckClass {
+  constructor() {
+    this.deckCocktail = [];
+  }
+
+  createCocktailCards() {
+    for (let i = 0; i < 8; i++) {
+      let RumCoke15N = new cardCocktail("RumCoke", "15", "Negative");
+      this.deckCocktail.push(RumCoke15N);
+    }
+
+    for (let i = 0; i < 18; i++) {
+      let RumCoke15P = new cardCocktail("RumCoke", "15", "Positive");
+      this.deckCocktail.push(RumCoke15P);
+    }
+
+    for (let i = 0; i < 5; i++) {
+      let GinTonic25N = new cardCocktail("GinTonic", "25", "Negative");
+      this.deckCocktail.push(GinTonic25N);
+    }
+
+    for (let i = 0; i < 10; i++) {
+      let GinTonic25P = new cardCocktail("GinTonic", "25", "Positive");
+      this.deckCocktail.push(GinTonic25P);
+    }
+
+    for (let i = 0; i < 4; i++) {
+      let LongIsland35N = new cardCocktail("LongIsland", "35", "Negative");
+      this.deckCocktail.push(LongIsland35N);
+    }
+    for (let i = 0; i < 8; i++) {
+      let LongIsland35P = new cardCocktail("LongIsland", "35", "Positive");
+      this.deckCocktail.push(LongIsland35P);
+    }
+    for (let i = 0; i < 3; i++) {
+      let Margarita40N = new cardCocktail("Margarita", "40", "Negative");
+      this.deckCocktail.push(Margarita40N);
+    }
+    for (let i = 0; i < 4; i++) {
+      let Margarita40P = new cardCocktail("Margarita", "40", "Positive");
+      this.deckCocktail.push(Margarita40P);
+    }
+
+    for (let i = 0; i < 1; i++) {
+      let Margarita50N = new cardCocktail("Margarita", "50", "Negative");
+      this.deckCocktail.push(Margarita50N);
+    }
+
+    for (let i = 0; i < 2; i++) {
+      let Margarita50P = new cardCocktail("Margarita", "50", "Positive");
+      this.deckCocktail.push(Margarita50P);
+    }
+  }
+
+  shuffle() {
+    let counter = this.deckCocktail.length,
+      temp,
+      i;
+
+    while (counter) {
+      i = Math.floor(Math.random() * counter--);
+      temp = this.deckCocktail[counter];
+      this.deckCocktail[counter] = this.deckCocktail[i];
+      this.deckCocktail[i] = temp;
+    }
+    return this.deckCocktail;
+  }
+
+  send3Deck(options,landingArray) {
+  if (options[0].suit === "Bonus") {
+    landingArray.push(this.deckCocktail.pop());
+    landingArray.push(this.deckCocktail.pop());
+    landingArray.push(this.deckCocktail.pop());
+    console.log(this.deckCocktail);
+    
+  } else if (options[1].suit === "Bonus") {
+    landingArray.push(this.deckCocktail.pop());
+    landingArray.push(this.deckCocktail.pop());
+    landingArray.push(this.deckCocktail.pop());
+    console.log(this.deckCocktail);
+
+  } else {
+
+  }
+
+}
+}
+
+let cocktailDeck = new cocktailDeckClass();
+cocktailDeck.createCocktailCards();
+cocktailDeck.shuffle();
+
+let send3Waiting = [];
+
+
+
+deck.shuffle();
+console.log(bonusDeck);
+console.log(deck);
+
+/*
 deck.shuffle();
 deck.deal1();
 deck.deal2();
@@ -287,7 +493,7 @@ deck.deal12();
 deck.deal13();
 deck.deal14();
 deck.deal15();
-
+ */
 
 //show first hand,
 function hideall() {
@@ -409,6 +615,8 @@ let rulesBtn = document.getElementById("rulesBtn");
 
 rulesBtn.onclick = function () {
   rulesModal.style.display = "block";
+   let backgroundModal = document.getElementById("backgroundModal");
+   backgroundModal.style.display = "block";
 };
 
 let rulesSpan = document.getElementsByClassName("close1")[0];
@@ -429,6 +637,26 @@ let pointValuesSpan = document.getElementsByClassName("close2")[0];
 pointValuesSpan.onclick = function () {
   pointValuesModal.style.display = "none";
 };
+
+
+
+
+let decksModal = document.getElementById("decksModal");
+let decksBtn = document.getElementById("decksBtn");
+
+
+decksBtn.onclick = function () {
+  decksModal.style.display = "block";
+};
+
+
+
+let deckSpan = document.getElementsByClassName("closeDecks")[0];
+
+deckSpan.onclick = function () {
+  decksModal.style.display = "none";
+};
+
 
 
 function makeRedBorder(anchor) {
@@ -626,9 +854,11 @@ function showCard5(currentHand) {
 
 function getHand() {
   if (collection.length === 0 && drawCounter.length === 0) {
-    changeRound("One");
     changeColorGetHandW();
     makeGreenBorder();
+    deck.shuffle();
+    deal();
+    changeRound("One");
     showCard1(hand1);
     showCard2(hand1);
     showCard3(hand1);
@@ -638,11 +868,16 @@ function getHand() {
     console.log("collection length");
     console.log(collection.length);
     console.log(drawCounter.length);
+    console.log(cocktailDeck);
   } else if (collection.length === 2 && drawCounter.length === 1) {
     clearHand();
     clearRound();
     changeColorGetHandW();
     makeGreenBorder();
+    cocktailDeck.send3Deck(handChoices, send3Choices);
+    deck.add3Cocktail(send3Choices);
+    deck.shuffle();
+    deal();
     changeRound("Two");
     showCard1(hand2);
     showCard2(hand2);
@@ -650,14 +885,19 @@ function getHand() {
     showCard4(hand2);
     showCard5(hand2);
     drawCounter.push("draw");
-    console.log("collection length");
-    console.log(collection.length);
+    
     console.log(drawCounter.length);
   } else if (collection.length === 4 && drawCounter.length === 2) {
     clearHand();
     clearRound();
     changeColorGetHandW();
     makeGreenBorder();
+    console.log("deck NNNNNNew");
+    console.log(deck);
+    cocktailDeck.send3Deck(handChoices2,send3Choices2);
+    deck.add3Cocktail(send3Choices2);    
+    deck.shuffle();
+    deal();
     changeRound("Three");
     showCard1(hand3);
     showCard2(hand3);
@@ -673,6 +913,10 @@ function getHand() {
     clearRound();
     changeColorGetHandW();
     makeGreenBorder();
+    cocktailDeck.send3Deck(handChoices3, send3Choices3);
+    deck.add3Cocktail(send3Choices3);    
+    deck.shuffle();
+    deal();
     changeRound("Four");
     showCard1(hand4);
     showCard2(hand4);
@@ -688,6 +932,10 @@ function getHand() {
     clearRound();
     changeColorGetHandW();
     makeGreenBorder();
+    cocktailDeck.send3Deck(handChoices4, send3Choices4);
+    deck.add3Cocktail(send3Choices4);    
+    deck.shuffle();
+    deal();
     changeRound("Five");
     showCard1(hand5);
     showCard2(hand5);
@@ -703,6 +951,10 @@ function getHand() {
     clearRound();
     changeColorGetHandW();
     makeGreenBorder();
+    cocktailDeck.send3Deck(handChoices5, send3Choices5);
+    deck.add3Cocktail(send3Choices5);    
+    deck.shuffle();
+    deal();
     changeRound("Six");
     showCard1(hand6);
     showCard2(hand6);
@@ -718,6 +970,10 @@ function getHand() {
     clearRound();
     changeColorGetHandW();
     makeGreenBorder();
+    cocktailDeck.send3Deck(handChoices6, send3Choices6);
+    deck.add3Cocktail(send3Choices6);    
+    deck.shuffle();
+    deal();
     changeRound("Seven");
     showCard1(hand7);
     showCard2(hand7);
@@ -733,6 +989,10 @@ function getHand() {
     clearRound();
     changeColorGetHandW();
     makeGreenBorder();
+    cocktailDeck.send3Deck(handChoices7, send3Choices7);
+    deck.add3Cocktail(send3Choices7);    
+    deck.shuffle();
+    deal();
     changeRound("Eight");
     showCard1(hand8);
     showCard2(hand8);
@@ -748,6 +1008,12 @@ function getHand() {
     clearRound();
     changeColorGetHandW();
     makeGreenBorder();
+    console.log("deck NNNNNNew");
+    console.log(deck);
+    cocktailDeck.send3Deck(handChoices8, send3Choices8);
+    deck.add3Cocktail(send3Choices8);      
+    deck.shuffle();
+    deal();
     changeRound("Nine");
     showCard1(hand9);
     showCard2(hand9);
@@ -761,9 +1027,13 @@ function getHand() {
   } else if (collection.length === 18 && drawCounter.length === 9) {
     clearHand();
     clearRound();
-    changeRound("Ten");
     changeColorGetHandW();
     makeGreenBorder();
+    cocktailDeck.send3Deck(handChoices9, send3Choices9);
+    deck.add3Cocktail(send3Choices9);      
+    deck.shuffle();
+    deal();
+    changeRound("Ten");
     showCard1(hand10);
     showCard2(hand10);
     showCard3(hand10);
@@ -778,6 +1048,10 @@ function getHand() {
     clearRound();
     changeColorGetHandW();
     makeGreenBorder();
+    cocktailDeck.send3Deck(handChoices10, send3Choices10);
+    deck.add3Cocktail(send3Choices10);      
+    deck.shuffle();
+    deal();
     changeRound("Eleven");
     showCard1(hand11);
     showCard2(hand11);
@@ -793,6 +1067,10 @@ function getHand() {
     clearRound();
     changeColorGetHandW();
     makeGreenBorder();
+    cocktailDeck.send3Deck(handChoices11, send3Choices11);
+    deck.add3Cocktail(send3Choices11);      
+     deck.shuffle();
+     deal();
     changeRound("Twelve");
     showCard1(hand12);
     showCard2(hand12);
@@ -808,6 +1086,10 @@ function getHand() {
     clearRound();
     changeColorGetHandW();
     makeGreenBorder();
+    cocktailDeck.send3Deck(handChoices12, send3Choices12);
+    deck.add3Cocktail(send3Choices12);      
+    deck.shuffle();
+    deal();
     changeRound("Thirteen");
     showCard1(hand13);
     showCard2(hand13);
@@ -823,6 +1105,10 @@ function getHand() {
     clearRound();
     changeColorGetHandW();
     makeGreenBorder();
+    cocktailDeck.send3Deck(handChoices13, send3Choices13);
+    deck.add3Cocktail(send3Choices13);      
+     deck.shuffle();
+     deal14();
     changeRound("Fourteen");
     showCard1(hand14);
     showCard2(hand14);
@@ -835,6 +1121,10 @@ function getHand() {
     clearRound();
     changeColorGetHandW();
     makeGreenBorder();
+      cocktailDeck.send3Deck(handChoices14, send3Choices14);
+      deck.add3Cocktail(send3Choices14);      
+     deck.shuffle();
+     deal();
     changeRound("Fifteen");
     showCard1(hand15);
     showCard2(hand15);
@@ -913,7 +1203,7 @@ function Card1(choices, hand, number, number2) {
     console.log(choices);
   } else if (collection.length === number) {
     collection.push(hand[0]);
-    choices.push("card1");
+    choices.push(hand[0]);
     console.log(choices);
     let toAttach = document.getElementById(anchor);
     let card1 = document.createElement("img");
@@ -924,7 +1214,7 @@ function Card1(choices, hand, number, number2) {
     makeRedBorder("handAnchor1");
   } else if (collection.length === number2) {
     collection.push(hand[0]);
-    choices.push("card1");
+    choices.push(hand[0]);
     console.log(choices);
     let toAttach = document.getElementById(anchor);
     let card1 = document.createElement("img");
@@ -937,6 +1227,8 @@ function Card1(choices, hand, number, number2) {
     changeColorGetConfirmR();
   } else {
   }
+
+
 }
 
 function addCard2() {
@@ -2160,7 +2452,7 @@ function goToConfirmation() {
   evaluateSet6.push(collection[27]);
   evaluateSet6.push(collection[28]);
   evaluateSet6.push(collection[29]);
-
+console.log(evaluateSet)
 
 
 }
@@ -2171,22 +2463,7 @@ function evaluateAllSets() {
   ThreeSetEvaluate();
   FourSetEvaluate();
   FiveSetEvaluate();
-  BonusChoices();
-  console.log("evaluateSet1");
-    console.log(evaluateSet1);
-
-    console.log("evaluateSet2");
-        console.log(evaluateSet2);
-
-  console.log("evaluateSet3");
-    console.log(evaluateSet3);
-
-  console.log("evaluateSet4");
-    console.log(evaluateSet4);
-
-  console.log("evaluateSet5");
-    console.log(evaluateSet5);
-
+    SixSetEvaluate();
 
 }
 
@@ -3466,7 +3743,7 @@ function EvaluateHands() {
     console.log("scores");
 
   if (Royal1.length === 1 && Flush1.length === 1) {
-    score1.push(80);
+    score1.push(90);
   } else if (Straight1.length === 1 && Flush1.length == 1) {
     score1.push(60);
   } else if (FourKind1.length === 1) {
@@ -3489,7 +3766,7 @@ function EvaluateHands() {
 
       
   if (Royal2.length === 1 && Flush2.length === 1) {
-    score2.push(80);
+    score2.push(90);
   } else if (Straight2.length === 1 && Flush2.length == 1) {
     score2.push(60);
   } else if (FourKind2.length === 1) {
@@ -3512,7 +3789,7 @@ function EvaluateHands() {
 
 
   if (Royal3.length === 1 && Flush3.length === 1) {
-    score3.push(80);
+    score3.push(90);
   } else if (Straight3.length === 1 && Flush3.length == 1) {
     score3.push(60);
   } else if (FourKind3.length === 1) {
@@ -3536,7 +3813,7 @@ function EvaluateHands() {
 
    
   if (Royal4.length === 1 && Flush4.length === 1) {
-    score4.push(80);
+    score4.push(90);
   } else if (Straight4.length === 1 && Flush4.length == 1) {
     score4.push(60);
   } else if (FourKind4.length === 1) {
@@ -3561,7 +3838,7 @@ function EvaluateHands() {
    
 
   if (Royal5.length === 1 && Flush5.length === 1) {
-    score5.push(80);
+    score5.push(90);
   } else if (Straight5.length === 1 && Flush5.length == 1) {
     score5.push(60);
   } else if (FourKind5.length === 1) {
@@ -3583,7 +3860,7 @@ function EvaluateHands() {
   }
 
   if (Royal6.length === 1 && Flush6.length === 1) {
-    score6.push(80);
+    score6.push(90);
   } else if (Straight6.length === 1 && Flush6.length == 1) {
     score6.push(60);
   } else if (FourKind6.length === 1) {

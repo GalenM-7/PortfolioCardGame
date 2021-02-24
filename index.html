@@ -13,21 +13,49 @@
 
 <body>
 
-            <button id="rulesBtn" class="directionsButtons"><b><h1>See Game Rules</h1></b></button>
+    
+    <button id="decksBtn" class="decksBtn"><b><h1>See Decks</h1></b></button>
                
-            <div id="rulesModal" class="rulesModal">
-                <div class="rulesModal-Content">
-                    <span class="close1">&times;</span>
-                        <h2><b>The Deck</b></h2>
-                            <p>In this game, there six suites. They include Hearts, Diamonds, Spades, Clubs and two new suites of Skulls and Swords.Each suite has the normal card ranks (2, 3, 4, 5, 6, 7, 8, 9, 10, Jack, Queen, King, Ace) with Ace being a high card following King to make up a deck of 84 cards.</p>
-                            <h2><b>The Hands</b></h2>
-                            <p>You will go through 14 hands by clicking the "show next hand" button. When you see the five cards of your hand, click on two. Those cards will be sent to your collection which can be seen below your hand.</p>
-                            <h2><b>Changing Collection Order</b></h2>
-                            <p>At any time, you can go down to your collection and click on two cards. Two additional buttons will show up next to the "Go To Confirmation Stage" button, the "Swap" and "Reset" buttons. If you click the "Reset" button, the buttons will disappear and nothing will happen. If you click the "Swap " button, the two cards will switch positions.</p>
-                            <h2><b>Scoring and Confirmation</b></h2>
-                            <p>The goal of the game is to score the most points. Click the see point values to see how much points each card combination is worth. At the end of the game, when your collection is in the order you wish click the "Go To Confirmation Stage" button. At this point you will be unable to change the position of the cards in your collection. Two more buttons will appear, the "Evaluate Sets" and "Get Final Score" buttons. Clicking on the "Evaluate Sets" button will calculate your final score based on the first 25 cards of your collection. The first set of 5 will evaluate to add a point value to your total score. The second, third, fourth, and fifth sets will do the same. Then click on the "Get Final Score" button to see your total final score.</p>                
+            <div id="decksModal" class="decksModal">
+                <div class="decksModal-Content">
+                    <span class="closeDecks">&times;</span>
+                    
+                            <h2><b>The Cocktail Deck</b></h2>
+                            <p>There are four types of card in this deck, each portraying a specific cocktail. Each is worth a certain amount of points earned or taken away from your total score if chosen for your collection. Below is a table that shows all of the cards and their point values. There are 63 cards in this deck</p>
+                                <table>
+                                    <tr><th colspan="3"><b>Positive Cards - 42 total</b></th><th colspan="3"><b>Negative Cards - 21 total</b></th></tr>
+                                    <tr><td class="greenWords"><b>Type</b></td><td class="greenWords"><b>How Many In Deck?</b></td><td class="greenWords"><b>Point Value</b></td><td class="greenWords"><b>Type</b></td><td class="greenWords"><b>How Many In Deck?</b></td><td class="greenWords"><b>Point Value</b></td></tr>
+                                    <tr><td><b>Rum and Coke</b></td><td>18</td><td>15</td>   <td><b>Rum and Coke</b></td><td>8</td><td>15</td></tr>
+                                    <tr><td><b>Gin and Tonic</b></td><td>10</td><td>25</td>   <td><b>Gin and Tonic</b></td><td>5</td><td>25</td></tr>
+                                    <tr><td><b>Long Island Iced Tea</b></td><td>8</td><td>35</td>    <td><b>Long Island Iced Tea</b></td><td>4</td><td>35</td></tr>
+                                    <tr><td><b>Margarita</b></td><td>4</td><td>40</td>    <td><b>Margarita</b></td><td>3</td><td>40</td></tr>
+                                    <tr><td><b>Margarita</b></td><td>2</td><td>50</td>    <td><b>Margarita</b></td><td>1</td><td>50</td></tr>
+                                    
+
+
+                                </table>
+                            
+                            <h2><b>The Mostly Negative Deck</b></h2>
+                            <p>This deck includes the same four types of cards as in the Cocktail deck. The difference is with this one, there are mainly cards that take away points from your final score. A list below shows the contents of this deck. This is the deck that is shuffled into the Cocktail Deck thereby changing your odds. There are 81 cards in this deck.</p>
+                            <table>
+                              <tr><th colspan="3"><b></b>Negative Cards - total 81</th></tr>
+                                    <tr><td class="greenWords"><b>Type</b></td><td class="greenWords"><b>How Many In Deck?</b></td><td class="greenWords"><b>Point Value</b></td></tr>
+                                    <tr><td><b>Rum and Coke</b></td><td>30</td><td>20</td></tr>
+                                    <tr><td><b>Gin and Tonic</b></td><td>25</td><td>30</td></tr>
+                                    <tr><td><b>Long Island Iced Tea</b></td><td>15</td><td>45</td></tr>
+                                    <tr><td><b>Margarita</b></td><td>5</td><td>50</td></tr>
+                                    <tr><td><b>Margarita</b></td><td>3</td><td>60</td></tr>
+                                    <tr><td><b>Margarita</b></td><td>2</td><td>90</td></tr>
+                                    <tr><td><b>Margarita</b></td><td>1</td><td>200</td></tr>
+
+
+
+                                    </table>
+                                  
                 </div>
             </div>
+
+            
 
 
             <button id="pointValuesBtn" class="pointValuesBtn"><b><h1>See Point Values</h1></b></button>
@@ -36,8 +64,8 @@
                 <div class="pointValues-Content">
                     <span class="close2">&times;</span>
                        <h2>You will get awarded a certain amount of points for each hand depending on the highest card combination attained. These are listed below.</h2>
-                                <ol>
-                                    <li><b>Royal Flush</b> (five cards same suit, values of 10, Jack, Queen, King, and Ace in that sequence): <b>80 points</b></li>
+                                <ul>
+                                    <li><b>Royal Flush</b> (five cards same suit, values of 10, Jack, Queen, King, and Ace in that sequence): <b>90 points</b></li>
                                     <li><b>Straight Flush</b> (five cards same suit, five cards with sequential rank): <b>60 points</b></li>
                                     <li><b>Four of a Kind</b> (four cards with same rank): <b>50 points</b></li>
                                     <li><b>Full House</b> (three cards with same rank and two other cards with same rank): <b>40 points</b></li>
@@ -46,7 +74,27 @@
                                     <li><b>Three of a Kind</b> (three cards with same rank): <b>25 points</b></li>
                                     <li><b>Two Pair</b> (two cards with same rank and another two cards with same rank): <b>15 points</b></li>
                                     <li><b>One Pair</b> (two cards with same rank): <b>10 points</b></li>
-                                </ol>        
+                                </ul>        
+                </div>
+            </div>
+
+            <button id="rulesBtn" class="directionsButtons"><b><h1>See Game Rules</h1></b></button>
+               
+            <div id="rulesModal" class="rulesModal">
+                <div class="rulesModal-Content">
+                    <span class="close1">&times;</span>
+                        <h2><b>The Game Deck</b></h2>
+                            <p>In this game, there six suites. They include Hearts, Diamonds, Spades, Clubs and two new suites of Skulls and Swords. Each suite has the normal card ranks (3, 4, 5, 6, 7, 8, 9, 10, Jack, Queen, King, Ace) with Ace being a high card following King to make up a deck of 83 cards. Notice that the rank of 2 has been removed to make way for five Bonus cards.</p>
+                            <h2><b>The Hands</b></h2>
+                            <p>You will go through 15 hands by clicking the "show next hand" button. When you see the five cards of your hand, click on two. Those cards will be sent to your collection which can be seen below your hand. For the first five hands the first card will always be a Bonus card. The deck is shuffled before you start your first hand, the Bonus card is the only card that is not chosen randomly</p>
+                            <h2><b>Changing Collection Order</b></h2>
+                            <p>At any time, you can go down to your collection and click on two cards. Two additional buttons will show up next to the "Go To Confirmation Stage" button, the "Swap" and "Reset" buttons. If you click the "Reset" button, the buttons will disappear and nothing will happen. If you click the "Swap " button, the two cards will switch positions.</p>
+                            <h2><b>The Cocktail and The Mostly Negative Decks</b></h2>
+                            <p>There are two additional decks. The Cocktail deck is a deck consisting of four type of cards represented by different Cocktails. The Mostly Negative Deck has the same for types of cards but with a key difference that will be mentioned in the next paragraph. These are a Rum and Coke, Gin and Tonic, Long Island Iced Tea, and Margarita. If you choose a Bonus card as one of your two cards for the hand, the Bonus card is added to your collection. In addition three cards will be taken from your Cocktail Deck and added to your regular Game Deck and the Game Deck is reshuffled. Three cards are also taken from the All Bad Deck and put into the Cocktail Deck and the Cocktail Deck is reshuffled.</p>
+                            <h2><b>Choosing Cocktail Cards</b></h2>
+                            <p>Each Cocktail card has a point value attached to it. With some cards, like the Margarita card, there are different point values attached to different Margarita cards although they won't have any point value visible on the card. The Cocktail deck also has a certain amount of each type of cards that are positive and negative. There is no indication on the card as to which it is. This means that if you choose a Cocktail card to put in your collection and it is a negative card, when you go to evaluate your point totals the points associated with this card will be subtracted from your final score. If it is a postive card, these points will be added to your final score. Also if you choose a Cocktail Card, two cards will be added to your game deck from your Cocktail Deck for all types except the Margarita card which will add 3 to your game deck. Then two or three cards will be taken from the All Bad Deck and put into the Cocktail Deck and the Cocktail Deck is reshuffled. The Mostly Negative Deck is full of Cocktail cards but has mainly negative cards. Therefore as you choose Bonus Cards or Cocktail Cards, the odds worsen for you little by little when it comes to choosing a positive Cocktail Card in the future. Click on the "See Decks" button next to this one to see the contents of both of these decks. </p>
+                            <h2><b>Scoring and Confirmation</b></h2>
+                            <p>The goal of the game is to score the most points. You can score points by having Bonus Cards in your collection which are added to your total, by having a specific five card combination in one of your six cards sets visible in the six rows of your collection, or by having a Cocktail card in your collection and being awarded it's associated point total. But beware the Cocktail cards can also take points away from your final score depending on if the card is positive or negative. Click on the "See Point Value" button to the left of this one to see how much each card combination is worth. At the end of the game, when your collection is in the order you wish click the "Go To Confirmation Stage" button. At this point you will be unable to change the position of the cards in your collection. Two more buttons will appear, the "Evaluate Sets" and "Get Final Score" buttons. Clicking on the "Evaluate Sets" button will calculate your final score based on all six rows of your collection. The first set of 5 will evaluate to add a point value to your total score. The second, third, fourth, fifth and sixth sets will do the same. Then each set of five will be checked for any Bonus or Cocktails and those points will be added or subtracted. The "Evaluate Sets" button will disappear. Then you are ready to click on the "Get Final Score" button to see your total final score.</p>                
                 </div>
             </div>
 

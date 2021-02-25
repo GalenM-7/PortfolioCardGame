@@ -44,8 +44,8 @@ let score5 = [];
 let score6 = [];
 
 let bonusScore = [];
-let cocktailNegativeScore = [];
-let cocktailPositiveScore = [];
+let cocktailNegativeScore = [0, 0, 0];
+let cocktailPositiveScore = [0, 0, 0];
 
 let Royal1 = [];
 let Straight1 = [];
@@ -322,7 +322,7 @@ class Deck {
 
 let deck = new Deck();
 deck.createDeck(suits, values);
-//console.log(deck);
+////console.log(deck);
 
 function deal() {
   deck.shuffle();
@@ -358,13 +358,13 @@ function deal() {
     deck.deal15();
   } else {
   }
-  console.log("deal");
-  console.log(deck);
-  console.log(deck.deck.length);
-  console.log(deck.deck[5]);
+  //console.log("deal");
+  //console.log(deck);
+  //console.log(deck.deck.length);
+  //console.log(deck.deck[5]);
 
-  ////console.log("deck after deal");
-  ////console.log(deck.deck);
+  //////console.log("deck after deal");
+  //////console.log(deck.deck);
 }
 
 ///// Create Cocktail Deck Negative ///////////////////////////////////////////////////////////////////////////////////
@@ -457,9 +457,9 @@ class cocktailDeckClassNegative {
 let cocktailDeckNegative = new cocktailDeckClassNegative();
 cocktailDeckNegative.createCocktailCardsNegative();
 cocktailDeckNegative.shuffle();
-console.log(cocktailDeckNegative);
-//console.log("cocktailDeckNegative");
 //console.log(cocktailDeckNegative);
+////console.log("cocktailDeckNegative");
+////console.log(cocktailDeckNegative);
 
 ///// Create Cocktail Deck /////////////////////////////////////////////////////////////////////////////////////
 
@@ -543,9 +543,9 @@ class cocktailDeckClass {
 let cocktailDeck = new cocktailDeckClass();
 cocktailDeck.createCocktailCards();
 cocktailDeck.shuffle();
-console.log(cocktailDeck)
-//console.log(cocktailDeck);
-//console.log("cocktailDeck");
+//console.log(cocktailDeck)
+////console.log(cocktailDeck);
+////console.log("cocktailDeck");
 
 ///// Create Functions Sending Points Bonus/Cocktail, Shuffling New Cards back into deck  //////////////////////////////////
 
@@ -556,46 +556,46 @@ function send3Deck(options) {
     deck.deck.push(cocktailDeck.deckCocktail.pop());
     bonusScore.push(20);
     deck.shuffle();
-    console.log("Deck Length");
-    console.log(deck.deck.length);
-    console.log("Card 5");
-    console.log(deck.deck[5]);
-    console.log("Bonus Score");
-    console.log(bonusScore);
+    //console.log("Deck Length");
+    //console.log(deck.deck.length);
+    //console.log("Card 5");
+    //console.log(deck.deck[5]);
+    //console.log("Bonus Score");
+    //console.log(bonusScore);
   } else if (options[1].suit === "BonusM") {
     deck.deck.push(cocktailDeck.deckCocktail.pop());
     deck.deck.push(cocktailDeck.deckCocktail.pop());
     deck.deck.push(cocktailDeck.deckCocktail.pop());
     bonusScore.push(20);
     deck.shuffle();
-    console.log("Deck Length");
-    console.log(deck.deck.length);
-    console.log("Card 5");
-    console.log(deck.deck[5]);
-    console.log("Bonus Score");
-    console.log(bonusScore);
+    //console.log("Deck Length");
+    //console.log(deck.deck.length);
+    //console.log("Card 5");
+    //console.log(deck.deck[5]);
+    //console.log("Bonus Score");
+    //console.log(bonusScore);
   } else if (options[0].suit === "BonusL") {
-     deck.deck.push(cocktailDeck.deckCocktail.pop());
-     deck.deck.push(cocktailDeck.deckCocktail.pop());
-     bonusScore.push(11);
-     deck.shuffle();
-   console.log("Deck Length");
-    console.log(deck.deck.length);
-    console.log("Card 5");
-    console.log(deck.deck[5]);
-    console.log("Bonus Score");
-    console.log(bonusScore);
+    deck.deck.push(cocktailDeck.deckCocktail.pop());
+    deck.deck.push(cocktailDeck.deckCocktail.pop());
+    bonusScore.push(11);
+    deck.shuffle();
+    //console.log("Deck Length");
+    //console.log(deck.deck.length);
+    //console.log("Card 5");
+    //console.log(deck.deck[5]);
+    //console.log("Bonus Score");
+    //console.log(bonusScore);
   } else if (options[1].suit === "BonusL") {
     deck.deck.push(cocktailDeck.deckCocktail.pop());
     deck.deck.push(cocktailDeck.deckCocktail.pop());
     bonusScore.push(11);
     deck.shuffle();
-   console.log("Deck Length");
-   console.log(deck.deck.length);
-   console.log("Card 5");
-   console.log(deck.deck[5]);
-   console.log("Bonus Score");
-   console.log(bonusScore);
+    //console.log("Deck Length");
+    //console.log(deck.deck.length);
+    //console.log("Card 5");
+    //console.log(deck.deck[5]);
+    //console.log("Bonus Score");
+    //console.log(bonusScore);
   } else {
   }
 }
@@ -605,114 +605,119 @@ function isItACocktail(options) {
     cocktailPositiveScore.push(options[0].value);
     console.log("cocktailScore");
     console.log(options[0]);
-    console.log("cocktailPositiveScore");
-    console.log(cocktailPositiveScore);
-  } else if (options[0].polarity === "Positive") {
-    cocktailPositiveScore.push(options[0].value);
+    console.log("cocktailPositiveScoreeeeeeeeeeeeeeeeeee");
+    console.log(cocktailPositiveScore.length - 3);
+  } else {
+
+  }
+  if (options[1].polarity === "Positive") {
+    cocktailPositiveScore.push(options[1].value);
     console.log("cocktailScore");
-    console.log(options[0]);
-    console.log("cocktailPositiveScore");
-    console.log(cocktailPositiveScore);
+    console.log(options[1]);
+    console.log("cocktailPositiveScoreeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeee");
+    console.log(cocktailPositiveScore.length - 3);
   } else {
   }
 
+  if (options[0].polarity === "Negative") {
+    cocktailNegativeScore.push(options[0].value);
+    console.log("cocktailScore");
+    console.log(options[0]);
+    console.log("cocktailNegativeScoreeeeeeeeeeeeeeeeeeeeeeeeeeeee");
+    console.log(cocktailNegativeScore.length - 3);
+  } else {
+  }
+  
   if (options[1].polarity === "Negative") {
     cocktailNegativeScore.push(options[1].value);
     console.log("cocktailScore");
     console.log(options[1]);
-    console.log("cocktailNegativeScore");
-    console.log(cocktailNegativeScore);
-  } else if (options[1].polarity === "Negative") {
-    cocktailNegativeScore.push(options[1].value);
-    console.log("cocktailScore");
-    console.log(options[1]);
-    console.log("cocktailNegativeScore");
-    console.log(cocktailNegativeScore);
+    console.log("cocktailNegativeScoreeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeee");
+    console.log(cocktailNegativeScore.length-3);
   } else {
   }
 }
 
 function sendNegativeDeckCards(options) {
- 
   if (options[0].suit === "RumCoke") {
-    console.log(cocktailDeck.deckCocktail[5]);
-    console.log("shuffle proof");
+    //console.log(cocktailDeck.deckCocktail[5]);
+    //console.log("shuffle proof");
     cocktailDeck.deckCocktail.push(
       cocktailDeckNegative.deckCocktailNegative.pop()
     );
     cocktailDeck.deckCocktail.push(
       cocktailDeckNegative.deckCocktailNegative.pop()
     );
-   
+
     cocktailDeck.shuffle();
-    console.log("choice");
-    console.log(options[0]);
-    console.log("cocktail deck length Neg cards");
-    console.log(cocktailDeck.deckCocktail.length);
-    console.log(cocktailDeck.deckCocktail[5]);
-    } else {
-      }
+    //console.log("choice");
+    //console.log(options[0]);
+    //console.log("cocktail deck length Neg cards");
+    //console.log(cocktailDeck.deckCocktail.length);
+    //console.log(cocktailDeck.deckCocktail[5]);
+  } else {
+  }
 
   if (options[1].suit === "RumCoke") {
-    console.log(cocktailDeck.deckCocktail[5]);
-    console.log("shuffle proof");
+    //console.log(cocktailDeck.deckCocktail[5]);
+    //console.log("shuffle proof");
     cocktailDeck.deckCocktail.push(
       cocktailDeckNegative.deckCocktailNegative.pop()
     );
     cocktailDeck.deckCocktail.push(
       cocktailDeckNegative.deckCocktailNegative.pop()
     );
-   
+
     cocktailDeck.shuffle();
-    console.log("choice");
-    console.log(options[0]);
-    console.log("cocktail deck length Neg cards");
-    console.log(cocktailDeck.deckCocktail.length);
-    console.log(cocktailDeck.deckCocktail[5]);
+    //console.log("choice");
+    //console.log(options[0]);
+    //console.log("cocktail deck length Neg cards");
+    //console.log(cocktailDeck.deckCocktail.length);
+    //console.log(cocktailDeck.deckCocktail[5]);
   } else {
   }
 
   if (options[0].suit === "GinTonic") {
-    console.log(cocktailDeck.deckCocktail[5]);
-    console.log("shuffle proof");
+    //console.log(cocktailDeck.deckCocktail[5]);
+    //console.log("shuffle proof");
     cocktailDeck.deckCocktail.push(
       cocktailDeckNegative.deckCocktailNegative.pop()
     );
     cocktailDeck.deckCocktail.push(
       cocktailDeckNegative.deckCocktailNegative.pop()
     );
-  
+
     cocktailDeck.shuffle();
-    console.log("choice");
-    console.log(options[0]);
-    console.log("cocktail deck length Neg cards");
-    console.log(cocktailDeck.deckCocktail.length);
-    console.log(cocktailDeck.deckCocktail[5]);
-    } else {
-    }
+    //console.log("choice");
+    //console.log(options[0]);
+    //console.log("cocktail deck length Neg cards");
+    //console.log(cocktailDeck.deckCocktail.length);
+    //console.log(cocktailDeck.deckCocktail[5]);
+  } else {
+  }
 
   if (options[1].suit === "GinTonic") {
-    console.log(cocktailDeck.deckCocktail[5]);
-    console.log("shuffle proof");
+    //console.log(cocktailDeck.deckCocktail[5]);
+    //console.log("shuffle proof");
     cocktailDeck.deckCocktail.push(
       cocktailDeckNegative.deckCocktailNegative.pop()
     );
     cocktailDeck.deckCocktail.push(
       cocktailDeckNegative.deckCocktailNegative.pop()
     );
-   
+
     cocktailDeck.shuffle();
-    console.log("choice");
-    console.log(options[0]);
-    console.log("cocktail deck length Neg cards");
-    console.log(cocktailDeck.deckCocktail.length);
-    console.log(cocktailDeck.deckCocktail[5]);
+    //console.log("choice");
+    //console.log(options[0]);
+    //console.log("cocktail deck length Neg cards");
+    //console.log(cocktailDeck.deckCocktail.length);
+    //console.log(cocktailDeck.deckCocktail[5]);
   } else {
   }
 
   if (options[0].suit === "LongIsland") {
-    console.log(cocktailDeck.deckCocktail[5]);
-    console.log("shuffle proof");
+    //console.log(cocktailDeck.deckCocktail[5]);
+    //console.log("shuffle proof");
     cocktailDeck.deckCocktail.push(
       cocktailDeckNegative.deckCocktailNegative.pop()
     );
@@ -723,32 +728,38 @@ function sendNegativeDeckCards(options) {
       cocktailDeckNegative.deckCocktailNegative.pop()
     );
     cocktailDeck.shuffle();
-    console.log("choice");
-    console.log(options[0]);
-    console.log("cocktail deck length Neg cards");
-    console.log(cocktailDeck.deckCocktail.length);
-    console.log(cocktailDeck.deckCocktail[5]);
+    //console.log("choice");
+    //console.log(options[0]);
+    //console.log("cocktail deck length Neg cards");
+    //console.log(cocktailDeck.deckCocktail.length);
+    //console.log(cocktailDeck.deckCocktail[5]);
   } else {
-  } 
+  }
 
   if (options[1].suit === "LongIsland") {
-     console.log(cocktailDeck.deckCocktail[5]);
-          console.log("shuffle proof");
- cocktailDeck.deckCocktail.push(cocktailDeckNegative.deckCocktailNegative.pop());
- cocktailDeck.deckCocktail.push(cocktailDeckNegative.deckCocktailNegative.pop());
- cocktailDeck.deckCocktail.push(cocktailDeckNegative.deckCocktailNegative.pop());
- cocktailDeck.shuffle();
-    console.log("choice");
-    console.log(options[0]);
-    console.log("cocktail deck length Neg cards");
-    console.log(cocktailDeck.deckCocktail.length);
-    console.log(cocktailDeck.deckCocktail[5]);
+    //console.log(cocktailDeck.deckCocktail[5]);
+    //console.log("shuffle proof");
+    cocktailDeck.deckCocktail.push(
+      cocktailDeckNegative.deckCocktailNegative.pop()
+    );
+    cocktailDeck.deckCocktail.push(
+      cocktailDeckNegative.deckCocktailNegative.pop()
+    );
+    cocktailDeck.deckCocktail.push(
+      cocktailDeckNegative.deckCocktailNegative.pop()
+    );
+    cocktailDeck.shuffle();
+    //console.log("choice");
+    //console.log(options[0]);
+    //console.log("cocktail deck length Neg cards");
+    //console.log(cocktailDeck.deckCocktail.length);
+    //console.log(cocktailDeck.deckCocktail[5]);
   } else {
   }
 
   if (options[0].suit === "Margarita") {
-    console.log(cocktailDeck.deckCocktail[5]);
-    console.log("shuffle proof");
+    //console.log(cocktailDeck.deckCocktail[5]);
+    //console.log("shuffle proof");
     cocktailDeck.deckCocktail.push(
       cocktailDeckNegative.deckCocktailNegative.pop()
     );
@@ -759,18 +770,17 @@ function sendNegativeDeckCards(options) {
       cocktailDeckNegative.deckCocktailNegative.pop()
     );
     cocktailDeck.shuffle();
-    console.log("choice");
-    console.log(options[0]);
-    console.log("cocktail deck length Neg cards");
-    console.log(cocktailDeck.deckCocktail.length);
-    console.log(cocktailDeck.deckCocktail[5]);
+    //console.log("choice");
+    //console.log(options[0]);
+    //console.log("cocktail deck length Neg cards");
+    //console.log(cocktailDeck.deckCocktail.length);
+    //console.log(cocktailDeck.deckCocktail[5]);
   } else {
-
   }
-  
+
   if (options[1].suit === "Margarita") {
-    console.log(cocktailDeck.deckCocktail[5]);
-    console.log("shuffle proof");
+    //console.log(cocktailDeck.deckCocktail[5]);
+    //console.log("shuffle proof");
     cocktailDeck.deckCocktail.push(
       cocktailDeckNegative.deckCocktailNegative.pop()
     );
@@ -781,11 +791,11 @@ function sendNegativeDeckCards(options) {
       cocktailDeckNegative.deckCocktailNegative.pop()
     );
     cocktailDeck.shuffle();
-    console.log("choice");
-    console.log(options[0]);
-    console.log("cocktail deck length Neg cards");
-    console.log(cocktailDeck.deckCocktail.length);
-    console.log(cocktailDeck.deckCocktail[5]);
+    //console.log("choice");
+    //console.log(options[0]);
+    //console.log("cocktail deck length Neg cards");
+    //console.log(cocktailDeck.deckCocktail.length);
+    //console.log(cocktailDeck.deckCocktail[5]);
   } else {
   }
 }
@@ -1159,10 +1169,10 @@ function getHand() {
     showCard4(hand1);
     showCard5(hand1);
     drawCounter.push("draw");
-    //console.log("collection length");
-    //console.log(collection.length);
-    //console.log(drawCounter.length);
-    //console.log(cocktailDeck);
+    ////console.log("collection length");
+    ////console.log(collection.length);
+    ////console.log(drawCounter.length);
+    ////console.log(cocktailDeck);
   } else if (collection.length === 2 && drawCounter.length === 1) {
     clearHand();
     clearRound();
@@ -1195,9 +1205,9 @@ function getHand() {
     showCard4(hand3);
     showCard5(hand3);
     drawCounter.push("draw");
-    //console.log("collection length");
-    //console.log(collection.length);
-    //console.log(drawCounter.length);
+    ////console.log("collection length");
+    ////console.log(collection.length);
+    ////console.log(drawCounter.length);
   } else if (collection.length === 6 && drawCounter.length === 3) {
     clearHand();
     clearRound();
@@ -1214,9 +1224,9 @@ function getHand() {
     showCard4(hand4);
     showCard5(hand4);
     drawCounter.push("draw");
-    //console.log("collection length");
-    //console.log(collection.length);
-    //console.log(drawCounter.length);
+    ////console.log("collection length");
+    ////console.log(collection.length);
+    ////console.log(drawCounter.length);
   } else if (collection.length === 8 && drawCounter.length === 4) {
     clearHand();
     clearRound();
@@ -1233,9 +1243,9 @@ function getHand() {
     showCard4(hand5);
     showCard5(hand5);
     drawCounter.push("draw");
-    //console.log("collection length");
-    //console.log(collection.length);
-    //console.log(drawCounter.length);
+    ////console.log("collection length");
+    ////console.log(collection.length);
+    ////console.log(drawCounter.length);
   } else if (collection.length === 10 && drawCounter.length === 5) {
     clearHand();
     clearRound();
@@ -1252,9 +1262,9 @@ function getHand() {
     showCard4(hand6);
     showCard5(hand6);
     drawCounter.push("draw");
-    //console.log("collection length");
-    //console.log(collection.length);
-    //console.log(drawCounter.length);
+    ////console.log("collection length");
+    ////console.log(collection.length);
+    ////console.log(drawCounter.length);
   } else if (collection.length === 12 && drawCounter.length === 6) {
     clearHand();
     clearRound();
@@ -1271,9 +1281,9 @@ function getHand() {
     showCard4(hand7);
     showCard5(hand7);
     drawCounter.push("draw");
-    //console.log("collection length");
-    //console.log(collection.length);
-    //console.log(drawCounter.length);
+    ////console.log("collection length");
+    ////console.log(collection.length);
+    ////console.log(drawCounter.length);
   } else if (collection.length === 14 && drawCounter.length === 7) {
     clearHand();
     clearRound();
@@ -1290,16 +1300,16 @@ function getHand() {
     showCard4(hand8);
     showCard5(hand8);
     drawCounter.push("draw");
-    //console.log("collection length");
-    //console.log(collection.length);
-    //console.log(drawCounter.length);
+    ////console.log("collection length");
+    ////console.log(collection.length);
+    ////console.log(drawCounter.length);
   } else if (collection.length === 16 && drawCounter.length === 8) {
     clearHand();
     clearRound();
     changeColorGetHandW();
     makeGreenBorder();
-    //console.log("deck NNNNNNew");
-    //console.log(deck);
+    ////console.log("deck NNNNNNew");
+    ////console.log(deck);
     send3Deck(handChoices8);
     sendNegativeDeckCards(handChoices8);
     isItACocktail(handChoices8);
@@ -1311,9 +1321,9 @@ function getHand() {
     showCard4(hand9);
     showCard5(hand9);
     drawCounter.push("draw");
-    //console.log("collection length");
-    //console.log(collection.length);
-    //console.log(drawCounter.length);
+    ////console.log("collection length");
+    ////console.log(collection.length);
+    ////console.log(drawCounter.length);
   } else if (collection.length === 18 && drawCounter.length === 9) {
     clearHand();
     clearRound();
@@ -1330,9 +1340,9 @@ function getHand() {
     showCard4(hand10);
     showCard5(hand10);
     drawCounter.push("draw");
-    //console.log("collection length");
-    //console.log(collection.length);
-    //console.log(drawCounter.length);
+    ////console.log("collection length");
+    ////console.log(collection.length);
+    ////console.log(drawCounter.length);
   } else if (collection.length === 20 && drawCounter.length === 10) {
     clearHand();
     clearRound();
@@ -1349,9 +1359,9 @@ function getHand() {
     showCard4(hand11);
     showCard5(hand11);
     drawCounter.push("draw");
-    //console.log("collection length");
-    //console.log(collection.length);
-    //console.log(drawCounter.length);
+    ////console.log("collection length");
+    ////console.log(collection.length);
+    ////console.log(drawCounter.length);
   } else if (collection.length === 22 && drawCounter.length === 11) {
     clearHand();
     clearRound();
@@ -1368,9 +1378,9 @@ function getHand() {
     showCard4(hand12);
     showCard5(hand12);
     drawCounter.push("draw");
-    //console.log("collection length");
-    //console.log(collection.length);
-    //console.log(drawCounter.length);
+    ////console.log("collection length");
+    ////console.log(collection.length);
+    ////console.log(drawCounter.length);
   } else if (collection.length === 24 && drawCounter.length === 12) {
     clearHand();
     clearRound();
@@ -1387,9 +1397,9 @@ function getHand() {
     showCard4(hand13);
     showCard5(hand13);
     drawCounter.push("draw");
-    //console.log("collection length");
-    //console.log(collection.length);
-    //console.log(drawCounter.length);
+    ////console.log("collection length");
+    ////console.log(collection.length);
+    ////console.log(drawCounter.length);
   } else if (collection.length === 26 && drawCounter.length === 13) {
     clearHand();
     clearRound();
@@ -1429,12 +1439,12 @@ function getHand() {
 }
 
 function seeAll() {
-  //console.log("1");
-  //console.log(handChoices);
-  //console.log("2");
-  //console.log(handChoices2);
-  //console.log("3");
-  //console.log(handChoices3);
+  ////console.log("1");
+  ////console.log(handChoices);
+  ////console.log("2");
+  ////console.log(handChoices2);
+  ////console.log("3");
+  ////console.log(handChoices3);
 }
 
 /////////////// functions to get card from hand to collection  //////////////////////////////////
@@ -1493,27 +1503,27 @@ function Card1(choices, hand, number) {
   if (choices.length < 1) {
     collection.push(hand[0]);
     choices.push(hand[0]);
-    //console.log(choices);
+    ////console.log(choices);
     dupCounter.push("1");
     let toAttach = document.getElementById(anchor);
     let card1 = document.createElement("img");
     card1.src = `cardGameImages/${hand[0].suit}${hand[0].value}.png`;
     toAttach.appendChild(card1);
-    //console.log("anchor");
-    //console.log(anchor);
+    ////console.log("anchor");
+    ////console.log(anchor);
     makeRedBorder("handAnchor1");
   } else if (dupCounter[number] === "1") {
-    //console.log("duplicate");
+    ////console.log("duplicate");
   } else if (choices.length === 1) {
     collection.push(hand[0]);
     choices.push(hand[0]);
-    //console.log(choices);
+    ////console.log(choices);
     let toAttach = document.getElementById(anchor);
     let card1 = document.createElement("img");
     card1.src = `cardGameImages/${hand[0].suit}${hand[0].value}.png`;
     toAttach.appendChild(card1);
-    //console.log("anchor");
-    //console.log(anchor);
+    ////console.log("anchor");
+    ////console.log(anchor);
     makeRedBorder("handAnchor1");
     changeColorGetHandR();
     changeColorGetConfirmR();
@@ -1576,26 +1586,26 @@ function Card2(choices, hand, number) {
     collection.push(hand[1]);
     choices.push(hand[1]);
     dupCounter.push("2");
-    //console.log(choices);
+    ////console.log(choices);
     let toAttach = document.getElementById(anchor);
     let card1 = document.createElement("img");
     card1.src = `cardGameImages/${hand[1].suit}${hand[1].value}.png`;
     toAttach.appendChild(card1);
-    //console.log("anchor");
-    //console.log(anchor);
+    ////console.log("anchor");
+    ////console.log(anchor);
     makeRedBorder("handAnchor2");
   } else if (dupCounter[number] === "2") {
-    //console.log("duplicate")
+    ////console.log("duplicate")
   } else if (choices.length === 1) {
     collection.push(hand[1]);
     choices.push(hand[1]);
-    //console.log(choices);
+    ////console.log(choices);
     let toAttach = document.getElementById(anchor);
     let card1 = document.createElement("img");
     card1.src = `cardGameImages/${hand[1].suit}${hand[1].value}.png`;
     toAttach.appendChild(card1);
-    //console.log("anchor");
-    //console.log(anchor);
+    ////console.log("anchor");
+    ////console.log(anchor);
     makeRedBorder("handAnchor2");
     changeColorGetHandR();
     changeColorGetConfirmR();
@@ -1655,28 +1665,28 @@ function addCard3() {
 
 function Card3(choices, hand, number, number2) {
   if (choices[0] === "card3") {
-    //console.log("duplicate");
+    ////console.log("duplicate");
   } else if (collection.length === number) {
     collection.push(hand[2]);
     choices.push(hand[2]);
-    //console.log(choices);
+    ////console.log(choices);
     let toAttach = document.getElementById(anchor);
     let card1 = document.createElement("img");
     card1.src = `cardGameImages/${hand[2].suit}${hand[2].value}.png`;
     toAttach.appendChild(card1);
-    //console.log("anchor");
-    //console.log(anchor);
+    ////console.log("anchor");
+    ////console.log(anchor);
     makeRedBorder("handAnchor3");
   } else if (collection.length === number2) {
     collection.push(hand[2]);
     choices.push(hand[2]);
-    //console.log(choices);
+    ////console.log(choices);
     let toAttach = document.getElementById(anchor);
     let card1 = document.createElement("img");
     card1.src = `cardGameImages/${hand[2].suit}${hand[2].value}.png`;
     toAttach.appendChild(card1);
-    //console.log("anchor");
-    //console.log(anchor);
+    ////console.log("anchor");
+    ////console.log(anchor);
     changeColorGetHandR();
     changeColorGetConfirmR();
     makeRedBorder("handAnchor3");
@@ -1736,7 +1746,7 @@ function addCard4() {
 
 function Card4(choices, hand, number, number2) {
   if (choices[0] === "card4" || collection.length > number2) {
-    //console.log("duplicate");
+    ////console.log("duplicate");
   } else if (collection.length === number) {
     collection.push(hand[3]);
     choices.push(hand[3]);
@@ -1744,8 +1754,8 @@ function Card4(choices, hand, number, number2) {
     let card1 = document.createElement("img");
     card1.src = `cardGameImages/${hand[3].suit}${hand[3].value}.png`;
     toAttach.appendChild(card1);
-    //console.log("anchor");
-    //console.log(anchor);
+    ////console.log("anchor");
+    ////console.log(anchor);
     makeRedBorder("handAnchor4");
   } else if (collection.length === number2) {
     collection.push(hand[3]);
@@ -1754,8 +1764,8 @@ function Card4(choices, hand, number, number2) {
     let card1 = document.createElement("img");
     card1.src = `cardGameImages/${hand[3].suit}${hand[3].value}.png`;
     toAttach.appendChild(card1);
-    //console.log("anchor");
-    //console.log(anchor);
+    ////console.log("anchor");
+    ////console.log(anchor);
     changeColorGetHandR();
     changeColorGetConfirmR();
     makeRedBorder("handAnchor4");
@@ -1816,7 +1826,7 @@ function addCard5() {
 
 function Card5(choices, hand, number, number2) {
   if (choices[0] === "card5" || collection.length > number2) {
-    //console.log("duplicate");
+    ////console.log("duplicate");
   } else if (collection.length === number) {
     collection.push(hand[4]);
     choices.push(hand[4]);
@@ -1824,8 +1834,8 @@ function Card5(choices, hand, number, number2) {
     let card1 = document.createElement("img");
     card1.src = `cardGameImages/${hand[4].suit}${hand[4].value}.png`;
     toAttach.appendChild(card1);
-    //console.log("anchor");
-    //console.log(anchor);
+    ////console.log("anchor");
+    ////console.log(anchor);
     makeRedBorder("handAnchor5");
   } else if (collection.length === number2) {
     collection.push(hand[4]);
@@ -1834,8 +1844,8 @@ function Card5(choices, hand, number, number2) {
     let card1 = document.createElement("img");
     card1.src = `cardGameImages/${hand[4].suit}${hand[4].value}.png`;
     toAttach.appendChild(card1);
-    //console.log("anchor");
-    //console.log(anchor);
+    ////console.log("anchor");
+    ////console.log(anchor);
     changeColorGetHandR();
     changeColorGetConfirmR();
     makeRedBorder("handAnchor5");
@@ -1854,13 +1864,13 @@ function getValue1() {
     valuesTest1.push("collectionAnchor1");
     valuesTest1.push("0");
     valuesTest1.push(collection[0]);
-    //console.log(valuesTest1);
+    ////console.log(valuesTest1);
     makeRedBorder("collectionAnchor1");
   } else if (valuesTest2.length < 2) {
     valuesTest2.push("collectionAnchor1");
     valuesTest2.push("0");
     valuesTest2.push(collection[0]);
-    //console.log(valuesTest2);
+    ////console.log(valuesTest2);
     makeRedBorder("collectionAnchor1");
     let SwapShow = document.getElementById("makeSwitch");
     SwapShow.style.display = "inline-block";
@@ -1875,7 +1885,7 @@ function getValue2() {
     valuesTest1.push("collectionAnchor2");
     valuesTest1.push("1");
     valuesTest1.push(collection[1]);
-    //console.log(valuesTest1);
+    ////console.log(valuesTest1);
     makeRedBorder("collectionAnchor2");
     //document.getElementById("card1Sel").style.backgroundColor="red";
     //document.body.style.backgroundColor="red";
@@ -1885,7 +1895,7 @@ function getValue2() {
     valuesTest2.push("collectionAnchor2");
     valuesTest2.push("1");
     valuesTest2.push(collection[1]);
-    //console.log(valuesTest2);
+    ////console.log(valuesTest2);
     makeRedBorder("collectionAnchor2");
     let SwapShow = document.getElementById("makeSwitch");
     SwapShow.style.display = "inline-block";
@@ -2440,11 +2450,11 @@ function getValue30() {
 }
 
 function makeSwitchCards() {
-  //console.log(collection);
-  //console.log("this is values test 1");
-  //console.log(valuesTest1);
-  //console.log("this is values test 2");
-  //console.log(valuesTest2)
+  ////console.log(collection);
+  ////console.log("this is values test 1");
+  ////console.log(valuesTest1);
+  ////console.log("this is values test 2");
+  ////console.log(valuesTest2)
   makeDarkGreenBorder(valuesTest1[0]);
   makeDarkGreenBorder(valuesTest2[0]);
   takeAway();
@@ -2648,52 +2658,52 @@ function goToConfirmation() {
   evaluateSet1.push(collection[2]);
   evaluateSet1.push(collection[3]);
   evaluateSet1.push(collection[4]);
-  //console.log(evaluateSet1);
+  ////console.log(evaluateSet1);
 
   evaluateSet2.push(collection[5]);
   evaluateSet2.push(collection[6]);
   evaluateSet2.push(collection[7]);
   evaluateSet2.push(collection[8]);
   evaluateSet2.push(collection[9]);
-  //console.log(evaluateSet2);
+  ////console.log(evaluateSet2);
 
   evaluateSet3.push(collection[10]);
   evaluateSet3.push(collection[11]);
   evaluateSet3.push(collection[12]);
   evaluateSet3.push(collection[13]);
   evaluateSet3.push(collection[14]);
-  //console.log(evaluateSet3);
+  ////console.log(evaluateSet3);
 
   evaluateSet4.push(collection[15]);
   evaluateSet4.push(collection[16]);
   evaluateSet4.push(collection[17]);
   evaluateSet4.push(collection[18]);
   evaluateSet4.push(collection[19]);
-  //console.log(evaluateSet4);
+  ////console.log(evaluateSet4);
 
   evaluateSet5.push(collection[20]);
   evaluateSet5.push(collection[21]);
   evaluateSet5.push(collection[22]);
   evaluateSet5.push(collection[23]);
   evaluateSet5.push(collection[24]);
-  //console.log(evaluateSet5);
+  ////console.log(evaluateSet5);
 
   evaluateSet6.push(collection[25]);
   evaluateSet6.push(collection[26]);
   evaluateSet6.push(collection[27]);
   evaluateSet6.push(collection[28]);
   evaluateSet6.push(collection[29]);
-  //console.log(evaluateSet6)
+  ////console.log(evaluateSet6)
 
   isItACocktail(handChoices15);
-  //console.log("bonusScore");
+  ////console.log("bonusScore");
 
-  //console.log(bonusScore);
-  //console.log("cocktailNegativeScore");
-  //console.log(cocktailNegativeScore);
+  ////console.log(bonusScore);
+  ////console.log("cocktailNegativeScore");
+  ////console.log(cocktailNegativeScore);
 
-  //console.log("cocktailPositiveScore");
-  //console.log(cocktailPositiveScore);
+  ////console.log("cocktailPositiveScore");
+  ////console.log(cocktailPositiveScore);
 }
 
 /////////////// functions to evaluate cards in your collection  //////////////////////////////////
@@ -2920,9 +2930,9 @@ function OneSetEvaluate() {
   } else {
   }
 
-  //console.log("Pair1");
+  ////console.log("Pair1");
 
-  //console.log(Pair1);
+  ////console.log(Pair1);
 }
 
 function TwoSetEvaluate() {
@@ -3135,8 +3145,8 @@ function TwoSetEvaluate() {
     Straight2.push("Straight");
   } else {
   }
-  //console.log("222222");
-  //console.log(Flush2);
+  ////console.log("222222");
+  ////console.log(Flush2);
 }
 
 function ThreeSetEvaluate() {
@@ -3344,8 +3354,8 @@ function ThreeSetEvaluate() {
   } else {
   }
 
-  //console.log("3333333333");
-  //console.log(Pair3);
+  ////console.log("3333333333");
+  ////console.log(Pair3);
 }
 
 function FourSetEvaluate() {
@@ -3554,8 +3564,8 @@ function FourSetEvaluate() {
   } else {
   }
 
-  //console.log("44444444");
-  //console.log(Pair4);
+  ////console.log("44444444");
+  ////console.log(Pair4);
 }
 
 function FiveSetEvaluate() {
@@ -3763,8 +3773,8 @@ function FiveSetEvaluate() {
   } else {
   }
 
-  //console.log("555555555");
-  //console.log(Pair5);
+  ////console.log("555555555");
+  ////console.log(Pair5);
 }
 
 function SixSetEvaluate() {
@@ -3974,7 +3984,7 @@ function SixSetEvaluate() {
 }
 
 function EvaluateHands() {
-  //console.log("scores");
+  ////console.log("scores");
 
   if (Royal1.length === 1 && Flush1.length === 1) {
     score1.push(90);
@@ -4107,19 +4117,25 @@ function EvaluateHands() {
   } else {
     score6.push(0);
   }
+  //console.log("cocktailPositiveScoreeeeeeeeeeeeeeeeeeeeeeeeee");
+
+  //console.log(cocktailPositiveScore);
+  //console.log("cocktailNegativeScore333333333333333333333333");
+  //console.log(cocktailNegativeScore);
 
   let finalBonus = bonusScore.reduce((a, c) => a + c);
   let finalNegative = cocktailNegativeScore.reduce((a, c) => a + c);
   let finalPositive = cocktailPositiveScore.reduce((a, c) => a + c);
-  //console.log("finalBonus");
-  //console.log(finalBonus);
 
-  //console.log(bonusScore);
-  //console.log("cocktailNegativeScore");
-  //console.log(cocktailNegativeScore);
+  console.log("finalBonus");
+  console.log(finalBonus);
 
-  //console.log("cocktailPositiveScore");
-  //console.log(cocktailPositiveScore);
+  console.log(bonusScore);
+  console.log("cocktailNegativeScoreadded");
+  console.log(finalNegative);
+
+  console.log("cocktailPositiveScoreadded");
+  console.log(finalPositive);
 
   finalScore.push(
     score1[0] +
@@ -4141,17 +4157,17 @@ function EvaluateHands() {
   finalScoreOnScreen.className += "scoreFinal";
 }
 
-//console.log(score);
+////console.log(score);
 
-//console.log("score1");
-//console.log(score1);
-//console.log("score2");
-//console.log(score2);
-//console.log("score3");
-//console.log(score3);
-//console.log("score4");
-//console.log(score4);
-//console.log("score5");
-//console.log (score5);
-//console.log("score6");
-//console.log(score6);
+////console.log("score1");
+////console.log(score1);
+////console.log("score2");
+////console.log(score2);
+////console.log("score3");
+////console.log(score3);
+////console.log("score4");
+////console.log(score4);
+////console.log("score5");
+////console.log (score5);
+////console.log("score6");
+////console.log(score6);

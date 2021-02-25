@@ -539,9 +539,9 @@ function getHand() {
     showCard4(hand1);
     showCard5(hand1);
     drawCounter.push("draw");
-    //console.log("collection length");
-    //console.log(collection.length);
-    //console.log(drawCounter.length);
+    ////console.log("collection length");
+    ////console.log(collection.length);
+    ////console.log(drawCounter.length);
   } else if (collection.length === 2 && drawCounter.length === 1) {
     clearHand();
     clearRound();
@@ -553,9 +553,9 @@ function getHand() {
     showCard4(hand2);
     showCard5(hand2);
     drawCounter.push("draw");
-    //console.log("collection length");
-    //console.log(collection.length);
-    //console.log(drawCounter.length);
+    ////console.log("collection length");
+    ////console.log(collection.length);
+    ////console.log(drawCounter.length);
   } else if (collection.length === 4 && drawCounter.length === 2) {
     clearHand();
     clearRound();
@@ -567,9 +567,9 @@ function getHand() {
     showCard4(hand3);
     showCard5(hand3);
     drawCounter.push("draw");
-    //console.log("collection length");
-    //console.log(collection.length);
-    //console.log(drawCounter.length);
+    ////console.log("collection length");
+    ////console.log(collection.length);
+    ////console.log(drawCounter.length);
   } else if (collection.length === 6 && drawCounter.length === 3) {
     clearHand();
     clearRound();
@@ -581,9 +581,9 @@ function getHand() {
     showCard4(hand4);
     showCard5(hand4);
     drawCounter.push("draw");
-    //console.log("collection length");
-    //console.log(collection.length);
-    //console.log(drawCounter.length);
+    ////console.log("collection length");
+    ////console.log(collection.length);
+    ////console.log(drawCounter.length);
   } else if (collection.length === 8 && drawCounter.length === 4) {
     clearHand();
     clearRound();
@@ -595,9 +595,9 @@ function getHand() {
     showCard4(hand5);
     showCard5(hand5);
     drawCounter.push("draw");
-    //console.log("collection length");
-    //console.log(collection.length);
-    //console.log(drawCounter.length);
+    ////console.log("collection length");
+    ////console.log(collection.length);
+    ////console.log(drawCounter.length);
   } else if (collection.length === 10 && drawCounter.length === 5) {
     clearHand();
     clearRound();
@@ -609,9 +609,9 @@ function getHand() {
     showCard4(hand6);
     showCard5(hand6);
     drawCounter.push("draw");
-    //console.log("collection length");
-    //console.log(collection.length);
-    //console.log(drawCounter.length);
+    ////console.log("collection length");
+    ////console.log(collection.length);
+    ////console.log(drawCounter.length);
   } else if (collection.length === 12 && drawCounter.length === 6) {
     clearHand();
     clearRound();
@@ -623,9 +623,9 @@ function getHand() {
     showCard4(hand7);
     showCard5(hand7);
     drawCounter.push("draw");
-    //console.log("collection length");
-    //console.log(collection.length);
-    //console.log(drawCounter.length);
+    ////console.log("collection length");
+    ////console.log(collection.length);
+    ////console.log(drawCounter.length);
   } else if (collection.length === 14 && drawCounter.length === 7) {
     clearHand();
     clearRound();
@@ -637,9 +637,9 @@ function getHand() {
     showCard4(hand8);
     showCard5(hand8);
     drawCounter.push("draw");
-    //console.log("collection length");
-    //console.log(collection.length);
-    //console.log(drawCounter.length);
+    ////console.log("collection length");
+    ////console.log(collection.length);
+    ////console.log(drawCounter.length);
   } else if (collection.length === 16 && drawCounter.length === 8) {
     clearHand();
     clearRound();
@@ -651,9 +651,9 @@ function getHand() {
     showCard4(hand9);
     showCard5(hand9);
     drawCounter.push("draw");
-    //console.log("collection length");
-    //console.log(collection.length);
-    //console.log(drawCounter.length);
+    ////console.log("collection length");
+    ////console.log(collection.length);
+    ////console.log(drawCounter.length);
   } else if (collection.length === 18 && drawCounter.length === 9) {
     clearHand();
     clearRound();
@@ -665,9 +665,9 @@ function getHand() {
     showCard4(hand10);
     showCard5(hand10);
     drawCounter.push("draw");
-    //console.log("collection length");
-    //console.log(collection.length);
-    //console.log(drawCounter.length);
+    ////console.log("collection length");
+    ////console.log(collection.length);
+    ////console.log(drawCounter.length);
   } else if (collection.length === 20 && drawCounter.length === 10) {
     clearHand();
     clearRound();
@@ -679,9 +679,9 @@ function getHand() {
     showCard4(hand11);
     showCard5(hand11);
     drawCounter.push("draw");
-    //console.log("collection length");
-    //console.log(collection.length);
-    //console.log(drawCounter.length);
+    ////console.log("collection length");
+    ////console.log(collection.length);
+    ////console.log(drawCounter.length);
   } else if (collection.length === 22 && drawCounter.length === 11) {
     clearHand();
     clearRound();
@@ -693,9 +693,9 @@ function getHand() {
     showCard4(hand12);
     showCard5(hand12);
     drawCounter.push("draw");
-    //console.log("collection length");
-    //console.log(collection.length);
-    //console.log(drawCounter.length);
+    ////console.log("collection length");
+    ////console.log(collection.length);
+    ////console.log(drawCounter.length);
   } else if (collection.length === 24 && drawCounter.length === 12) {
     clearHand();
     clearRound();
@@ -707,9 +707,9 @@ function getHand() {
     showCard4(hand13);
     showCard5(hand13);
     drawCounter.push("draw");
-    //console.log("collection length");
-    //console.log(collection.length);
-    //console.log(drawCounter.length);
+    ////console.log("collection length");
+    ////console.log(collection.length);
+    ////console.log(drawCounter.length);
   } else if (collection.length === 26 && drawCounter.length === 13) {
     clearHand();
     clearRound();
@@ -728,12 +728,12 @@ function getHand() {
 }
 
 function seeAll() {
-  //console.log("1");
-  //console.log(handChoices);
-  //console.log("2");
-  //console.log(handChoices2);
-  //console.log("3");
-  //console.log(handChoices3);
+  ////console.log("1");
+  ////console.log(handChoices);
+  ////console.log("2");
+  ////console.log(handChoices2);
+  ////console.log("3");
+  ////console.log(handChoices3);
 }
 
 function addCard1() {
@@ -785,28 +785,28 @@ function addCard1() {
 
 function Card1(choices, hand, number, number2) {
   if (choices[0] === "card1") {
-    //console.log("duplicate");
-    //console.log(choices);
+    ////console.log("duplicate");
+    ////console.log(choices);
   } else if (collection.length === number) {
     collection.push(hand[0]);
     choices.push("card1");
-    //console.log(choices);
+    ////console.log(choices);
     let toAttach = document.getElementById(anchor);
     let card1 = document.createElement("img");
     card1.src = `cardGameImages/${hand[0].suit}${hand[0].value}.png`;
     toAttach.appendChild(card1);
-    //console.log("anchor");
-    //console.log(anchor);
+    ////console.log("anchor");
+    ////console.log(anchor);
   } else if (collection.length === number2) {
     collection.push(hand[0]);
     choices.push("card1");
-    //console.log(choices);
+    ////console.log(choices);
     let toAttach = document.getElementById(anchor);
     let card1 = document.createElement("img");
     card1.src = `cardGameImages/${hand[0].suit}${hand[0].value}.png`;
     toAttach.appendChild(card1);
-    //console.log("anchor");
-    //console.log(anchor);
+    ////console.log("anchor");
+    ////console.log(anchor);
     changeColorGetHandG();
     changeColorGetConfirmG();
   } else {
@@ -862,27 +862,27 @@ function addCard2() {
 
 function Card2(choices, hand, number, number2) {
   if (choices[0] === "card2" || collection.length > number2) {
-    //console.log("duplicate");
+    ////console.log("duplicate");
   } else if (collection.length === number) {
     collection.push(hand[1]);
     choices.push("card2");
-    //console.log(choices);
+    ////console.log(choices);
     let toAttach = document.getElementById(anchor);
     let card1 = document.createElement("img");
     card1.src = `cardGameImages/${hand[1].suit}${hand[1].value}.png`;
     toAttach.appendChild(card1);
-    //console.log("anchor");
-    //console.log(anchor);
+    ////console.log("anchor");
+    ////console.log(anchor);
   } else if (collection.length === number2) {
     collection.push(hand[1]);
     choices.push("card2");
-    //console.log(choices);
+    ////console.log(choices);
     let toAttach = document.getElementById(anchor);
     let card1 = document.createElement("img");
     card1.src = `cardGameImages/${hand[1].suit}${hand[1].value}.png`;
     toAttach.appendChild(card1);
-    //console.log("anchor");
-    //console.log(anchor);
+    ////console.log("anchor");
+    ////console.log(anchor);
     changeColorGetHandG();
     changeColorGetConfirmG();
   } else {
@@ -938,27 +938,27 @@ function addCard3() {
 
 function Card3(choices, hand, number, number2) {
   if (choices[0] === "card3") {
-    //console.log("duplicate");
+    ////console.log("duplicate");
   } else if (collection.length === number) {
     collection.push(hand[2]);
     choices.push("card3");
-    //console.log(choices);
+    ////console.log(choices);
     let toAttach = document.getElementById(anchor);
     let card1 = document.createElement("img");
     card1.src = `cardGameImages/${hand[2].suit}${hand[2].value}.png`;
     toAttach.appendChild(card1);
-    //console.log("anchor");
-    //console.log(anchor);
+    ////console.log("anchor");
+    ////console.log(anchor);
   } else if (collection.length === number2) {
     collection.push(hand[2]);
     choices.push("card3");
-    //console.log(choices);
+    ////console.log(choices);
     let toAttach = document.getElementById(anchor);
     let card1 = document.createElement("img");
     card1.src = `cardGameImages/${hand[2].suit}${hand[2].value}.png`;
     toAttach.appendChild(card1);
-    //console.log("anchor");
-    //console.log(anchor);
+    ////console.log("anchor");
+    ////console.log(anchor);
     changeColorGetHandG();
     changeColorGetConfirmG();
   } else {
@@ -1014,7 +1014,7 @@ function addCard4() {
 
 function Card4(choices, hand, number, number2) {
   if (choices[0] === "card4" || collection.length > number2) {
-    //console.log("duplicate");
+    ////console.log("duplicate");
   } else if (collection.length === number) {
     collection.push(hand[3]);
     choices.push("card4");
@@ -1022,8 +1022,8 @@ function Card4(choices, hand, number, number2) {
     let card1 = document.createElement("img");
     card1.src = `cardGameImages/${hand[3].suit}${hand[3].value}.png`;
     toAttach.appendChild(card1);
-    //console.log("anchor");
-    //console.log(anchor);
+    ////console.log("anchor");
+    ////console.log(anchor);
   } else if (collection.length === number2) {
     collection.push(hand[3]);
     choices.push("card4");
@@ -1031,8 +1031,8 @@ function Card4(choices, hand, number, number2) {
     let card1 = document.createElement("img");
     card1.src = `cardGameImages/${hand[3].suit}${hand[3].value}.png`;
     toAttach.appendChild(card1);
-    //console.log("anchor");
-    //console.log(anchor);
+    ////console.log("anchor");
+    ////console.log(anchor);
     changeColorGetHandG();
     changeColorGetConfirmG();
   } else {
@@ -1088,7 +1088,7 @@ function addCard5() {
 
 function Card5(choices, hand, number, number2) {
   if (choices[0] === "card5" || collection.length > number2) {
-    //console.log("duplicate");
+    ////console.log("duplicate");
   } else if (collection.length === number) {
     collection.push(hand[4]);
     choices.push("card5");
@@ -1096,8 +1096,8 @@ function Card5(choices, hand, number, number2) {
     let card1 = document.createElement("img");
     card1.src = `cardGameImages/${hand[4].suit}${hand[4].value}.png`;
     toAttach.appendChild(card1);
-    //console.log("anchor");
-    //console.log(anchor);
+    ////console.log("anchor");
+    ////console.log(anchor);
   } else if (collection.length === number2) {
     collection.push(hand[4]);
     choices.push("card5");
@@ -1105,8 +1105,8 @@ function Card5(choices, hand, number, number2) {
     let card1 = document.createElement("img");
     card1.src = `cardGameImages/${hand[4].suit}${hand[4].value}.png`;
     toAttach.appendChild(card1);
-    //console.log("anchor");
-    //console.log(anchor);
+    ////console.log("anchor");
+    ////console.log(anchor);
     changeColorGetHandG();
     changeColorGetConfirmG();
   } else {
@@ -1120,12 +1120,12 @@ function getValue1() {
     valuesTest1.push("collectionAnchor1");
     valuesTest1.push("0");
     valuesTest1.push(collection[0]);
-    //console.log(valuesTest1);
+    ////console.log(valuesTest1);
   } else if (valuesTest2.length < 2) {
     valuesTest2.push("collectionAnchor1");
     valuesTest2.push("0");
     valuesTest2.push(collection[0]);
-    //console.log(valuesTest2);
+    ////console.log(valuesTest2);
   } else {
   }
 
@@ -1143,7 +1143,7 @@ function getValue2() {
     valuesTest1.push("collectionAnchor2");
     valuesTest1.push("1");
     valuesTest1.push(collection[1]);
-    //console.log(valuesTest1);
+    ////console.log(valuesTest1);
 
     //document.getElementById("card1Sel").style.backgroundColor="red";
     //document.body.style.backgroundColor="red";
@@ -1153,7 +1153,7 @@ function getValue2() {
     valuesTest2.push("collectionAnchor2");
     valuesTest2.push("1");
     valuesTest2.push(collection[1]);
-    //console.log(valuesTest2);
+    ////console.log(valuesTest2);
   } else {
   }
 
@@ -1691,7 +1691,7 @@ function getValue28() {
 }
 
 function makeSwitchCards() {
-  //console.log(collection);
+  ////console.log(collection);
   takeAway();
   switchAdd();
   switchCollection();
@@ -1883,35 +1883,35 @@ function goToConfirmation() {
   evaluateSet1.push(collection[2]);
   evaluateSet1.push(collection[3]);
   evaluateSet1.push(collection[4]);
-  //console.log(evaluateSet1);
+  ////console.log(evaluateSet1);
 
   evaluateSet2.push(collection[5]);
   evaluateSet2.push(collection[6]);
   evaluateSet2.push(collection[7]);
   evaluateSet2.push(collection[8]);
   evaluateSet2.push(collection[9]);
-  //console.log(evaluateSet2);
+  ////console.log(evaluateSet2);
 
   evaluateSet3.push(collection[10]);
   evaluateSet3.push(collection[11]);
   evaluateSet3.push(collection[12]);
   evaluateSet3.push(collection[13]);
   evaluateSet3.push(collection[14]);
-  //console.log(evaluateSet3);
+  ////console.log(evaluateSet3);
 
   evaluateSet4.push(collection[15]);
   evaluateSet4.push(collection[16]);
   evaluateSet4.push(collection[17]);
   evaluateSet4.push(collection[18]);
   evaluateSet4.push(collection[19]);
-  //console.log(evaluateSet4);
+  ////console.log(evaluateSet4);
 
   evaluateSet5.push(collection[20]);
   evaluateSet5.push(collection[21]);
   evaluateSet5.push(collection[22]);
   evaluateSet5.push(collection[23]);
   evaluateSet5.push(collection[24]);
-  //console.log(evaluateSet5);
+  ////console.log(evaluateSet5);
 
   end3.push(collection[25]);
   end3.push(collection[26]);
@@ -1925,20 +1925,20 @@ function evaluateAllSets() {
   FourSetEvaluate();
   FiveSetEvaluate();
   BonusChoices();
-  //console.log("evaluateSet1");
-  //console.log(evaluateSet1);
+  ////console.log("evaluateSet1");
+  ////console.log(evaluateSet1);
 
-  //console.log("evaluateSet2");
-  //console.log(evaluateSet2);
+  ////console.log("evaluateSet2");
+  ////console.log(evaluateSet2);
 
-  //console.log("evaluateSet3");
-  //console.log(evaluateSet3);
+  ////console.log("evaluateSet3");
+  ////console.log(evaluateSet3);
 
-  //console.log("evaluateSet4");
-  //console.log(evaluateSet4);
+  ////console.log("evaluateSet4");
+  ////console.log(evaluateSet4);
 
-  //console.log("evaluateSet5");
-  //console.log(evaluateSet5);
+  ////console.log("evaluateSet5");
+  ////console.log(evaluateSet5);
 }
 
 function OneSetEvaluate() {
@@ -2151,9 +2151,9 @@ function OneSetEvaluate() {
   } else {
   }
 
-  //console.log("Pair1");
+  ////console.log("Pair1");
 
-  //console.log(Pair1);
+  ////console.log(Pair1);
 }
 
 function TwoSetEvaluate() {
@@ -2366,8 +2366,8 @@ function TwoSetEvaluate() {
     Straight2.push("Straight");
   } else {
   }
-  //console.log("222222");
-  //console.log(Flush2);
+  ////console.log("222222");
+  ////console.log(Flush2);
 }
 
 function ThreeSetEvaluate() {
@@ -2575,8 +2575,8 @@ function ThreeSetEvaluate() {
   } else {
   }
 
-  //console.log("3333333333");
-  //console.log(Pair3);
+  ////console.log("3333333333");
+  ////console.log(Pair3);
 }
 
 function FourSetEvaluate() {
@@ -2785,8 +2785,8 @@ function FourSetEvaluate() {
   } else {
   }
 
-  //console.log("44444444");
-  //console.log(Pair4);
+  ////console.log("44444444");
+  ////console.log(Pair4);
 }
 
 function FiveSetEvaluate() {
@@ -2994,12 +2994,12 @@ function FiveSetEvaluate() {
   } else {
   }
 
-  //console.log("555555555");
-  //console.log(Pair5);
+  ////console.log("555555555");
+  ////console.log(Pair5);
 }
 
 function EvaluateHands() {
-  //console.log("scores");
+  ////console.log("scores");
 
   if (Royal1.length === 1 && Flush1.length === 1) {
     score1.push(80);
@@ -3116,22 +3116,22 @@ function EvaluateHands() {
 
   document.getElementById("scoreLabel").innerText = finalScore;
 
-  //console.log(score);
+  ////console.log(score);
 
-  //console.log("evaluateSet1");
-  //console.log(evaluateSet1);
+  ////console.log("evaluateSet1");
+  ////console.log(evaluateSet1);
 
-  //console.log("evaluateSet2");
-  //console.log(evaluateSet2);
+  ////console.log("evaluateSet2");
+  ////console.log(evaluateSet2);
 
-  //console.log("evaluateSet3");
-  //console.log(evaluateSet3);
+  ////console.log("evaluateSet3");
+  ////console.log(evaluateSet3);
 
-  //console.log("evaluateSet4");
-  //console.log(evaluateSet4);
+  ////console.log("evaluateSet4");
+  ////console.log(evaluateSet4);
 
-  //console.log("evaluateSet5");
-  //console.log(evaluateSet5);
+  ////console.log("evaluateSet5");
+  ////console.log(evaluateSet5);
   /*
   let Royal1 = [];
   let Straight1 = [];
@@ -3141,150 +3141,150 @@ function EvaluateHands() {
   let Pair1 = [];
   let Flush1 = [];
 */
-  //console.log("collectionNew")
-  //console.log(collectionNew)
+  ////console.log("collectionNew")
+  ////console.log(collectionNew)
 
-  //console.log("scoresHand1");
-  //console.log(score1);
+  ////console.log("scoresHand1");
+  ////console.log(score1);
 
-  //console.log("Royal1");
-  //console.log(Royal1);
-  //console.log("Straight1");
-  //console.log(Straight1);
-  //console.log("FourKind1");
-  //console.log(FourKind1);
-  //console.log("ThreeKind1");
-  //console.log(ThreeKind1);
-  //console.log("Pair1");
+  ////console.log("Royal1");
+  ////console.log(Royal1);
+  ////console.log("Straight1");
+  ////console.log(Straight1);
+  ////console.log("FourKind1");
+  ////console.log(FourKind1);
+  ////console.log("ThreeKind1");
+  ////console.log(ThreeKind1);
+  ////console.log("Pair1");
 
-  //console.log(Pair1);
-  //console.log("Flush1");
-  //console.log(Flush1);
+  ////console.log(Pair1);
+  ////console.log("Flush1");
+  ////console.log(Flush1);
 
-  //console.log("scoresHand2");
-  //console.log(score2);
+  ////console.log("scoresHand2");
+  ////console.log(score2);
 
-  //console.log("Royal2");
-  //console.log(Royal2);
-  //console.log("Straight2");
-  //console.log(Straight2);
-  //console.log("FourKind2");
-  //console.log(FourKind2);
-  //console.log("ThreeKind2");
-  //console.log(ThreeKind2);
-  //console.log("Pair2");
+  ////console.log("Royal2");
+  ////console.log(Royal2);
+  ////console.log("Straight2");
+  ////console.log(Straight2);
+  ////console.log("FourKind2");
+  ////console.log(FourKind2);
+  ////console.log("ThreeKind2");
+  ////console.log(ThreeKind2);
+  ////console.log("Pair2");
 
-  //console.log(Pair2);
-  //console.log("Flush2");
-  //console.log(Flush2);
+  ////console.log(Pair2);
+  ////console.log("Flush2");
+  ////console.log(Flush2);
 
-  //console.log("scoresHand3");
-  //console.log(score3);
+  ////console.log("scoresHand3");
+  ////console.log(score3);
 
-  //console.log("Royal3");
-  //console.log(Royal3);
-  //console.log("Straight3");
-  //console.log(Straight3);
-  //console.log("FourKind3");
-  //console.log(FourKind3);
-  //console.log("ThreeKind3");
-  //console.log(ThreeKind3);
-  //console.log("Pair3");
+  ////console.log("Royal3");
+  ////console.log(Royal3);
+  ////console.log("Straight3");
+  ////console.log(Straight3);
+  ////console.log("FourKind3");
+  ////console.log(FourKind3);
+  ////console.log("ThreeKind3");
+  ////console.log(ThreeKind3);
+  ////console.log("Pair3");
 
-  //console.log(Pair3);
-  //console.log("Flush3");
-  //console.log(Flush3);
+  ////console.log(Pair3);
+  ////console.log("Flush3");
+  ////console.log(Flush3);
 
-  //console.log("scoresHand4");
-  //console.log(score4);
+  ////console.log("scoresHand4");
+  ////console.log(score4);
 
-  //console.log("Royal4");
-  //console.log(Royal4);
-  //console.log("Straight4");
-  //console.log(Straight4);
-  //console.log("FourKind4");
-  //console.log(FourKind4);
-  //console.log("ThreeKind4");
-  //console.log(ThreeKind4);
-  //console.log("Pair4");
-  //console.log(Pair4);
-  //console.log("Flush4");
-  //console.log(Flush4);
+  ////console.log("Royal4");
+  ////console.log(Royal4);
+  ////console.log("Straight4");
+  ////console.log(Straight4);
+  ////console.log("FourKind4");
+  ////console.log(FourKind4);
+  ////console.log("ThreeKind4");
+  ////console.log(ThreeKind4);
+  ////console.log("Pair4");
+  ////console.log(Pair4);
+  ////console.log("Flush4");
+  ////console.log(Flush4);
 
-  //console.log("scoresHand5");
-  //console.log(score5);
+  ////console.log("scoresHand5");
+  ////console.log(score5);
 
-  //console.log("Royal5");
-  //console.log(Royal5);
-  //console.log("Straight5");
-  //console.log(Straight5);
-  //console.log("FourKind5");
-  //console.log(FourKind5);
-  //console.log("ThreeKind5");
-  //console.log(ThreeKind5);
-  //console.log("Pair5");
-  //console.log(Pair5);
-  //console.log("Flush5");
-  //console.log(Flush5);
+  ////console.log("Royal5");
+  ////console.log(Royal5);
+  ////console.log("Straight5");
+  ////console.log(Straight5);
+  ////console.log("FourKind5");
+  ////console.log(FourKind5);
+  ////console.log("ThreeKind5");
+  ////console.log(ThreeKind5);
+  ////console.log("Pair5");
+  ////console.log(Pair5);
+  ////console.log("Flush5");
+  ////console.log(Flush5);
 }
 
 /*
 
 
 
-//console.log("hand1");
-//console.log(hand1);
+////console.log("hand1");
+////console.log(hand1);
 
-//console.log("hand2");
+////console.log("hand2");
 
-//console.log(hand2);
+////console.log(hand2);
 
-//console.log("hand3");
-//console.log(hand3);
+////console.log("hand3");
+////console.log(hand3);
 
-//console.log("hand4");
-//console.log(hand4);
+////console.log("hand4");
+////console.log(hand4);
 
-//console.log("hand5");
-//console.log(hand5);
+////console.log("hand5");
+////console.log(hand5);
 
-//console.log("hand6");
-//console.log(hand6);
+////console.log("hand6");
+////console.log(hand6);
 
-//console.log("hand7");
-//console.log(hand7);
+////console.log("hand7");
+////console.log(hand7);
 
-//console.log("hand8");
-//console.log(hand8);
+////console.log("hand8");
+////console.log(hand8);
 
-//console.log("hand9");
-//console.log(hand9);
+////console.log("hand9");
+////console.log(hand9);
 
-//console.log("hand10");
-//console.log(hand10);
+////console.log("hand10");
+////console.log(hand10);
 
-//console.log("hand11");
-//console.log(hand11);
+////console.log("hand11");
+////console.log(hand11);
 
-//console.log("hand12");
-//console.log(hand12);
+////console.log("hand12");
+////console.log(hand12);
 
-//console.log("hand13");
-//console.log(hand13);
+////console.log("hand13");
+////console.log(hand13);
 
-//console.log("hand14");
-//console.log(hand14);
+////console.log("hand14");
+////console.log(hand14);
 
-//console.log("collection");
+////console.log("collection");
 
-//console.log(collection);
+////console.log(collection);
 
-//console.log("valuesTest1");
-//console.log(valuesTest1);
+////console.log("valuesTest1");
+////console.log(valuesTest1);
 
-//console.log("valuesTest2");
-//console.log(valuesTest2);
+////console.log("valuesTest2");
+////console.log(valuesTest2);
 
 
-//console.log(deck);
+////console.log(deck);
 */

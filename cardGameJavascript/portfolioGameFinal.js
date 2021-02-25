@@ -1,7 +1,7 @@
-
+/////////////// set up Global variables  //////////////////////////////////
 
 //create arrays for hands, suits, and values
-//this is tested version
+//this is final version
 let suits = ["Hearts", "Diamonds", "Clubs", "Spades", "Skulls", "Swords"];
 let values = [3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14];
 
@@ -21,10 +21,8 @@ let hand13 = [];
 let hand14 = [];
 let hand15 = [];
 
-
 let collection = [];
 let collectionNew = [];
-
 
 let valuesTest1 = [];
 let valuesTest2 = [];
@@ -98,7 +96,6 @@ let ThreeKind6 = [];
 let Pair6 = [];
 let Flush6 = [];
 
-
 let handCounter = [];
 
 let handChoices = [];
@@ -117,32 +114,17 @@ let handChoices13 = [];
 let handChoices14 = [];
 let handChoices15 = [];
 
-
-
+let dupCounter = [];
 let drawCounter = [];
-
-let send3Choices = [];
-let send3Choices2 = [];
-let send3Choices3 = [];
-let send3Choices4 = [];
-let send3Choices5 = [];
-let send3Choices6 = [];
-let send3Choices7 = [];
-let send3Choices8 = [];
-let send3Choices9 = [];
-let send3Choices10 = [];
-let send3Choices11 = [];
-let send3Choices12 = [];
-let send3Choices13 = [];
-let send3Choices14 = [];
-let send3Choices15 = [];
-
 
 let check2 = [];
 
 let anchor = [];
 
-//create deck and deal functions
+let finalScore = [];
+
+/////////////// functions to create deck bonus cards  //////////////////////////////////
+
 let bonusDeck = [];
 
 class cardBonus {
@@ -152,22 +134,45 @@ class cardBonus {
   }
 }
 
-let bonus1 = new cardBonus("Bonus", "15");
-let bonus2 = new cardBonus("Bonus", "15");
-let bonus3 = new cardBonus("Bonus", "15");
-let bonus4 = new cardBonus("Bonus", "15");
-let bonus5 = new cardBonus("Bonus", "15");
+let bonus1 = new cardBonus("BonusM", 20);
+let bonus2 = new cardBonus("BonusM", 20);
+let bonus3 = new cardBonus("BonusL", 11);
+let bonus4 = new cardBonus("BonusL", 11);
+let bonus5 = new cardBonus("BonusL", 11);
 
-function createBonusDeck() {
-  bonusDeck.push(bonus1);
-  bonusDeck.push(bonus2);
-  bonusDeck.push(bonus3);
-  bonusDeck.push(bonus4);
-  bonusDeck.push(bonus5);
+class BonusDeck {
+  constructor() {
+    this.bonusDeck = [];
+  }
+
+  shuffle() {
+    let counter = this.bonusDeck.length,
+      temp,
+      i;
+
+    while (counter) {
+      i = Math.floor(Math.random() * counter--);
+      temp = this.bonusDeck[counter];
+      this.bonusDeck[counter] = this.bonusDeck[i];
+      this.bonusDeck[i] = temp;
+    }
+    return this.deck;
+  }
+
+  createBonusDeck() {
+    this.bonusDeck.push(bonus1);
+    this.bonusDeck.push(bonus2);
+    this.bonusDeck.push(bonus3);
+    this.bonusDeck.push(bonus4);
+    this.bonusDeck.push(bonus5);
+  }
 }
 
-createBonusDeck();
+let bonusDeckObject = new BonusDeck();
+bonusDeckObject.createBonusDeck();
+bonusDeckObject.shuffle();
 
+/////////////// functions to create cards and main draw deck  //////////////////////////////////
 
 class Card {
   constructor(suit, value) {
@@ -202,10 +207,10 @@ class Deck {
       this.deck[i] = temp;
     }
     return this.deck;
-    }
-  
+  }
+
   deal1() {
-    hand1.push(bonusDeck[0]);
+    hand1.push(bonusDeckObject.bonusDeck.pop());
     for (let i = 0; i < 4; i++) {
       hand1.push(this.deck.pop());
     }
@@ -213,7 +218,7 @@ class Deck {
   }
 
   deal2() {
-      hand2.push(bonusDeck[0]);
+    hand2.push(bonusDeckObject.bonusDeck.pop());
     for (let i = 0; i < 4; i++) {
       hand2.push(this.deck.pop());
     }
@@ -221,7 +226,7 @@ class Deck {
   }
 
   deal3() {
-      hand3.push(bonusDeck[0]);
+    hand3.push(bonusDeckObject.bonusDeck.pop());
     for (let i = 0; i < 4; i++) {
       hand3.push(this.deck.pop());
     }
@@ -229,7 +234,7 @@ class Deck {
   }
 
   deal4() {
-        hand4.push(bonusDeck[0]);
+    hand4.push(bonusDeckObject.bonusDeck.pop());
     for (let i = 0; i < 4; i++) {
       hand4.push(this.deck.pop());
     }
@@ -237,7 +242,7 @@ class Deck {
   }
 
   deal5() {
-        hand5.push(bonusDeck[0]);
+    hand5.push(bonusDeckObject.bonusDeck.pop());
     for (let i = 0; i < 4; i++) {
       hand5.push(this.deck.pop());
     }
@@ -313,18 +318,11 @@ class Deck {
     }
     return hand15;
   }
-
-  add3Cocktail(LandingArray){
-    this.deck.push(LandingArray[0]);
-    this.deck.push(LandingArray[0]);
-    this.deck.push(LandingArray[0]);
-    console.log(this.deck)
-  }
-
 }
 
 let deck = new Deck();
 deck.createDeck(suits, values);
+//console.log(deck);
 
 function deal() {
   deck.shuffle();
@@ -360,9 +358,108 @@ function deal() {
     deck.deal15();
   } else {
   }
+  console.log("deal");
+  console.log(deck.deck.length);
+  console.log(deck.deck[5]);
+
+  ////console.log("deck after deal");
+  ////console.log(deck.deck);
 }
 
+///// Create Cocktail Deck Negative ///////////////////////////////////////////////////////////////////////////////////
 
+class cardCocktailNegative {
+  constructor(suit, value, polarity) {
+    this.suit = suit;
+    this.value = value;
+    this.polarity = polarity;
+  }
+}
+
+class cocktailDeckClassNegative {
+  constructor() {
+    this.deckCocktailNegative = [];
+  }
+
+  createCocktailCardsNegative() {
+    for (let i = 0; i < 25; i++) {
+      let RumCoke25NDeck = new cardCocktailNegative("RumCoke", 25, "Negative");
+      this.deckCocktailNegative.push(RumCoke25NDeck);
+    }
+
+    for (let i = 0; i < 20; i++) {
+      let GinTonic35NDeck = new cardCocktailNegative(
+        "GinTonic",
+        35,
+        "Negative"
+      );
+      this.deckCocktailNegative.push(GinTonic35NDeck);
+    }
+
+    for (let i = 0; i < 12; i++) {
+      let LongIsland45NDeck = new cardCocktailNegative(
+        "LongIsland",
+        45,
+        "Negative"
+      );
+      this.deckCocktailNegative.push(LongIsland45NDeck);
+    }
+
+    for (let i = 0; i < 4; i++) {
+      let Margarita50NDeck = new cardCocktailNegative(
+        "Margarita",
+        50,
+        "Negative"
+      );
+      this.deckCocktailNegative.push(Margarita50NDeck);
+    }
+
+    for (let i = 0; i < 2; i++) {
+      let Margarita60NDeck = new cardCocktailNegative(
+        "Margarita",
+        60,
+        "Negative"
+      );
+      this.deckCocktailNegative.push(Margarita60NDeck);
+    }
+
+    let Margarita90Negative = new cardCocktailNegative(
+      "Margarita",
+      90,
+      "Negative"
+    );
+    this.deckCocktailNegative.push(Margarita90Negative);
+
+    let Margarita150NDeck = new cardCocktailNegative(
+      "Margarita",
+      150,
+      "Negative"
+    );
+    this.deckCocktailNegative.push(Margarita150NDeck);
+  }
+
+  shuffle() {
+    let counter = this.deckCocktailNegative.length,
+      temp,
+      i;
+
+    while (counter) {
+      i = Math.floor(Math.random() * counter--);
+      temp = this.deckCocktailNegative[counter];
+      this.deckCocktailNegative[counter] = this.deckCocktailNegative[i];
+      this.deckCocktailNegative[i] = temp;
+    }
+    return this.deckCocktailNegative;
+  }
+}
+
+let cocktailDeckNegative = new cocktailDeckClassNegative();
+cocktailDeckNegative.createCocktailCardsNegative();
+cocktailDeckNegative.shuffle();
+//console.log("cocktailDeckNegative");
+//console.log(cocktailDeckNegative);
+
+///// Create Cocktail Deck /////////////////////////////////////////////////////////////////////////////////////
 
 class cardCocktail {
   constructor(suit, value, polarity) {
@@ -372,10 +469,6 @@ class cardCocktail {
   }
 }
 
-
-
-
-
 class cocktailDeckClass {
   constructor() {
     this.deckCocktail = [];
@@ -383,49 +476,49 @@ class cocktailDeckClass {
 
   createCocktailCards() {
     for (let i = 0; i < 8; i++) {
-      let RumCoke15N = new cardCocktail("RumCoke", "15", "Negative");
+      let RumCoke15N = new cardCocktail("RumCoke", 15, "Negative");
       this.deckCocktail.push(RumCoke15N);
     }
 
     for (let i = 0; i < 18; i++) {
-      let RumCoke15P = new cardCocktail("RumCoke", "15", "Positive");
+      let RumCoke15P = new cardCocktail("RumCoke", 15, "Positive");
       this.deckCocktail.push(RumCoke15P);
     }
 
     for (let i = 0; i < 5; i++) {
-      let GinTonic25N = new cardCocktail("GinTonic", "25", "Negative");
+      let GinTonic25N = new cardCocktail("GinTonic", 25, "Negative");
       this.deckCocktail.push(GinTonic25N);
     }
 
     for (let i = 0; i < 10; i++) {
-      let GinTonic25P = new cardCocktail("GinTonic", "25", "Positive");
+      let GinTonic25P = new cardCocktail("GinTonic", 25, "Positive");
       this.deckCocktail.push(GinTonic25P);
     }
 
     for (let i = 0; i < 4; i++) {
-      let LongIsland35N = new cardCocktail("LongIsland", "35", "Negative");
+      let LongIsland35N = new cardCocktail("LongIsland", 35, "Negative");
       this.deckCocktail.push(LongIsland35N);
     }
     for (let i = 0; i < 8; i++) {
-      let LongIsland35P = new cardCocktail("LongIsland", "35", "Positive");
+      let LongIsland35P = new cardCocktail("LongIsland", 35, "Positive");
       this.deckCocktail.push(LongIsland35P);
     }
     for (let i = 0; i < 3; i++) {
-      let Margarita40N = new cardCocktail("Margarita", "40", "Negative");
+      let Margarita40N = new cardCocktail("Margarita", 40, "Negative");
       this.deckCocktail.push(Margarita40N);
     }
     for (let i = 0; i < 4; i++) {
-      let Margarita40P = new cardCocktail("Margarita", "40", "Positive");
+      let Margarita40P = new cardCocktail("Margarita", 40, "Positive");
       this.deckCocktail.push(Margarita40P);
     }
 
     for (let i = 0; i < 1; i++) {
-      let Margarita50N = new cardCocktail("Margarita", "50", "Negative");
+      let Margarita50N = new cardCocktail("Margarita", 50, "Negative");
       this.deckCocktail.push(Margarita50N);
     }
 
     for (let i = 0; i < 2; i++) {
-      let Margarita50P = new cardCocktail("Margarita", "50", "Positive");
+      let Margarita50P = new cardCocktail("Margarita", 50, "Positive");
       this.deckCocktail.push(Margarita50P);
     }
   }
@@ -443,59 +536,186 @@ class cocktailDeckClass {
     }
     return this.deckCocktail;
   }
-
-  send3Deck(options,landingArray) {
-  if (options[0].suit === "Bonus") {
-    landingArray.push(this.deckCocktail.pop());
-    landingArray.push(this.deckCocktail.pop());
-    landingArray.push(this.deckCocktail.pop());
-    console.log(this.deckCocktail);
-    
-  } else if (options[1].suit === "Bonus") {
-    landingArray.push(this.deckCocktail.pop());
-    landingArray.push(this.deckCocktail.pop());
-    landingArray.push(this.deckCocktail.pop());
-    console.log(this.deckCocktail);
-
-  } else {
-
-  }
-
-}
 }
 
 let cocktailDeck = new cocktailDeckClass();
 cocktailDeck.createCocktailCards();
 cocktailDeck.shuffle();
+//console.log(cocktailDeck);
+//console.log("cocktailDeck");
 
-let send3Waiting = [];
+///// Create Functions Sending Points Bonus/Cocktail, Shuffling New Cards back into deck  //////////////////////////////////
 
+function send3Deck(options) {
+  if (options[0].suit === "BonusM") {
+    deck.deck.push(cocktailDeck.deckCocktail.pop());
+    deck.deck.push(cocktailDeck.deckCocktail.pop());
+    deck.deck.push(cocktailDeck.deckCocktail.pop());
+    bonusScore.push(20);
+    deck.shuffle();
+    console.log("Deck Length");
+    console.log(deck.deck.length);
+    console.log("Card 5");
+    console.log(deck.deck[5]);
+    console.log("Bonus Score");
+    console.log(bonusScore);
+  } else if (options[1].suit === "BonusM") {
+    deck.deck.push(cocktailDeck.deckCocktail.pop());
+    deck.deck.push(cocktailDeck.deckCocktail.pop());
+    deck.deck.push(cocktailDeck.deckCocktail.pop());
+    bonusScore.push(20);
+    deck.shuffle();
+    console.log("Deck Length");
+    console.log(deck.deck.length);
+    console.log("Card 5");
+    console.log(deck.deck[5]);
+    console.log("Bonus Score");
+    console.log(bonusScore);
+  } else if (options[0].suit === "BonusL") {
+     deck.deck.push(cocktailDeck.deckCocktail.pop());
+     deck.deck.push(cocktailDeck.deckCocktail.pop());
+     bonusScore.push(11);
+     deck.shuffle();
+   console.log("Deck Length");
+    console.log(deck.deck.length);
+    console.log("Card 5");
+    console.log(deck.deck[5]);
+    console.log("Bonus Score");
+    console.log(bonusScore);
+  } else if (options[1].suit === "BonusL") {
+    deck.deck.push(cocktailDeck.deckCocktail.pop());
+    deck.deck.push(cocktailDeck.deckCocktail.pop());
+    bonusScore.push(11);
+    deck.shuffle();
+   console.log("Deck Length");
+   console.log(deck.deck.length);
+   console.log("Card 5");
+   console.log(deck.deck[5]);
+   console.log("Bonus Score");
+   console.log(bonusScore);
+  } else {
+  }
+}
 
+function isItACocktail(options) {
+  if (options[0].polarity === "Positive") {
+    cocktailPositiveScore.push(options[0].value);
+    console.log("cocktailScore");
+    console.log(options[0]);
+    console.log("cocktailPositiveScore");
+    console.log(cocktailPositiveScore);
+  } else if (options[0].polarity === "Positive") {
+    cocktailPositiveScore.push(options[0].value);
+    console.log("cocktailScore");
+    console.log(options[0]);
+    console.log("cocktailPositiveScore");
+    console.log(cocktailPositiveScore);
+  } else {
+  }
 
-deck.shuffle();
-console.log(bonusDeck);
-console.log(deck);
+  if (options[1].polarity === "Negative") {
+    cocktailNegativeScore.push(options[1].value);
+    console.log("cocktailScore");
+    console.log(options[1]);
+    console.log("cocktailNegativeScore");
+    console.log(cocktailNegativeScore);
+  } else if (options[1].polarity === "Negative") {
+    cocktailNegativeScore.push(options[1].value);
+    console.log("cocktailScore");
+    console.log(options[1]);
+    console.log("cocktailNegativeScore");
+    console.log(cocktailNegativeScore);
+  } else {
+  }
+}
 
-/*
-deck.shuffle();
-deck.deal1();
-deck.deal2();
-deck.deal3();
-deck.deal4();
-deck.deal5();
-deck.deal6();
-deck.deal7();
-deck.deal8();
-deck.deal9();
-deck.deal10();
-deck.deal11();
-deck.deal12();
-deck.deal13();
-deck.deal14();
-deck.deal15();
- */
+function sendNegativeDeckCards(options) {
+  if (options[0].suit === "RumCoke") {
+    deck.deck.push(cocktailDeckNegative.deckCocktailNegative.pop());
+    deck.deck.push(cocktailDeckNegative.deckCocktailNegative.pop());
+    deck.deck.push(cocktailDeckNegative.deckCocktailNegative.pop());
+    deck.shuffle();
+    console.log("deck length Neg cards");
+    console.log(deck.deck.length);
+    console.log(deck.deck[5]);
 
-//show first hand,
+  } else if (options[1].suit === "RumCoke") {
+    deck.deck.push(cocktailDeckNegative.deckCocktailNegative.pop());
+    deck.deck.push(cocktailDeckNegative.deckCocktailNegative.pop());
+    deck.deck.push(cocktailDeckNegative.deckCocktailNegative.pop());
+    deck.shuffle();
+   console.log("deck length Neg cards");
+   console.log(deck.deck.length);
+   console.log(deck.deck[5]);
+
+  } else {
+  }
+
+  if (options[0].suit === "GinTonic") {
+    deck.deck.push(cocktailDeckNegative.deckCocktailNegative.pop());
+    deck.deck.push(cocktailDeckNegative.deckCocktailNegative.pop());
+    deck.deck.push(cocktailDeckNegative.deckCocktailNegative.pop());
+    deck.shuffle();
+    console.log("deck length Neg cards");
+    console.log(deck.deck.length);
+    console.log(deck.deck[5]);
+
+  } else if (options[1].suit === "GinTonic") {
+    deck.deck.push(cocktailDeckNegative.deckCocktailNegative.pop());
+    deck.deck.push(cocktailDeckNegative.deckCocktailNegative.pop());
+    deck.deck.push(cocktailDeckNegative.deckCocktailNegative.pop());
+    console.log("deck length Neg cards");
+    console.log(deck.deck.length);
+    console.log(deck.deck[5]);
+
+  } else {
+  }
+
+  if (options[0].suit === "LongIsland") {
+    deck.deck.push(cocktailDeckNegative.deckCocktailNegative.pop());
+    deck.deck.push(cocktailDeckNegative.deckCocktailNegative.pop());
+    deck.deck.push(cocktailDeckNegative.deckCocktailNegative.pop());
+    deck.shuffle();
+  console.log("deck length Neg cards");
+  console.log(deck.deck.length);
+  console.log(deck.deck[5]);
+
+  } else if (options[1].suit === "LongIsland") {
+    deck.deck.push(cocktailDeckNegative.deckCocktailNegative.pop());
+    deck.deck.push(cocktailDeckNegative.deckCocktailNegative.pop());
+    deck.deck.push(cocktailDeckNegative.deckCocktailNegative.pop());
+    deck.shuffle();
+console.log("deck length Neg cards");
+console.log(deck.deck.length);
+console.log(deck.deck[5]);
+
+  } else {
+  }
+
+  if (options[0].suit === "Margarita") {
+    deck.deck.push(cocktailDeckNegative.deckCocktailNegative.pop());
+    deck.deck.push(cocktailDeckNegative.deckCocktailNegative.pop());
+    deck.deck.push(cocktailDeckNegative.deckCocktailNegative.pop());
+    deck.shuffle();
+   console.log("deck length Neg cards");
+   console.log(deck.deck.length);
+   console.log(deck.deck[5]);
+
+  } else if (options[1].suit === "Margarita") {
+    deck.deck.push(cocktailDeckNegative.deckCocktailNegative.pop());
+    deck.deck.push(cocktailDeckNegative.deckCocktailNegative.pop());
+    deck.deck.push(cocktailDeckNegative.deckCocktailNegative.pop());
+    deck.shuffle();
+  console.log("deck length Neg cards");
+  console.log(deck.deck.length);
+  console.log(deck.deck[5]);
+
+  } else {
+  }
+}
+
+///////////// hide buttons and add event listeners to collection /////////////////////////////////
+
 function hideall() {
   let makeSwitch1 = document.getElementById("makeSwitch");
   makeSwitch1.style.display = "none";
@@ -515,7 +735,6 @@ function hideall() {
   let AddUp = document.getElementById("AddItUp");
   AddUp.style.display = "none";
 
-  
   document
     .getElementById("collectionAnchor1")
     .addEventListener("click", getValue1);
@@ -600,30 +819,32 @@ function hideall() {
   document
     .getElementById("collectionAnchor28")
     .addEventListener("click", getValue28);
-    document
-      .getElementById("collectionAnchor29")
-      .addEventListener("click", getValue29);
-    document
-      .getElementById("collectionAnchor30")
-      .addEventListener("click", getValue30);
+  document
+    .getElementById("collectionAnchor29")
+    .addEventListener("click", getValue29);
+  document
+    .getElementById("collectionAnchor30")
+    .addEventListener("click", getValue30);
 }
 
 window.onload = hideall();
+
+//////////////// create modals for rules, etc. ////////////////////////////////////
 
 let rulesModal = document.getElementById("rulesModal");
 let rulesBtn = document.getElementById("rulesBtn");
 
 rulesBtn.onclick = function () {
   rulesModal.style.display = "block";
-   let backgroundModal = document.getElementById("backgroundModal");
-   backgroundModal.style.display = "block";
+  let backgroundModal = document.getElementById("backgroundModal");
+  backgroundModal.style.display = "block";
 };
 
 let rulesSpan = document.getElementsByClassName("close1")[0];
 
 rulesSpan.onclick = function () {
-    rulesModal.style.display = "none";
-}
+  rulesModal.style.display = "none";
+};
 
 let pointValuesModal = document.getElementById("pointValuesModal");
 let pointValuesBtn = document.getElementById("pointValuesBtn");
@@ -638,18 +859,12 @@ pointValuesSpan.onclick = function () {
   pointValuesModal.style.display = "none";
 };
 
-
-
-
 let decksModal = document.getElementById("decksModal");
 let decksBtn = document.getElementById("decksBtn");
-
 
 decksBtn.onclick = function () {
   decksModal.style.display = "block";
 };
-
-
 
 let deckSpan = document.getElementsByClassName("closeDecks")[0];
 
@@ -657,11 +872,11 @@ deckSpan.onclick = function () {
   decksModal.style.display = "none";
 };
 
-
+//////////////// functions for changing colors ////////////////////////////////////
 
 function makeRedBorder(anchor) {
   let border1 = document.getElementById(anchor);
-  border1.style.backgroundColor = "red"
+  border1.style.backgroundColor = "red";
 }
 
 function makeGreenBorder() {
@@ -682,7 +897,32 @@ function makeDarkGreenBorder(anchor) {
   border1.style.backgroundColor = "darkgreen";
 }
 
+function changeColorGetHandR() {
+  document.getElementById("nextHand").style.backgroundColor = "darkred";
+  document.getElementById("nextHand").style.color = "white";
+}
 
+function changeColorGetHandW() {
+  document.getElementById("nextHand").style.backgroundColor = "white";
+  document.getElementById("nextHand").style.color = "black";
+}
+
+function changeColorGetConfirmR() {
+  if (collection.length === 30) {
+    document.getElementById("confirmButton").style.backgroundColor = "darkred";
+    document.getElementById("confirmButton").style.color = "white";
+  } else {
+    document.getElementById("confirmButton").style.backgroundColor = "white";
+    document.getElementById("confirmButton").style.color = "black";
+  }
+}
+
+function changeColorGetConfirmW() {
+  document.getElementById("confirmButton").style.backgroundColor = "white";
+  document.getElementById("confirmButton").style.color = "black";
+}
+
+/////////////// function to change anchor dynamically //////////////////////////////////
 
 function whichAnchor() {
   if (collection.length === 0) {
@@ -749,6 +989,8 @@ function whichAnchor() {
   }
 }
 
+/////////////// functions to get hands, change round text  //////////////////////////////////
+
 function clearHand() {
   let anchorHand1 = document.getElementById("handAnchor1");
   while (anchorHand1.firstChild) {
@@ -777,36 +1019,11 @@ function changeRound(number) {
   let roundCounter = document.createElement("p");
   round.appendChild(roundCounter);
   roundCounter.innerHTML = `Hand ${number}`;
- // roundCounter.setAttribute("style", "font-size: 50px");
- // roundCounter.setAttribute("style", "margin: 0px");
+  // roundCounter.setAttribute("style", "font-size: 50px");
+  // roundCounter.setAttribute("style", "margin: 0px");
   roundCounter.style.textAlign = "right";
   roundCounter.style.color = "white";
   roundCounter.className += "hand";
-
-}
-
-function changeColorGetHandR () {
-  document.getElementById("nextHand").style.backgroundColor = "darkred";
-  document.getElementById("nextHand").style.color = "white";
-}
-
-function changeColorGetHandW () {
-    document.getElementById("nextHand").style.backgroundColor = "white";
-    document.getElementById("nextHand").style.color = "black";
-}
-
-function changeColorGetConfirmR() {
-  if (collection.length === 30) { document.getElementById("confirmButton").style.backgroundColor = "darkred";
-  document.getElementById("confirmButton").style.color = "white";
-} else {
-  document.getElementById("confirmButton").style.backgroundColor = "white";
-  document.getElementById("confirmButton").style.color = "black";
-}
-}
-
-function changeColorGetConfirmW() {
-  document.getElementById("confirmButton").style.backgroundColor = "white";
-  document.getElementById("confirmButton").style.color = "black";
 }
 
 function clearRound() {
@@ -852,11 +1069,12 @@ function showCard5(currentHand) {
   check2.push("draw");
 }
 
+///////////////////////////////////////////////////////////////////////////////////////
+
 function getHand() {
   if (collection.length === 0 && drawCounter.length === 0) {
     changeColorGetHandW();
     makeGreenBorder();
-    deck.shuffle();
     deal();
     changeRound("One");
     showCard1(hand1);
@@ -865,18 +1083,18 @@ function getHand() {
     showCard4(hand1);
     showCard5(hand1);
     drawCounter.push("draw");
-    console.log("collection length");
-    console.log(collection.length);
-    console.log(drawCounter.length);
-    console.log(cocktailDeck);
+    //console.log("collection length");
+    //console.log(collection.length);
+    //console.log(drawCounter.length);
+    //console.log(cocktailDeck);
   } else if (collection.length === 2 && drawCounter.length === 1) {
     clearHand();
     clearRound();
     changeColorGetHandW();
     makeGreenBorder();
-    cocktailDeck.send3Deck(handChoices, send3Choices);
-    deck.add3Cocktail(send3Choices);
-    deck.shuffle();
+    send3Deck(handChoices);
+    sendNegativeDeckCards(handChoices);
+    isItACocktail(handChoices);
     deal();
     changeRound("Two");
     showCard1(hand2);
@@ -885,18 +1103,14 @@ function getHand() {
     showCard4(hand2);
     showCard5(hand2);
     drawCounter.push("draw");
-    
-    console.log(drawCounter.length);
   } else if (collection.length === 4 && drawCounter.length === 2) {
     clearHand();
     clearRound();
     changeColorGetHandW();
     makeGreenBorder();
-    console.log("deck NNNNNNew");
-    console.log(deck);
-    cocktailDeck.send3Deck(handChoices2,send3Choices2);
-    deck.add3Cocktail(send3Choices2);    
-    deck.shuffle();
+    send3Deck(handChoices2);
+    sendNegativeDeckCards(handChoices2);
+    isItACocktail(handChoices2);
     deal();
     changeRound("Three");
     showCard1(hand3);
@@ -905,17 +1119,17 @@ function getHand() {
     showCard4(hand3);
     showCard5(hand3);
     drawCounter.push("draw");
-    console.log("collection length");
-    console.log(collection.length);
-    console.log(drawCounter.length);
+    //console.log("collection length");
+    //console.log(collection.length);
+    //console.log(drawCounter.length);
   } else if (collection.length === 6 && drawCounter.length === 3) {
     clearHand();
     clearRound();
     changeColorGetHandW();
     makeGreenBorder();
-    cocktailDeck.send3Deck(handChoices3, send3Choices3);
-    deck.add3Cocktail(send3Choices3);    
-    deck.shuffle();
+    send3Deck(handChoices3);
+    sendNegativeDeckCards(handChoices3);
+    isItACocktail(handChoices3);
     deal();
     changeRound("Four");
     showCard1(hand4);
@@ -924,17 +1138,17 @@ function getHand() {
     showCard4(hand4);
     showCard5(hand4);
     drawCounter.push("draw");
-    console.log("collection length");
-    console.log(collection.length);
-    console.log(drawCounter.length);
+    //console.log("collection length");
+    //console.log(collection.length);
+    //console.log(drawCounter.length);
   } else if (collection.length === 8 && drawCounter.length === 4) {
     clearHand();
     clearRound();
     changeColorGetHandW();
     makeGreenBorder();
-    cocktailDeck.send3Deck(handChoices4, send3Choices4);
-    deck.add3Cocktail(send3Choices4);    
-    deck.shuffle();
+    send3Deck(handChoices4);
+    sendNegativeDeckCards(handChoices4);
+    isItACocktail(handChoices4);
     deal();
     changeRound("Five");
     showCard1(hand5);
@@ -943,17 +1157,17 @@ function getHand() {
     showCard4(hand5);
     showCard5(hand5);
     drawCounter.push("draw");
-    console.log("collection length");
-    console.log(collection.length);
-    console.log(drawCounter.length);
+    //console.log("collection length");
+    //console.log(collection.length);
+    //console.log(drawCounter.length);
   } else if (collection.length === 10 && drawCounter.length === 5) {
     clearHand();
     clearRound();
     changeColorGetHandW();
     makeGreenBorder();
-    cocktailDeck.send3Deck(handChoices5, send3Choices5);
-    deck.add3Cocktail(send3Choices5);    
-    deck.shuffle();
+    send3Deck(handChoices5);
+    sendNegativeDeckCards(handChoices5);
+    isItACocktail(handChoices5);
     deal();
     changeRound("Six");
     showCard1(hand6);
@@ -962,17 +1176,17 @@ function getHand() {
     showCard4(hand6);
     showCard5(hand6);
     drawCounter.push("draw");
-    console.log("collection length");
-    console.log(collection.length);
-    console.log(drawCounter.length);
+    //console.log("collection length");
+    //console.log(collection.length);
+    //console.log(drawCounter.length);
   } else if (collection.length === 12 && drawCounter.length === 6) {
     clearHand();
     clearRound();
     changeColorGetHandW();
     makeGreenBorder();
-    cocktailDeck.send3Deck(handChoices6, send3Choices6);
-    deck.add3Cocktail(send3Choices6);    
-    deck.shuffle();
+    send3Deck(handChoices6);
+    sendNegativeDeckCards(handChoices6);
+    isItACocktail(handChoices6);
     deal();
     changeRound("Seven");
     showCard1(hand7);
@@ -981,17 +1195,17 @@ function getHand() {
     showCard4(hand7);
     showCard5(hand7);
     drawCounter.push("draw");
-    console.log("collection length");
-    console.log(collection.length);
-    console.log(drawCounter.length);
+    //console.log("collection length");
+    //console.log(collection.length);
+    //console.log(drawCounter.length);
   } else if (collection.length === 14 && drawCounter.length === 7) {
     clearHand();
     clearRound();
     changeColorGetHandW();
     makeGreenBorder();
-    cocktailDeck.send3Deck(handChoices7, send3Choices7);
-    deck.add3Cocktail(send3Choices7);    
-    deck.shuffle();
+    send3Deck(handChoices7);
+    sendNegativeDeckCards(handChoices7);
+    isItACocktail(handChoices7);
     deal();
     changeRound("Eight");
     showCard1(hand8);
@@ -1000,19 +1214,19 @@ function getHand() {
     showCard4(hand8);
     showCard5(hand8);
     drawCounter.push("draw");
-    console.log("collection length");
-    console.log(collection.length);
-    console.log(drawCounter.length);
+    //console.log("collection length");
+    //console.log(collection.length);
+    //console.log(drawCounter.length);
   } else if (collection.length === 16 && drawCounter.length === 8) {
     clearHand();
     clearRound();
     changeColorGetHandW();
     makeGreenBorder();
-    console.log("deck NNNNNNew");
-    console.log(deck);
-    cocktailDeck.send3Deck(handChoices8, send3Choices8);
-    deck.add3Cocktail(send3Choices8);      
-    deck.shuffle();
+    //console.log("deck NNNNNNew");
+    //console.log(deck);
+    send3Deck(handChoices8);
+    sendNegativeDeckCards(handChoices8);
+    isItACocktail(handChoices8);
     deal();
     changeRound("Nine");
     showCard1(hand9);
@@ -1021,17 +1235,17 @@ function getHand() {
     showCard4(hand9);
     showCard5(hand9);
     drawCounter.push("draw");
-    console.log("collection length");
-    console.log(collection.length);
-    console.log(drawCounter.length);
+    //console.log("collection length");
+    //console.log(collection.length);
+    //console.log(drawCounter.length);
   } else if (collection.length === 18 && drawCounter.length === 9) {
     clearHand();
     clearRound();
     changeColorGetHandW();
     makeGreenBorder();
-    cocktailDeck.send3Deck(handChoices9, send3Choices9);
-    deck.add3Cocktail(send3Choices9);      
-    deck.shuffle();
+    send3Deck(handChoices9);
+    sendNegativeDeckCards(handChoices9);
+    isItACocktail(handChoices9);
     deal();
     changeRound("Ten");
     showCard1(hand10);
@@ -1040,17 +1254,17 @@ function getHand() {
     showCard4(hand10);
     showCard5(hand10);
     drawCounter.push("draw");
-    console.log("collection length");
-    console.log(collection.length);
-    console.log(drawCounter.length);
+    //console.log("collection length");
+    //console.log(collection.length);
+    //console.log(drawCounter.length);
   } else if (collection.length === 20 && drawCounter.length === 10) {
     clearHand();
     clearRound();
     changeColorGetHandW();
     makeGreenBorder();
-    cocktailDeck.send3Deck(handChoices10, send3Choices10);
-    deck.add3Cocktail(send3Choices10);      
-    deck.shuffle();
+    send3Deck(handChoices10);
+    sendNegativeDeckCards(handChoices10);
+    isItACocktail(handChoices10);
     deal();
     changeRound("Eleven");
     showCard1(hand11);
@@ -1059,18 +1273,18 @@ function getHand() {
     showCard4(hand11);
     showCard5(hand11);
     drawCounter.push("draw");
-    console.log("collection length");
-    console.log(collection.length);
-    console.log(drawCounter.length);
+    //console.log("collection length");
+    //console.log(collection.length);
+    //console.log(drawCounter.length);
   } else if (collection.length === 22 && drawCounter.length === 11) {
     clearHand();
     clearRound();
     changeColorGetHandW();
     makeGreenBorder();
-    cocktailDeck.send3Deck(handChoices11, send3Choices11);
-    deck.add3Cocktail(send3Choices11);      
-     deck.shuffle();
-     deal();
+    send3Deck(handChoices11);
+    sendNegativeDeckCards(handChoices11);
+    isItACocktail(handChoices11);
+    deal();
     changeRound("Twelve");
     showCard1(hand12);
     showCard2(hand12);
@@ -1078,17 +1292,17 @@ function getHand() {
     showCard4(hand12);
     showCard5(hand12);
     drawCounter.push("draw");
-    console.log("collection length");
-    console.log(collection.length);
-    console.log(drawCounter.length);
+    //console.log("collection length");
+    //console.log(collection.length);
+    //console.log(drawCounter.length);
   } else if (collection.length === 24 && drawCounter.length === 12) {
     clearHand();
     clearRound();
     changeColorGetHandW();
     makeGreenBorder();
-    cocktailDeck.send3Deck(handChoices12, send3Choices12);
-    deck.add3Cocktail(send3Choices12);      
-    deck.shuffle();
+    send3Deck(handChoices12);
+    sendNegativeDeckCards(handChoices12);
+    isItACocktail(handChoices12);
     deal();
     changeRound("Thirteen");
     showCard1(hand13);
@@ -1097,18 +1311,18 @@ function getHand() {
     showCard4(hand13);
     showCard5(hand13);
     drawCounter.push("draw");
-    console.log("collection length");
-    console.log(collection.length);
-    console.log(drawCounter.length);
+    //console.log("collection length");
+    //console.log(collection.length);
+    //console.log(drawCounter.length);
   } else if (collection.length === 26 && drawCounter.length === 13) {
     clearHand();
     clearRound();
     changeColorGetHandW();
     makeGreenBorder();
-    cocktailDeck.send3Deck(handChoices13, send3Choices13);
-    deck.add3Cocktail(send3Choices13);      
-     deck.shuffle();
-     deal14();
+    send3Deck(handChoices13);
+    sendNegativeDeckCards(handChoices13);
+    isItACocktail(handChoices13);
+    deal();
     changeRound("Fourteen");
     showCard1(hand14);
     showCard2(hand14);
@@ -1121,10 +1335,10 @@ function getHand() {
     clearRound();
     changeColorGetHandW();
     makeGreenBorder();
-      cocktailDeck.send3Deck(handChoices14, send3Choices14);
-      deck.add3Cocktail(send3Choices14);      
-     deck.shuffle();
-     deal();
+    send3Deck(handChoices14);
+    sendNegativeDeckCards(handChoices14);
+    isItACocktail(handChoices14);
+    deal();
     changeRound("Fifteen");
     showCard1(hand15);
     showCard2(hand15);
@@ -1139,173 +1353,173 @@ function getHand() {
 }
 
 function seeAll() {
-  console.log("1");
-  console.log(handChoices);
-  console.log("2");
-  console.log(handChoices2);
-  console.log("3");
-  console.log(handChoices3);
+  //console.log("1");
+  //console.log(handChoices);
+  //console.log("2");
+  //console.log(handChoices2);
+  //console.log("3");
+  //console.log(handChoices3);
 }
+
+/////////////// functions to get card from hand to collection  //////////////////////////////////
 
 function addCard1() {
   if (handChoices.length < 2 && drawCounter.length === 1) {
     whichAnchor();
-    Card1(handChoices, hand1, 0, 1);
+    Card1(handChoices, hand1, 0);
   } else if (handChoices2.length < 2 && drawCounter.length === 2) {
     whichAnchor();
-    Card1(handChoices2, hand2, 2, 3);
+    Card1(handChoices2, hand2, 1);
   } else if (handChoices3.length < 2 && drawCounter.length === 3) {
     whichAnchor();
-    Card1(handChoices3, hand3, 4, 5);
+    Card1(handChoices3, hand3, 2);
   } else if (handChoices4.length < 2 && drawCounter.length === 4) {
     whichAnchor();
-    Card1(handChoices4, hand4, 6, 7);
+    Card1(handChoices4, hand4, 3);
   } else if (handChoices5.length < 2 && drawCounter.length === 5) {
     whichAnchor();
-    Card1(handChoices5, hand5, 8, 9);
+    Card1(handChoices5, hand5, 4);
   } else if (handChoices6.length < 2 && drawCounter.length === 6) {
     whichAnchor();
-    Card1(handChoices6, hand6, 10, 11);
+    Card1(handChoices6, hand6, 5);
   } else if (handChoices7.length < 2 && drawCounter.length === 7) {
     whichAnchor();
-    Card1(handChoices7, hand7, 12, 13);
+    Card1(handChoices7, hand7, 6);
   } else if (handChoices8.length < 2 && drawCounter.length === 8) {
     whichAnchor();
-    Card1(handChoices8, hand8, 14, 15);
+    Card1(handChoices8, hand8, 7);
   } else if (handChoices9.length < 2 && drawCounter.length === 9) {
     whichAnchor();
-    Card1(handChoices9, hand9, 16, 17);
+    Card1(handChoices9, hand9, 8);
   } else if (handChoices10.length < 2 && drawCounter.length === 10) {
     whichAnchor();
-    Card1(handChoices10, hand10, 18, 19);
+    Card1(handChoices10, hand10, 9);
   } else if (handChoices11.length < 2 && drawCounter.length === 11) {
     whichAnchor();
-    Card1(handChoices11, hand11, 20, 21);
+    Card1(handChoices11, hand11, 10);
   } else if (handChoices12.length < 2 && drawCounter.length === 12) {
     whichAnchor();
-    Card1(handChoices12, hand12, 22, 23);
+    Card1(handChoices12, hand12, 11);
   } else if (handChoices13.length < 2 && drawCounter.length === 13) {
     whichAnchor();
-    Card1(handChoices13, hand13, 24, 25);
+    Card1(handChoices13, hand13, 12);
   } else if (handChoices14.length < 2 && drawCounter.length === 14) {
     whichAnchor();
-    Card1(handChoices14, hand14, 26, 27);
+    Card1(handChoices14, hand14, 13);
   } else if (handChoices15.length < 2 && drawCounter.length === 15) {
     whichAnchor();
-    Card1(handChoices15, hand15, 28, 29);
+    Card1(handChoices15, hand15, 14);
   } else {
   }
 }
 
-function Card1(choices, hand, number, number2) {
-  if (choices[0] === "card1") {
-    console.log("duplicate");
-    console.log(choices);
-  } else if (collection.length === number) {
+function Card1(choices, hand, number) {
+  if (choices.length < 1) {
     collection.push(hand[0]);
     choices.push(hand[0]);
-    console.log(choices);
+    //console.log(choices);
+    dupCounter.push("1");
     let toAttach = document.getElementById(anchor);
     let card1 = document.createElement("img");
     card1.src = `cardGameImages/${hand[0].suit}${hand[0].value}.png`;
     toAttach.appendChild(card1);
-    console.log("anchor");
-    console.log(anchor);
+    //console.log("anchor");
+    //console.log(anchor);
     makeRedBorder("handAnchor1");
-  } else if (collection.length === number2) {
+  } else if (dupCounter[number] === "1") {
+    //console.log("duplicate");
+  } else if (choices.length === 1) {
     collection.push(hand[0]);
     choices.push(hand[0]);
-    console.log(choices);
+    //console.log(choices);
     let toAttach = document.getElementById(anchor);
     let card1 = document.createElement("img");
     card1.src = `cardGameImages/${hand[0].suit}${hand[0].value}.png`;
     toAttach.appendChild(card1);
-    console.log("anchor");
-    console.log(anchor);
+    //console.log("anchor");
+    //console.log(anchor);
     makeRedBorder("handAnchor1");
     changeColorGetHandR();
     changeColorGetConfirmR();
   } else {
   }
-
-
 }
 
 function addCard2() {
   if (handChoices.length < 2 && drawCounter.length === 1) {
     whichAnchor();
-    Card2(handChoices, hand1, 0, 1);
+    Card2(handChoices, hand1, 0);
   } else if (handChoices2.length < 2 && drawCounter.length === 2) {
     whichAnchor();
-    Card2(handChoices2, hand2, 2, 3);
+    Card2(handChoices2, hand2, 1);
   } else if (handChoices3.length < 2 && drawCounter.length === 3) {
     whichAnchor();
-    Card2(handChoices3, hand3, 4, 5);
+    Card2(handChoices3, hand3, 2);
   } else if (handChoices4.length < 2 && drawCounter.length === 4) {
     whichAnchor();
-    Card2(handChoices4, hand4, 6, 7);
+    Card2(handChoices4, hand4, 3);
   } else if (handChoices5.length < 2 && drawCounter.length === 5) {
     whichAnchor();
-    Card2(handChoices5, hand5, 8, 9);
+    Card2(handChoices5, hand5, 4);
   } else if (handChoices6.length < 2 && drawCounter.length === 6) {
     whichAnchor();
-    Card2(handChoices6, hand6, 10, 11);
+    Card2(handChoices6, hand6, 5);
   } else if (handChoices7.length < 2 && drawCounter.length === 7) {
     whichAnchor();
-    Card2(handChoices7, hand7, 12, 13);
+    Card2(handChoices7, hand7, 6);
   } else if (handChoices8.length < 2 && drawCounter.length === 8) {
     whichAnchor();
-    Card2(handChoices8, hand8, 14, 15);
+    Card2(handChoices8, hand8, 7);
   } else if (handChoices9.length < 2 && drawCounter.length === 9) {
     whichAnchor();
-    Card2(handChoices9, hand9, 16, 17);
+    Card2(handChoices9, hand9, 8);
   } else if (handChoices10.length < 2 && drawCounter.length === 10) {
     whichAnchor();
-    Card2(handChoices10, hand10, 18, 19);
+    Card2(handChoices10, hand10, 9);
   } else if (handChoices11.length < 2 && drawCounter.length === 11) {
     whichAnchor();
-    Card2(handChoices11, hand11, 20, 21);
+    Card2(handChoices11, hand11, 10);
   } else if (handChoices12.length < 2 && drawCounter.length === 12) {
     whichAnchor();
-    Card2(handChoices12, hand12, 22, 23);
+    Card2(handChoices12, hand12, 11);
   } else if (handChoices13.length < 2 && drawCounter.length === 13) {
     whichAnchor();
-    Card2(handChoices13, hand13, 24, 25);
+    Card2(handChoices13, hand13, 12);
   } else if (handChoices14.length < 2 && drawCounter.length === 14) {
     whichAnchor();
-    Card2(handChoices14, hand14, 26, 27);
+    Card2(handChoices14, hand14, 13);
   } else if (handChoices15.length < 2 && drawCounter.length === 15) {
     whichAnchor();
-    Card2(handChoices15, hand15, 28, 29);
+    Card2(handChoices15, hand15, 14);
   } else {
   }
 }
 
-function Card2(choices, hand, number, number2) {
-  if (choices[0] === "card2" || collection.length > number2) {
-    console.log("duplicate");
-  } else if (collection.length === number) {
+function Card2(choices, hand, number) {
+  if (choices.length < 1) {
     collection.push(hand[1]);
-    choices.push("card2");
-    console.log(choices);
+    choices.push(hand[1]);
+    dupCounter.push("2");
+    //console.log(choices);
     let toAttach = document.getElementById(anchor);
     let card1 = document.createElement("img");
     card1.src = `cardGameImages/${hand[1].suit}${hand[1].value}.png`;
     toAttach.appendChild(card1);
-    console.log("anchor");
-    console.log(anchor);
+    //console.log("anchor");
+    //console.log(anchor);
     makeRedBorder("handAnchor2");
-
-  } else if (collection.length === number2) {
+  } else if (dupCounter[number] === "2") {
+    //console.log("duplicate")
+  } else if (choices.length === 1) {
     collection.push(hand[1]);
-    choices.push("card2");
-    console.log(choices);
+    choices.push(hand[1]);
+    //console.log(choices);
     let toAttach = document.getElementById(anchor);
     let card1 = document.createElement("img");
     card1.src = `cardGameImages/${hand[1].suit}${hand[1].value}.png`;
     toAttach.appendChild(card1);
-    console.log("anchor");
-    console.log(anchor);
+    //console.log("anchor");
+    //console.log(anchor);
     makeRedBorder("handAnchor2");
     changeColorGetHandR();
     changeColorGetConfirmR();
@@ -1365,28 +1579,28 @@ function addCard3() {
 
 function Card3(choices, hand, number, number2) {
   if (choices[0] === "card3") {
-    console.log("duplicate");
+    //console.log("duplicate");
   } else if (collection.length === number) {
     collection.push(hand[2]);
-    choices.push("card3");
-    console.log(choices);
+    choices.push(hand[2]);
+    //console.log(choices);
     let toAttach = document.getElementById(anchor);
     let card1 = document.createElement("img");
     card1.src = `cardGameImages/${hand[2].suit}${hand[2].value}.png`;
     toAttach.appendChild(card1);
-    console.log("anchor");
-    console.log(anchor);
+    //console.log("anchor");
+    //console.log(anchor);
     makeRedBorder("handAnchor3");
   } else if (collection.length === number2) {
     collection.push(hand[2]);
-    choices.push("card3");
-    console.log(choices);
+    choices.push(hand[2]);
+    //console.log(choices);
     let toAttach = document.getElementById(anchor);
     let card1 = document.createElement("img");
     card1.src = `cardGameImages/${hand[2].suit}${hand[2].value}.png`;
     toAttach.appendChild(card1);
-    console.log("anchor");
-    console.log(anchor);
+    //console.log("anchor");
+    //console.log(anchor);
     changeColorGetHandR();
     changeColorGetConfirmR();
     makeRedBorder("handAnchor3");
@@ -1446,26 +1660,26 @@ function addCard4() {
 
 function Card4(choices, hand, number, number2) {
   if (choices[0] === "card4" || collection.length > number2) {
-    console.log("duplicate");
+    //console.log("duplicate");
   } else if (collection.length === number) {
     collection.push(hand[3]);
-    choices.push("card4");
+    choices.push(hand[3]);
     let toAttach = document.getElementById(anchor);
     let card1 = document.createElement("img");
     card1.src = `cardGameImages/${hand[3].suit}${hand[3].value}.png`;
     toAttach.appendChild(card1);
-    console.log("anchor");
-    console.log(anchor);
+    //console.log("anchor");
+    //console.log(anchor);
     makeRedBorder("handAnchor4");
   } else if (collection.length === number2) {
     collection.push(hand[3]);
-    choices.push("card4");
+    choices.push(hand[3]);
     let toAttach = document.getElementById(anchor);
     let card1 = document.createElement("img");
     card1.src = `cardGameImages/${hand[3].suit}${hand[3].value}.png`;
     toAttach.appendChild(card1);
-    console.log("anchor");
-    console.log(anchor);
+    //console.log("anchor");
+    //console.log(anchor);
     changeColorGetHandR();
     changeColorGetConfirmR();
     makeRedBorder("handAnchor4");
@@ -1526,26 +1740,26 @@ function addCard5() {
 
 function Card5(choices, hand, number, number2) {
   if (choices[0] === "card5" || collection.length > number2) {
-    console.log("duplicate");
+    //console.log("duplicate");
   } else if (collection.length === number) {
     collection.push(hand[4]);
-    choices.push("card5");
+    choices.push(hand[4]);
     let toAttach = document.getElementById(anchor);
     let card1 = document.createElement("img");
     card1.src = `cardGameImages/${hand[4].suit}${hand[4].value}.png`;
     toAttach.appendChild(card1);
-    console.log("anchor");
-    console.log(anchor);
+    //console.log("anchor");
+    //console.log(anchor);
     makeRedBorder("handAnchor5");
   } else if (collection.length === number2) {
     collection.push(hand[4]);
-    choices.push("card5");
+    choices.push(hand[4]);
     let toAttach = document.getElementById(anchor);
     let card1 = document.createElement("img");
     card1.src = `cardGameImages/${hand[4].suit}${hand[4].value}.png`;
     toAttach.appendChild(card1);
-    console.log("anchor");
-    console.log(anchor);
+    //console.log("anchor");
+    //console.log(anchor);
     changeColorGetHandR();
     changeColorGetConfirmR();
     makeRedBorder("handAnchor5");
@@ -1553,7 +1767,7 @@ function Card5(choices, hand, number, number2) {
   }
 }
 
-////////////////////////////////////////////////
+/////////////// functions to swap cards in your collection  //////////////////////////////////
 
 //function getRedOutline(anchor) {
 //  document.getElementById(anchor).style.border= "thick solid red";
@@ -1564,24 +1778,20 @@ function getValue1() {
     valuesTest1.push("collectionAnchor1");
     valuesTest1.push("0");
     valuesTest1.push(collection[0]);
-      console.log(valuesTest1);
+    //console.log(valuesTest1);
     makeRedBorder("collectionAnchor1");
-
   } else if (valuesTest2.length < 2) {
     valuesTest2.push("collectionAnchor1");
     valuesTest2.push("0");
     valuesTest2.push(collection[0]);
-    console.log(valuesTest2);
+    //console.log(valuesTest2);
     makeRedBorder("collectionAnchor1");
     let SwapShow = document.getElementById("makeSwitch");
     SwapShow.style.display = "inline-block";
     let resetShow = document.getElementById("reset");
     resetShow.style.display = "inline-block";
-
   } else {
   }
-
- 
 }
 
 function getValue2() {
@@ -1589,8 +1799,8 @@ function getValue2() {
     valuesTest1.push("collectionAnchor2");
     valuesTest1.push("1");
     valuesTest1.push(collection[1]);
-      console.log(valuesTest1);
-      makeRedBorder("collectionAnchor2");
+    //console.log(valuesTest1);
+    makeRedBorder("collectionAnchor2");
     //document.getElementById("card1Sel").style.backgroundColor="red";
     //document.body.style.backgroundColor="red";
     // btnColor.style.backgroundColor="red";
@@ -1599,38 +1809,33 @@ function getValue2() {
     valuesTest2.push("collectionAnchor2");
     valuesTest2.push("1");
     valuesTest2.push(collection[1]);
-      console.log(valuesTest2);
-      makeRedBorder("collectionAnchor2");
+    //console.log(valuesTest2);
+    makeRedBorder("collectionAnchor2");
     let SwapShow = document.getElementById("makeSwitch");
     SwapShow.style.display = "inline-block";
     let resetShow = document.getElementById("reset");
     resetShow.style.display = "inline-block";
-
   } else {
   }
-
 }
 
 function getValue3() {
-
   if (valuesTest1.length < 2) {
     valuesTest1.push("collectionAnchor3");
     valuesTest1.push("2");
     valuesTest1.push(collection[2]);
-        makeRedBorder("collectionAnchor3");
+    makeRedBorder("collectionAnchor3");
   } else if (valuesTest2.length < 2) {
     valuesTest2.push("collectionAnchor3");
     valuesTest2.push("2");
     valuesTest2.push(collection[2]);
-            makeRedBorder("collectionAnchor3");
-      let SwapShow = document.getElementById("makeSwitch");
-      SwapShow.style.display = "inline-block";
-      let resetShow = document.getElementById("reset");
-      resetShow.style.display = "inline-block";
+    makeRedBorder("collectionAnchor3");
+    let SwapShow = document.getElementById("makeSwitch");
+    SwapShow.style.display = "inline-block";
+    let resetShow = document.getElementById("reset");
+    resetShow.style.display = "inline-block";
   } else {
   }
-
- 
 }
 
 function getValue4() {
@@ -1638,19 +1843,18 @@ function getValue4() {
     valuesTest1.push("collectionAnchor4");
     valuesTest1.push("3");
     valuesTest1.push(collection[3]);
-      makeRedBorder("collectionAnchor4");
+    makeRedBorder("collectionAnchor4");
   } else if (valuesTest2.length < 2) {
     valuesTest2.push("collectionAnchor4");
     valuesTest2.push("3");
     valuesTest2.push(collection[3]);
-          makeRedBorder("collectionAnchor4");
-        let SwapShow = document.getElementById("makeSwitch");
-        SwapShow.style.display = "inline-block";
-        let resetShow = document.getElementById("reset");
-        resetShow.style.display = "inline-block";
+    makeRedBorder("collectionAnchor4");
+    let SwapShow = document.getElementById("makeSwitch");
+    SwapShow.style.display = "inline-block";
+    let resetShow = document.getElementById("reset");
+    resetShow.style.display = "inline-block";
   } else {
   }
-
 }
 
 function getValue5() {
@@ -1658,20 +1862,18 @@ function getValue5() {
     valuesTest1.push("collectionAnchor5");
     valuesTest1.push("4");
     valuesTest1.push(collection[4]);
-      makeRedBorder("collectionAnchor5");
+    makeRedBorder("collectionAnchor5");
   } else if (valuesTest2.length < 2) {
     valuesTest2.push("collectionAnchor5");
     valuesTest2.push("4");
     valuesTest2.push(collection[4]);
-          makeRedBorder("collectionAnchor5");
-     let SwapShow = document.getElementById("makeSwitch");
-     SwapShow.style.display = "inline-block";
-     let resetShow = document.getElementById("reset");
-     resetShow.style.display = "inline-block";
+    makeRedBorder("collectionAnchor5");
+    let SwapShow = document.getElementById("makeSwitch");
+    SwapShow.style.display = "inline-block";
+    let resetShow = document.getElementById("reset");
+    resetShow.style.display = "inline-block";
   } else {
   }
-
-
 }
 
 function getValue6() {
@@ -1679,19 +1881,18 @@ function getValue6() {
     valuesTest1.push("collectionAnchor6");
     valuesTest1.push("5");
     valuesTest1.push(collection[5]);
-      makeRedBorder("collectionAnchor6");
+    makeRedBorder("collectionAnchor6");
   } else if (valuesTest2.length < 2) {
     valuesTest2.push("collectionAnchor6");
     valuesTest2.push("5");
     valuesTest2.push(collection[5]);
-          makeRedBorder("collectionAnchor6");
-      let SwapShow = document.getElementById("makeSwitch");
-      SwapShow.style.display = "inline-block";
-      let resetShow = document.getElementById("reset");
-      resetShow.style.display = "inline-block";
+    makeRedBorder("collectionAnchor6");
+    let SwapShow = document.getElementById("makeSwitch");
+    SwapShow.style.display = "inline-block";
+    let resetShow = document.getElementById("reset");
+    resetShow.style.display = "inline-block";
   } else {
   }
-
 }
 
 function getValue7() {
@@ -1699,19 +1900,18 @@ function getValue7() {
     valuesTest1.push("collectionAnchor7");
     valuesTest1.push("6");
     valuesTest1.push(collection[6]);
-          makeRedBorder("collectionAnchor7");
+    makeRedBorder("collectionAnchor7");
   } else if (valuesTest2.length < 2) {
     valuesTest2.push("collectionAnchor7");
     valuesTest2.push("6");
     valuesTest2.push(collection[6]);
-              makeRedBorder("collectionAnchor7");
+    makeRedBorder("collectionAnchor7");
     let SwapShow = document.getElementById("makeSwitch");
     SwapShow.style.display = "inline-block";
     let resetShow = document.getElementById("reset");
     resetShow.style.display = "inline-block";
   } else {
   }
-
 }
 
 function getValue8() {
@@ -1719,21 +1919,18 @@ function getValue8() {
     valuesTest1.push("collectionAnchor8");
     valuesTest1.push("7");
     valuesTest1.push(collection[7]);
-      makeRedBorder("collectionAnchor8");
-
+    makeRedBorder("collectionAnchor8");
   } else if (valuesTest2.length < 2) {
     valuesTest2.push("collectionAnchor8");
     valuesTest2.push("7");
     valuesTest2.push(collection[7]);
-          makeRedBorder("collectionAnchor8");
-      let SwapShow = document.getElementById("makeSwitch");
-      SwapShow.style.display = "inline-block";
-      let resetShow = document.getElementById("reset");
-      resetShow.style.display = "inline-block";
+    makeRedBorder("collectionAnchor8");
+    let SwapShow = document.getElementById("makeSwitch");
+    SwapShow.style.display = "inline-block";
+    let resetShow = document.getElementById("reset");
+    resetShow.style.display = "inline-block";
   } else {
   }
-
- 
 }
 
 function getValue9() {
@@ -1741,20 +1938,18 @@ function getValue9() {
     valuesTest1.push("collectionAnchor9");
     valuesTest1.push("8");
     valuesTest1.push(collection[8]);
-        makeRedBorder("collectionAnchor9");
+    makeRedBorder("collectionAnchor9");
   } else if (valuesTest2.length < 2) {
     valuesTest2.push("collectionAnchor9");
     valuesTest2.push("8");
     valuesTest2.push(collection[8]);
-            makeRedBorder("collectionAnchor9");
+    makeRedBorder("collectionAnchor9");
     let SwapShow = document.getElementById("makeSwitch");
     SwapShow.style.display = "inline-block";
     let resetShow = document.getElementById("reset");
     resetShow.style.display = "inline-block";
   } else {
   }
-
-  
 }
 
 function getValue10() {
@@ -1762,20 +1957,18 @@ function getValue10() {
     valuesTest1.push("collectionAnchor10");
     valuesTest1.push("9");
     valuesTest1.push(collection[9]);
-        makeRedBorder("collectionAnchor10");
+    makeRedBorder("collectionAnchor10");
   } else if (valuesTest2.length < 2) {
     valuesTest2.push("collectionAnchor10");
     valuesTest2.push("9");
     valuesTest2.push(collection[9]);
-         makeRedBorder("collectionAnchor10");
-      let SwapShow = document.getElementById("makeSwitch");
-      SwapShow.style.display = "inline-block";
-      let resetShow = document.getElementById("reset");
-      resetShow.style.display = "inline-block";
+    makeRedBorder("collectionAnchor10");
+    let SwapShow = document.getElementById("makeSwitch");
+    SwapShow.style.display = "inline-block";
+    let resetShow = document.getElementById("reset");
+    resetShow.style.display = "inline-block";
   } else {
   }
-
- 
 }
 
 function getValue11() {
@@ -1783,21 +1976,20 @@ function getValue11() {
     valuesTest1.push("collectionAnchor11");
     valuesTest1.push("10");
     valuesTest1.push(collection[10]);
-        makeRedBorder("collectionAnchor11");
+    makeRedBorder("collectionAnchor11");
   } else if (valuesTest2.length < 2) {
     valuesTest2.push("collectionAnchor11");
     valuesTest2.push("10");
     valuesTest2.push(collection[10]);
-        makeRedBorder("collectionAnchor11");
-     let SwapShow = document.getElementById("makeSwitch");
-     SwapShow.style.display = "inline-block";
-     let resetShow = document.getElementById("reset");
-     resetShow.style.display = "inline-block";
+    makeRedBorder("collectionAnchor11");
+    let SwapShow = document.getElementById("makeSwitch");
+    SwapShow.style.display = "inline-block";
+    let resetShow = document.getElementById("reset");
+    resetShow.style.display = "inline-block";
   } else {
   }
 
   if (valuesTest1.length > 1 && valuesTest1.length > 1) {
-   
   } else {
   }
 }
@@ -1807,19 +1999,18 @@ function getValue12() {
     valuesTest1.push("collectionAnchor12");
     valuesTest1.push("11");
     valuesTest1.push(collection[11]);
-        makeRedBorder("collectionAnchor12");
+    makeRedBorder("collectionAnchor12");
   } else if (valuesTest2.length < 2) {
     valuesTest2.push("collectionAnchor12");
     valuesTest2.push("11");
     valuesTest2.push(collection[11]);
-          makeRedBorder("collectionAnchor12");
-     let SwapShow = document.getElementById("makeSwitch");
-     SwapShow.style.display = "inline-block";
-     let resetShow = document.getElementById("reset");
-     resetShow.style.display = "inline-block";
+    makeRedBorder("collectionAnchor12");
+    let SwapShow = document.getElementById("makeSwitch");
+    SwapShow.style.display = "inline-block";
+    let resetShow = document.getElementById("reset");
+    resetShow.style.display = "inline-block";
   } else {
   }
-
 }
 
 function getValue13() {
@@ -1827,12 +2018,12 @@ function getValue13() {
     valuesTest1.push("collectionAnchor13");
     valuesTest1.push("12");
     valuesTest1.push(collection[12]);
-        makeRedBorder("collectionAnchor13");
+    makeRedBorder("collectionAnchor13");
   } else if (valuesTest2.length < 2) {
     valuesTest2.push("collectionAnchor13");
     valuesTest2.push("12");
     valuesTest2.push(collection[12]);
-          makeRedBorder("collectionAnchor13");
+    makeRedBorder("collectionAnchor13");
     let SwapShow = document.getElementById("makeSwitch");
     SwapShow.style.display = "inline-block";
     let resetShow = document.getElementById("reset");
@@ -1846,19 +2037,18 @@ function getValue14() {
     valuesTest1.push("collectionAnchor14");
     valuesTest1.push("13");
     valuesTest1.push(collection[13]);
-        makeRedBorder("collectionAnchor14");
+    makeRedBorder("collectionAnchor14");
   } else if (valuesTest2.length < 2) {
     valuesTest2.push("collectionAnchor14");
     valuesTest2.push("13");
     valuesTest2.push(collection[13]);
-            makeRedBorder("collectionAnchor14");
-        let SwapShow = document.getElementById("makeSwitch");
-        SwapShow.style.display = "inline-block";
-        let resetShow = document.getElementById("reset");
-        resetShow.style.display = "inline-block";
+    makeRedBorder("collectionAnchor14");
+    let SwapShow = document.getElementById("makeSwitch");
+    SwapShow.style.display = "inline-block";
+    let resetShow = document.getElementById("reset");
+    resetShow.style.display = "inline-block";
   } else {
   }
-
 }
 
 function getValue15() {
@@ -1866,19 +2056,18 @@ function getValue15() {
     valuesTest1.push("collectionAnchor15");
     valuesTest1.push("14");
     valuesTest1.push(collection[14]);
-            makeRedBorder("collectionAnchor15");
+    makeRedBorder("collectionAnchor15");
   } else if (valuesTest2.length < 2) {
     valuesTest2.push("collectionAnchor15");
     valuesTest2.push("14");
     valuesTest2.push(collection[14]);
-            makeRedBorder("collectionAnchor15");
-      let SwapShow = document.getElementById("makeSwitch");
-      SwapShow.style.display = "inline-block";
-      let resetShow = document.getElementById("reset");
-      resetShow.style.display = "inline-block";
+    makeRedBorder("collectionAnchor15");
+    let SwapShow = document.getElementById("makeSwitch");
+    SwapShow.style.display = "inline-block";
+    let resetShow = document.getElementById("reset");
+    resetShow.style.display = "inline-block";
   } else {
   }
-
 }
 
 function getValue16() {
@@ -1886,20 +2075,19 @@ function getValue16() {
     valuesTest1.push("collectionAnchor16");
     valuesTest1.push("15");
     valuesTest1.push(collection[15]);
-            makeRedBorder("collectionAnchor16");
+    makeRedBorder("collectionAnchor16");
   } else if (valuesTest2.length < 2) {
     valuesTest2.push("collectionAnchor16");
     valuesTest2.push("15");
     valuesTest2.push(collection[15]);
-            makeRedBorder("collectionAnchor16");
+    makeRedBorder("collectionAnchor16");
 
-      let SwapShow = document.getElementById("makeSwitch");
-      SwapShow.style.display = "inline-block";
-      let resetShow = document.getElementById("reset");
-      resetShow.style.display = "inline-block";
+    let SwapShow = document.getElementById("makeSwitch");
+    SwapShow.style.display = "inline-block";
+    let resetShow = document.getElementById("reset");
+    resetShow.style.display = "inline-block";
   } else {
   }
-
 }
 
 function getValue17() {
@@ -1907,13 +2095,12 @@ function getValue17() {
     valuesTest1.push("collectionAnchor17");
     valuesTest1.push("16");
     valuesTest1.push(collection[16]);
-          makeRedBorder("collectionAnchor17");
-
+    makeRedBorder("collectionAnchor17");
   } else if (valuesTest2.length < 2) {
     valuesTest2.push("collectionAnchor17");
     valuesTest2.push("16");
     valuesTest2.push(collection[16]);
-          makeRedBorder("collectionAnchor17");
+    makeRedBorder("collectionAnchor17");
 
     let SwapShow = document.getElementById("makeSwitch");
     SwapShow.style.display = "inline-block";
@@ -1921,7 +2108,6 @@ function getValue17() {
     resetShow.style.display = "inline-block";
   } else {
   }
- 
 }
 
 function getValue18() {
@@ -1929,21 +2115,19 @@ function getValue18() {
     valuesTest1.push("collectionAnchor18");
     valuesTest1.push("17");
     valuesTest1.push(collection[17]);
-              makeRedBorder("collectionAnchor18");
-
+    makeRedBorder("collectionAnchor18");
   } else if (valuesTest2.length < 2) {
     valuesTest2.push("collectionAnchor18");
     valuesTest2.push("17");
     valuesTest2.push(collection[17]);
-                  makeRedBorder("collectionAnchor18");
+    makeRedBorder("collectionAnchor18");
 
-     let SwapShow = document.getElementById("makeSwitch");
-     SwapShow.style.display = "inline-block";
-     let resetShow = document.getElementById("reset");
-     resetShow.style.display = "inline-block";
+    let SwapShow = document.getElementById("makeSwitch");
+    SwapShow.style.display = "inline-block";
+    let resetShow = document.getElementById("reset");
+    resetShow.style.display = "inline-block";
   } else {
   }
- 
 }
 
 function getValue19() {
@@ -1951,98 +2135,88 @@ function getValue19() {
     valuesTest1.push("collectionAnchor19");
     valuesTest1.push("18");
     valuesTest1.push(collection[18]);
-                  makeRedBorder("collectionAnchor19");
-
+    makeRedBorder("collectionAnchor19");
   } else if (valuesTest2.length < 2) {
     valuesTest2.push("collectionAnchor19");
     valuesTest2.push("18");
     valuesTest2.push(collection[18]);
-                      makeRedBorder("collectionAnchor19");
+    makeRedBorder("collectionAnchor19");
 
-      let SwapShow = document.getElementById("makeSwitch");
-      SwapShow.style.display = "inline-block";
-      let resetShow = document.getElementById("reset");
-      resetShow.style.display = "inline-block";
+    let SwapShow = document.getElementById("makeSwitch");
+    SwapShow.style.display = "inline-block";
+    let resetShow = document.getElementById("reset");
+    resetShow.style.display = "inline-block";
   } else {
   }
- 
 }
 function getValue20() {
   if (valuesTest1.length < 2) {
     valuesTest1.push("collectionAnchor20");
     valuesTest1.push("19");
     valuesTest1.push(collection[19]);
-          makeRedBorder("collectionAnchor20");
-
+    makeRedBorder("collectionAnchor20");
   } else if (valuesTest2.length < 2) {
     valuesTest2.push("collectionAnchor20");
     valuesTest2.push("19");
     valuesTest2.push(collection[19]);
-          makeRedBorder("collectionAnchor20");
+    makeRedBorder("collectionAnchor20");
 
-     let SwapShow = document.getElementById("makeSwitch");
-     SwapShow.style.display = "inline-block";
-     let resetShow = document.getElementById("reset");
-     resetShow.style.display = "inline-block";
+    let SwapShow = document.getElementById("makeSwitch");
+    SwapShow.style.display = "inline-block";
+    let resetShow = document.getElementById("reset");
+    resetShow.style.display = "inline-block";
   } else {
   }
-  
 }
 function getValue21() {
   if (valuesTest1.length < 2) {
     valuesTest1.push("collectionAnchor21");
     valuesTest1.push("20");
     valuesTest1.push(collection[20]);
-              makeRedBorder("collectionAnchor21");
-
-    
+    makeRedBorder("collectionAnchor21");
   } else if (valuesTest2.length < 2) {
     valuesTest2.push("collectionAnchor21");
     valuesTest2.push("20");
     valuesTest2.push(collection[20]);
-                  makeRedBorder("collectionAnchor21");
+    makeRedBorder("collectionAnchor21");
 
-     let SwapShow = document.getElementById("makeSwitch");
-     SwapShow.style.display = "inline-block";
-     let resetShow = document.getElementById("reset");
-     resetShow.style.display = "inline-block";
+    let SwapShow = document.getElementById("makeSwitch");
+    SwapShow.style.display = "inline-block";
+    let resetShow = document.getElementById("reset");
+    resetShow.style.display = "inline-block";
   } else {
   }
-
 }
 function getValue22() {
   if (valuesTest1.length < 2) {
     valuesTest1.push("collectionAnchor22");
     valuesTest1.push("21");
     valuesTest1.push(collection[21]);
-          makeRedBorder("collectionAnchor22");
-
+    makeRedBorder("collectionAnchor22");
   } else if (valuesTest2.length < 2) {
     valuesTest2.push("collectionAnchor22");
     valuesTest2.push("21");
     valuesTest2.push(collection[21]);
-            makeRedBorder("collectionAnchor22");
+    makeRedBorder("collectionAnchor22");
 
-       let SwapShow = document.getElementById("makeSwitch");
-       SwapShow.style.display = "inline-block";
-       let resetShow = document.getElementById("reset");
-       resetShow.style.display = "inline-block";
+    let SwapShow = document.getElementById("makeSwitch");
+    SwapShow.style.display = "inline-block";
+    let resetShow = document.getElementById("reset");
+    resetShow.style.display = "inline-block";
   } else {
   }
- 
 }
 function getValue23() {
   if (valuesTest1.length < 2) {
     valuesTest1.push("collectionAnchor23");
     valuesTest1.push("22");
     valuesTest1.push(collection[22]);
-        makeRedBorder("collectionAnchor23");
-
+    makeRedBorder("collectionAnchor23");
   } else if (valuesTest2.length < 2) {
     valuesTest2.push("collectionAnchor23");
     valuesTest2.push("22");
     valuesTest2.push(collection[22]);
-        makeRedBorder("collectionAnchor23");
+    makeRedBorder("collectionAnchor23");
 
     let SwapShow = document.getElementById("makeSwitch");
     SwapShow.style.display = "inline-block";
@@ -2050,20 +2224,18 @@ function getValue23() {
     resetShow.style.display = "inline-block";
   } else {
   }
-
 }
 function getValue24() {
   if (valuesTest1.length < 2) {
     valuesTest1.push("collectionAnchor24");
     valuesTest1.push("23");
     valuesTest1.push(collection[23]);
-            makeRedBorder("collectionAnchor24");
-
+    makeRedBorder("collectionAnchor24");
   } else if (valuesTest2.length < 2) {
     valuesTest2.push("collectionAnchor24");
     valuesTest2.push("23");
     valuesTest2.push(collection[23]);
-            makeRedBorder("collectionAnchor24");
+    makeRedBorder("collectionAnchor24");
 
     let SwapShow = document.getElementById("makeSwitch");
     SwapShow.style.display = "inline-block";
@@ -2071,49 +2243,44 @@ function getValue24() {
     resetShow.style.display = "inline-block";
   } else {
   }
-  
 }
 function getValue25() {
   if (valuesTest1.length < 2) {
     valuesTest1.push("collectionAnchor25");
     valuesTest1.push("24");
     valuesTest1.push(collection[24]);
-         makeRedBorder("collectionAnchor25");
-
+    makeRedBorder("collectionAnchor25");
   } else if (valuesTest2.length < 2) {
     valuesTest2.push("collectionAnchor25");
     valuesTest2.push("24");
     valuesTest2.push(collection[24]);
-           makeRedBorder("collectionAnchor25");
+    makeRedBorder("collectionAnchor25");
 
-       let SwapShow = document.getElementById("makeSwitch");
-       SwapShow.style.display = "inline-block";
-       let resetShow = document.getElementById("reset");
-       resetShow.style.display = "inline-block";
+    let SwapShow = document.getElementById("makeSwitch");
+    SwapShow.style.display = "inline-block";
+    let resetShow = document.getElementById("reset");
+    resetShow.style.display = "inline-block";
   } else {
   }
-  
 }
 function getValue26() {
   if (valuesTest1.length < 2) {
     valuesTest1.push("collectionAnchor26");
     valuesTest1.push("25");
     valuesTest1.push(collection[25]);
-         makeRedBorder("collectionAnchor26");
-
+    makeRedBorder("collectionAnchor26");
   } else if (valuesTest2.length < 2) {
     valuesTest2.push("collectionAnchor26");
     valuesTest2.push("25");
     valuesTest2.push(collection[25]);
-          makeRedBorder("collectionAnchor26");
+    makeRedBorder("collectionAnchor26");
 
-     let SwapShow = document.getElementById("makeSwitch");
-     SwapShow.style.display = "inline-block";
-     let resetShow = document.getElementById("reset");
-     resetShow.style.display = "inline-block";
+    let SwapShow = document.getElementById("makeSwitch");
+    SwapShow.style.display = "inline-block";
+    let resetShow = document.getElementById("reset");
+    resetShow.style.display = "inline-block";
   } else {
   }
-
 }
 
 function getValue27() {
@@ -2121,21 +2288,19 @@ function getValue27() {
     valuesTest1.push("collectionAnchor27");
     valuesTest1.push("26");
     valuesTest1.push(collection[26]);
-           makeRedBorder("collectionAnchor27");
-
+    makeRedBorder("collectionAnchor27");
   } else if (valuesTest2.length < 2) {
     valuesTest2.push("collectionAnchor27");
     valuesTest2.push("26");
     valuesTest2.push(collection[26]);
-          makeRedBorder("collectionAnchor27");
+    makeRedBorder("collectionAnchor27");
 
-     let SwapShow = document.getElementById("makeSwitch");
-     SwapShow.style.display = "inline-block";
-     let resetShow = document.getElementById("reset");
-     resetShow.style.display = "inline-block";
+    let SwapShow = document.getElementById("makeSwitch");
+    SwapShow.style.display = "inline-block";
+    let resetShow = document.getElementById("reset");
+    resetShow.style.display = "inline-block";
   } else {
   }
-
 }
 
 function getValue28() {
@@ -2143,18 +2308,17 @@ function getValue28() {
     valuesTest1.push("collectionAnchor28");
     valuesTest1.push("27");
     valuesTest1.push(collection[27]);
-          makeRedBorder("collectionAnchor28");
-
+    makeRedBorder("collectionAnchor28");
   } else if (valuesTest2.length < 2) {
     valuesTest2.push("collectionAnchor28");
     valuesTest2.push("27");
     valuesTest2.push(collection[27]);
-           makeRedBorder("collectionAnchor28");
+    makeRedBorder("collectionAnchor28");
 
-      let SwapShow = document.getElementById("makeSwitch");
-      SwapShow.style.display = "inline-block";
-      let resetShow = document.getElementById("reset");
-      resetShow.style.display = "inline-block";
+    let SwapShow = document.getElementById("makeSwitch");
+    SwapShow.style.display = "inline-block";
+    let resetShow = document.getElementById("reset");
+    resetShow.style.display = "inline-block";
   } else {
   }
 }
@@ -2164,13 +2328,12 @@ function getValue29() {
     valuesTest1.push("collectionAnchor29");
     valuesTest1.push("28");
     valuesTest1.push(collection[28]);
-         makeRedBorder("collectionAnchor29");
-
+    makeRedBorder("collectionAnchor29");
   } else if (valuesTest2.length < 2) {
     valuesTest2.push("collectionAnchor29");
     valuesTest2.push("28");
     valuesTest2.push(collection[28]);
-        makeRedBorder("collectionAnchor29");
+    makeRedBorder("collectionAnchor29");
 
     let SwapShow = document.getElementById("makeSwitch");
     SwapShow.style.display = "inline-block";
@@ -2185,13 +2348,12 @@ function getValue30() {
     valuesTest1.push("collectionAnchor30");
     valuesTest1.push("29");
     valuesTest1.push(collection[29]);
-        makeRedBorder("collectionAnchor30");
-
+    makeRedBorder("collectionAnchor30");
   } else if (valuesTest2.length < 2) {
     valuesTest2.push("collectionAnchor30");
     valuesTest2.push("29");
     valuesTest2.push(collection[29]);
-        makeRedBorder("collectionAnchor30");
+    makeRedBorder("collectionAnchor30");
 
     let SwapShow = document.getElementById("makeSwitch");
     SwapShow.style.display = "inline-block";
@@ -2202,22 +2364,20 @@ function getValue30() {
 }
 
 function makeSwitchCards() {
-  console.log(collection);
-  console.log("this is values test 1");
-  console.log(valuesTest1);
-  console.log("this is values test 2");
-  console.log(valuesTest2)
+  //console.log(collection);
+  //console.log("this is values test 1");
+  //console.log(valuesTest1);
+  //console.log("this is values test 2");
+  //console.log(valuesTest2)
   makeDarkGreenBorder(valuesTest1[0]);
   makeDarkGreenBorder(valuesTest2[0]);
   takeAway();
   switchAdd();
   switchCollection();
   resetSwap();
-  
 }
 
 function takeAway() {
-  
   if (valuesTest1[0] === valuesTest2[0]) {
   } else {
     newSwitchA = document.getElementById(valuesTest1[0]);
@@ -2225,12 +2385,10 @@ function takeAway() {
     newSwitchB = document.getElementById(valuesTest2[0]);
     newSwitchB.removeChild(newSwitchB.firstChild);
   }
-
 }
 
 function switchAdd() {
   if (valuesTest1[0] === valuesTest2[0]) {
-    
   } else {
     let addVar = document.getElementById(valuesTest1[0]);
     let newSwitchAdd1 = document.createElement("img");
@@ -2245,7 +2403,6 @@ function switchAdd() {
 }
 
 function switchCollection() {
-
   if (valuesTest1 === valuesTest2) {
   } else {
     let temp = collection[valuesTest2[1]];
@@ -2255,8 +2412,8 @@ function switchCollection() {
 }
 
 function resetSwap() {
-    makeDarkGreenBorder(valuesTest1[0]);
-    makeDarkGreenBorder(valuesTest2[0]);
+  makeDarkGreenBorder(valuesTest1[0]);
+  makeDarkGreenBorder(valuesTest2[0]);
   valuesTest1.pop();
   valuesTest1.pop();
   valuesTest1.pop();
@@ -2269,46 +2426,47 @@ function resetSwap() {
   takeAway2.style.display = "none";
 }
 
-
+/////////////// functions to make confirmation switch  //////////////////////////////////
 
 function goToConfirmation() {
-   let handTakeAway = document.getElementById("handAnchor1");
-    while (handTakeAway.firstChild) {
-      handTakeAway.removeChild(handTakeAway.firstChild);
-    }
+  let handTakeAway = document.getElementById("handAnchor1");
+  while (handTakeAway.firstChild) {
+    handTakeAway.removeChild(handTakeAway.firstChild);
+  }
 
-     let handTakeAway2 = document.getElementById("handAnchor2");
-     while (handTakeAway2.firstChild) {
-       handTakeAway2.removeChild(handTakeAway2.firstChild);
-     }
+  let handTakeAway2 = document.getElementById("handAnchor2");
+  while (handTakeAway2.firstChild) {
+    handTakeAway2.removeChild(handTakeAway2.firstChild);
+  }
 
-      let handTakeAway3 = document.getElementById("handAnchor3");
-      while (handTakeAway3.firstChild) {
-        handTakeAway3.removeChild(handTakeAway3.firstChild);
-      }
+  let handTakeAway3 = document.getElementById("handAnchor3");
+  while (handTakeAway3.firstChild) {
+    handTakeAway3.removeChild(handTakeAway3.firstChild);
+  }
 
-      let handTakeAway4 = document.getElementById("handAnchor4");
-      while (handTakeAway4.firstChild) {
-        handTakeAway4.removeChild(handTakeAway4.firstChild);
-      }
+  let handTakeAway4 = document.getElementById("handAnchor4");
+  while (handTakeAway4.firstChild) {
+    handTakeAway4.removeChild(handTakeAway4.firstChild);
+  }
 
-      let handTakeAway5 = document.getElementById("handAnchor5");
-      while (handTakeAway5.firstChild) {
-        handTakeAway5.removeChild(handTakeAway5.firstChild);
-      }
-   let roundHandTakeAway = document.getElementById("round");
-   while (roundHandTakeAway.firstChild) {
-     roundHandTakeAway.removeChild(roundHandTakeAway.firstChild);
-   }
+  let handTakeAway5 = document.getElementById("handAnchor5");
+  while (handTakeAway5.firstChild) {
+    handTakeAway5.removeChild(handTakeAway5.firstChild);
+  }
+  let roundHandTakeAway = document.getElementById("round");
+  while (roundHandTakeAway.firstChild) {
+    roundHandTakeAway.removeChild(roundHandTakeAway.firstChild);
+  }
 
-   let scoreShowLabel = document.getElementById("scoreLabel");
-   scoreShowLabel.style.display = "inline-block";
+  let scoreShowLabel = document.getElementById("scoreLabel");
+  scoreShowLabel.style.display = "inline-block";
 
-   let scoreShow = document.getElementById("score");
-   scoreShow.style.display = "inline-block";
+  let scoreShow = document.getElementById("score");
+  scoreShow.style.display = "inline-block";
 
-   
-  document.getElementById("collectionAnchor1").removeEventListener("click", getValue1);
+  document
+    .getElementById("collectionAnchor1")
+    .removeEventListener("click", getValue1);
   document
     .getElementById("collectionAnchor2")
     .removeEventListener("click", getValue2);
@@ -2390,24 +2548,21 @@ function goToConfirmation() {
   document
     .getElementById("collectionAnchor28")
     .removeEventListener("click", getValue28);
-     document
-       .getElementById("collectionAnchor29")
-       .removeEventListener("click", getValue29);
-     document
-       .getElementById("collectionAnchor30")
-       .removeEventListener("click", getValue30);
-
+  document
+    .getElementById("collectionAnchor29")
+    .removeEventListener("click", getValue29);
+  document
+    .getElementById("collectionAnchor30")
+    .removeEventListener("click", getValue30);
 
   let hideConfirm = document.getElementById("confirmButton");
   hideConfirm.style.display = "none";
 
-     let hideBack = document.getElementById("handBackground");
-     hideBack.style.display = "none";
-
+  let hideBack = document.getElementById("handBackground");
+  hideBack.style.display = "none";
 
   let F1Show = document.getElementById("FinalEvaluation");
   F1Show.style.display = "inline-block";
-
 
   let Add = document.getElementById("AddItUp");
   Add.style.display = "inline-block";
@@ -2417,54 +2572,66 @@ function goToConfirmation() {
   evaluateSet1.push(collection[2]);
   evaluateSet1.push(collection[3]);
   evaluateSet1.push(collection[4]);
-  console.log(evaluateSet1);
+  //console.log(evaluateSet1);
 
   evaluateSet2.push(collection[5]);
   evaluateSet2.push(collection[6]);
   evaluateSet2.push(collection[7]);
   evaluateSet2.push(collection[8]);
   evaluateSet2.push(collection[9]);
-  console.log(evaluateSet2);
+  //console.log(evaluateSet2);
 
   evaluateSet3.push(collection[10]);
   evaluateSet3.push(collection[11]);
   evaluateSet3.push(collection[12]);
   evaluateSet3.push(collection[13]);
   evaluateSet3.push(collection[14]);
-  console.log(evaluateSet3);
+  //console.log(evaluateSet3);
 
   evaluateSet4.push(collection[15]);
   evaluateSet4.push(collection[16]);
   evaluateSet4.push(collection[17]);
   evaluateSet4.push(collection[18]);
   evaluateSet4.push(collection[19]);
-  console.log(evaluateSet4);
+  //console.log(evaluateSet4);
 
   evaluateSet5.push(collection[20]);
   evaluateSet5.push(collection[21]);
   evaluateSet5.push(collection[22]);
   evaluateSet5.push(collection[23]);
   evaluateSet5.push(collection[24]);
-  console.log(evaluateSet5);
+  //console.log(evaluateSet5);
 
   evaluateSet6.push(collection[25]);
   evaluateSet6.push(collection[26]);
   evaluateSet6.push(collection[27]);
   evaluateSet6.push(collection[28]);
   evaluateSet6.push(collection[29]);
-console.log(evaluateSet)
+  //console.log(evaluateSet6)
 
+  isItACocktail(handChoices15);
+  //console.log("bonusScore");
 
+  //console.log(bonusScore);
+  //console.log("cocktailNegativeScore");
+  //console.log(cocktailNegativeScore);
+
+  //console.log("cocktailPositiveScore");
+  //console.log(cocktailPositiveScore);
 }
 
+/////////////// functions to evaluate cards in your collection  //////////////////////////////////
+
 function evaluateAllSets() {
-  OneSetEvaluate(); 
+  OneSetEvaluate();
   TwoSetEvaluate();
   ThreeSetEvaluate();
   FourSetEvaluate();
   FiveSetEvaluate();
-    SixSetEvaluate();
+  SixSetEvaluate();
 
+  let F1Show = document.getElementById("FinalEvaluation");
+  F1Show.style.display = "none";
 }
 
 function OneSetEvaluate() {
@@ -2637,36 +2804,35 @@ function OneSetEvaluate() {
   //CheckVF = [];
 
   let Royal = [];
-    if (evaluateSet1[0].value === 10) {
-      Royal.push("success");
-    } else {
-    }
+  if (evaluateSet1[0].value === 10) {
+    Royal.push("success");
+  } else {
+  }
 
-    if (evaluateSet1[1].value === 11) {
-      Royal.push("success");
-    } else {
-    }
+  if (evaluateSet1[1].value === 11) {
+    Royal.push("success");
+  } else {
+  }
 
-    if (evaluateSet1[2].value === 12) {
-      Royal.push("success");
-    } else {
-    }
+  if (evaluateSet1[2].value === 12) {
+    Royal.push("success");
+  } else {
+  }
 
-    if (evaluateSet1[3].value === 13) {
-      Royal.push("success");
-    } else {
-    }
+  if (evaluateSet1[3].value === 13) {
+    Royal.push("success");
+  } else {
+  }
 
-    if (evaluateSet1[4].value === 14) {
-      Royal.push("success");
-    } else {
-    }
+  if (evaluateSet1[4].value === 14) {
+    Royal.push("success");
+  } else {
+  }
 
-    if (Royal.length === 5) {
-      Royal1.push("Royal");
-    } else {
-    }
-  
+  if (Royal.length === 5) {
+    Royal1.push("Royal");
+  } else {
+  }
 
   if (
     evaluateSet1[1].value === evaluateSet1[0].value + 1 &&
@@ -2678,9 +2844,9 @@ function OneSetEvaluate() {
   } else {
   }
 
-  console.log("Pair1");
+  //console.log("Pair1");
 
-  console.log(Pair1);
+  //console.log(Pair1);
 }
 
 function TwoSetEvaluate() {
@@ -2691,7 +2857,7 @@ function TwoSetEvaluate() {
   } else {
   }
 
- let CheckDiamonds = evaluateSet2.filter((item) => item.suit === "Diamonds");
+  let CheckDiamonds = evaluateSet2.filter((item) => item.suit === "Diamonds");
   if (CheckDiamonds.length === 5) {
     Flush2.push("Flush");
   } else {
@@ -2854,36 +3020,35 @@ function TwoSetEvaluate() {
   //CheckVF = [];
 
   let Royal = [];
-    if (evaluateSet2[0].value === 10) {
-      Royal.push("success");
-    } else {
-    }
+  if (evaluateSet2[0].value === 10) {
+    Royal.push("success");
+  } else {
+  }
 
-    if (evaluateSet2[1].value === 11) {
-      Royal.push("success");
-    } else {
-    }
+  if (evaluateSet2[1].value === 11) {
+    Royal.push("success");
+  } else {
+  }
 
-    if (evaluateSet2[2].value === 12) {
-      Royal.push("success");
-    } else {
-    }
+  if (evaluateSet2[2].value === 12) {
+    Royal.push("success");
+  } else {
+  }
 
-    if (evaluateSet2[3].value === 13) {
-      Royal.push("success");
-    } else {
-    }
+  if (evaluateSet2[3].value === 13) {
+    Royal.push("success");
+  } else {
+  }
 
-    if (evaluateSet2[4].value === 14) {
-      Royal.push("success");
-    } else {
-    }
-    
-    if (Royal.length === 5) {
-      Royal2.push("Royal");
-    } else {
-    }
-  
+  if (evaluateSet2[4].value === 14) {
+    Royal.push("success");
+  } else {
+  }
+
+  if (Royal.length === 5) {
+    Royal2.push("Royal");
+  } else {
+  }
 
   if (
     evaluateSet2[1].value === evaluateSet2[0].value + 1 &&
@@ -2894,18 +3059,18 @@ function TwoSetEvaluate() {
     Straight2.push("Straight");
   } else {
   }
-  console.log("222222");
-  console.log(Flush2);
+  //console.log("222222");
+  //console.log(Flush2);
 }
 
 function ThreeSetEvaluate() {
   //let flushSuccess=[];
- let CheckClubs = evaluateSet3.filter((item) => item.suit === "Clubs");
+  let CheckClubs = evaluateSet3.filter((item) => item.suit === "Clubs");
   if (CheckClubs.length === 5) {
     Flush3.push("Flush");
   }
 
- let CheckDiamonds = evaluateSet3.filter((item) => item.suit === "Diamonds");
+  let CheckDiamonds = evaluateSet3.filter((item) => item.suit === "Diamonds");
   if (CheckDiamonds.length === 5) {
     Flush3.push("Flush");
   }
@@ -2915,22 +3080,22 @@ function ThreeSetEvaluate() {
     Flush3.push("Flush");
   }
 
- let CheckHearts = evaluateSet3.filter((item) => item.suit === "Hearts");
+  let CheckHearts = evaluateSet3.filter((item) => item.suit === "Hearts");
   if (CheckHearts.length === 5) {
     Flush3.push("Flush");
   }
 
- let CheckSwords = evaluateSet3.filter((item) => item.suit === "Swords");
+  let CheckSwords = evaluateSet3.filter((item) => item.suit === "Swords");
   if (CheckSwords.length === 5) {
     Flush3.push("Flush");
   }
 
- let CheckSkulls = evaluateSet3.filter((item) => item.suit === "Skulls");
+  let CheckSkulls = evaluateSet3.filter((item) => item.suit === "Skulls");
   if (CheckSkulls.length === 5) {
     Flush3.push("Flush");
   }
 
- let Check2 = evaluateSet3.filter((item) => item.value === 2);
+  let Check2 = evaluateSet3.filter((item) => item.value === 2);
   if (Check2.length === 2) {
     Pair3.push("Pair1");
   } else if (Check2.length === 3) {
@@ -2940,7 +3105,7 @@ function ThreeSetEvaluate() {
   } else {
   }
 
- let Check3 = evaluateSet3.filter((item) => item.value === 3);
+  let Check3 = evaluateSet3.filter((item) => item.value === 3);
   if (Check3.length === 2) {
     Pair3.push("Pair1");
   } else if (Check3.length === 3) {
@@ -2950,7 +3115,7 @@ function ThreeSetEvaluate() {
   } else {
   }
 
- let Check4 = evaluateSet3.filter((item) => item.value === 4);
+  let Check4 = evaluateSet3.filter((item) => item.value === 4);
   if (Check4.length === 2) {
     Pair3.push("Pair1");
   } else if (Check4.length === 3) {
@@ -2960,7 +3125,7 @@ function ThreeSetEvaluate() {
   } else {
   }
 
- let Check5 = evaluateSet3.filter((item) => item.value === 5);
+  let Check5 = evaluateSet3.filter((item) => item.value === 5);
   if (Check5.length === 2) {
     Pair3.push("Pair1");
   } else if (Check5.length === 3) {
@@ -2970,7 +3135,7 @@ function ThreeSetEvaluate() {
   } else {
   }
 
- let Check6 = evaluateSet3.filter((item) => item.value === 6);
+  let Check6 = evaluateSet3.filter((item) => item.value === 6);
   if (Check6.length === 2) {
     Pair3.push("Pair1");
   } else if (Check6.length === 3) {
@@ -2980,7 +3145,7 @@ function ThreeSetEvaluate() {
   } else {
   }
 
- let Check7 = evaluateSet3.filter((item) => item.value === 7);
+  let Check7 = evaluateSet3.filter((item) => item.value === 7);
   if (Check7.length === 2) {
     Pair3.push("Pair1");
   } else if (Check7.length === 3) {
@@ -2990,7 +3155,7 @@ function ThreeSetEvaluate() {
   } else {
   }
 
- let Check8 = evaluateSet3.filter((item) => item.value === 8);
+  let Check8 = evaluateSet3.filter((item) => item.value === 8);
   if (Check8.length === 2) {
     Pair3.push("Pair1");
   } else if (Check8.length === 3) {
@@ -3000,7 +3165,7 @@ function ThreeSetEvaluate() {
   } else {
   }
 
- let Check9 = evaluateSet3.filter((item) => item.value === 9);
+  let Check9 = evaluateSet3.filter((item) => item.value === 9);
   if (Check9.length === 2) {
     Pair3.push("Pair1");
   } else if (Check9.length === 3) {
@@ -3010,7 +3175,7 @@ function ThreeSetEvaluate() {
   } else {
   }
 
- let Check10 = evaluateSet3.filter((item) => item.value === 10);
+  let Check10 = evaluateSet3.filter((item) => item.value === 10);
   if (Check10.length === 2) {
     Pair3.push("Pair1");
   } else if (Check10.length === 3) {
@@ -3020,7 +3185,7 @@ function ThreeSetEvaluate() {
   } else {
   }
 
- let Check11 = evaluateSet3.filter((item) => item.value === 11);
+  let Check11 = evaluateSet3.filter((item) => item.value === 11);
   if (Check11.length === 2) {
     Pair3.push("Pair1");
   } else if (Check11.length === 3) {
@@ -3030,7 +3195,7 @@ function ThreeSetEvaluate() {
   } else {
   }
 
- let Check12 = evaluateSet3.filter((item) => item.value === 12);
+  let Check12 = evaluateSet3.filter((item) => item.value === 12);
   if (Check12.length === 2) {
     Pair3.push("Pair1");
   } else if (Check12.length === 3) {
@@ -3040,7 +3205,7 @@ function ThreeSetEvaluate() {
   } else {
   }
 
- let Check13 = evaluateSet3.filter((item) => item.value === 13);
+  let Check13 = evaluateSet3.filter((item) => item.value === 13);
   if (Check13.length === 2) {
     Pair3.push("Pair1");
   } else if (Check13.length === 3) {
@@ -3050,7 +3215,7 @@ function ThreeSetEvaluate() {
   } else {
   }
 
- let Check14 = evaluateSet3.filter((item) => item.value === 14);
+  let Check14 = evaluateSet3.filter((item) => item.value === 14);
   if (Check14.length === 2) {
     Pair3.push("Pair1");
   } else if (Check14.length === 3) {
@@ -3060,39 +3225,38 @@ function ThreeSetEvaluate() {
   } else {
   }
 
- // CheckVF = [];
+  // CheckVF = [];
 
   let Royal = [];
-    if (evaluateSet3[0].value === 10) {
-      Royal.push("success");
-    } else {
-    }
+  if (evaluateSet3[0].value === 10) {
+    Royal.push("success");
+  } else {
+  }
 
-    if (evaluateSet3[1].value === 11) {
-      Royal.push("success");
-    } else {
-    }
+  if (evaluateSet3[1].value === 11) {
+    Royal.push("success");
+  } else {
+  }
 
-    if (evaluateSet3[2].value === 12) {
-      Royal.push("success");
-    } else {
-    }
+  if (evaluateSet3[2].value === 12) {
+    Royal.push("success");
+  } else {
+  }
 
-    if (evaluateSet3[3].value === 13) {
-      Royal.push("success");
-    } else {
-    }
+  if (evaluateSet3[3].value === 13) {
+    Royal.push("success");
+  } else {
+  }
 
-    if (evaluateSet3[4].value === 14) {
-      Royal.push("success");
-    } else {
-    }
+  if (evaluateSet3[4].value === 14) {
+    Royal.push("success");
+  } else {
+  }
 
-    if (Royal.length === 5) {
-      Royal3.push("Royal");
-    } else {
-    }
-  
+  if (Royal.length === 5) {
+    Royal3.push("Royal");
+  } else {
+  }
 
   if (
     evaluateSet3[1].value === evaluateSet3[0].value + 1 &&
@@ -3104,43 +3268,43 @@ function ThreeSetEvaluate() {
   } else {
   }
 
-  console.log("3333333333");
-  console.log(Pair3);
+  //console.log("3333333333");
+  //console.log(Pair3);
 }
 
 function FourSetEvaluate() {
   //let flushSuccess=[];
- let CheckClubs = evaluateSet4.filter((item) => item.suit === "Clubs");
+  let CheckClubs = evaluateSet4.filter((item) => item.suit === "Clubs");
   if (CheckClubs.length === 5) {
     Flush4.push("Flush");
   }
 
- let CheckDiamonds = evaluateSet4.filter((item) => item.suit === "Diamonds");
+  let CheckDiamonds = evaluateSet4.filter((item) => item.suit === "Diamonds");
   if (CheckDiamonds.length === 5) {
     Flush4.push("Flush");
   }
 
- let CheckSpades = evaluateSet4.filter((item) => item.suit === "Spades");
+  let CheckSpades = evaluateSet4.filter((item) => item.suit === "Spades");
   if (CheckSpades.length === 5) {
     Flush4.push("Flush");
   }
 
- let CheckHearts = evaluateSet4.filter((item) => item.suit === "Hearts");
+  let CheckHearts = evaluateSet4.filter((item) => item.suit === "Hearts");
   if (CheckHearts.length === 5) {
     Flush4.push("Flush");
   }
 
- let CheckSwords = evaluateSet4.filter((item) => item.suit === "Swords");
+  let CheckSwords = evaluateSet4.filter((item) => item.suit === "Swords");
   if (CheckSwords.length === 5) {
     Flush4.push("Flush");
   }
 
- let CheckSkulls = evaluateSet4.filter((item) => item.suit === "Skulls");
+  let CheckSkulls = evaluateSet4.filter((item) => item.suit === "Skulls");
   if (CheckSkulls.length === 5) {
     Flush4.push("Flush");
   }
 
- let Check2 = evaluateSet4.filter((item) => item.value === 2);
+  let Check2 = evaluateSet4.filter((item) => item.value === 2);
   if (Check2.length === 2) {
     Pair4.push("Pair1");
   } else if (Check2.length === 3) {
@@ -3150,7 +3314,7 @@ function FourSetEvaluate() {
   } else {
   }
 
- let Check3 = evaluateSet4.filter((item) => item.value === 3);
+  let Check3 = evaluateSet4.filter((item) => item.value === 3);
   if (Check3.length === 2) {
     Pair4.push("Pair1");
   } else if (Check3.length === 3) {
@@ -3160,7 +3324,7 @@ function FourSetEvaluate() {
   } else {
   }
 
- let Check4 = evaluateSet4.filter((item) => item.value === 4);
+  let Check4 = evaluateSet4.filter((item) => item.value === 4);
   if (Check4.length === 2) {
     Pair4.push("Pair1");
   } else if (Check4.length === 3) {
@@ -3170,7 +3334,7 @@ function FourSetEvaluate() {
   } else {
   }
 
- let Check5 = evaluateSet4.filter((item) => item.value === 5);
+  let Check5 = evaluateSet4.filter((item) => item.value === 5);
   if (Check5.length === 2) {
     Pair4.push("Pair1");
   } else if (Check5.length === 3) {
@@ -3180,7 +3344,7 @@ function FourSetEvaluate() {
   } else {
   }
 
- let Check6 = evaluateSet4.filter((item) => item.value === 6);
+  let Check6 = evaluateSet4.filter((item) => item.value === 6);
   if (Check6.length === 2) {
     Pair4.push("Pair1");
   } else if (Check6.length === 3) {
@@ -3190,7 +3354,7 @@ function FourSetEvaluate() {
   } else {
   }
 
-let Check7 = evaluateSet4.filter((item) => item.value === 7);
+  let Check7 = evaluateSet4.filter((item) => item.value === 7);
   if (Check7.length === 2) {
     Pair4.push("Pair1");
   } else if (Check7.length === 3) {
@@ -3200,7 +3364,7 @@ let Check7 = evaluateSet4.filter((item) => item.value === 7);
   } else {
   }
 
- let Check8 = evaluateSet4.filter((item) => item.value === 8);
+  let Check8 = evaluateSet4.filter((item) => item.value === 8);
   if (Check8.length === 2) {
     Pair4.push("Pair1");
   } else if (Check8.length === 3) {
@@ -3210,7 +3374,7 @@ let Check7 = evaluateSet4.filter((item) => item.value === 7);
   } else {
   }
 
- let Check9 = evaluateSet4.filter((item) => item.value === 9);
+  let Check9 = evaluateSet4.filter((item) => item.value === 9);
   if (Check9.length === 2) {
     Pair4.push("Pair1");
   } else if (Check9.length === 3) {
@@ -3220,7 +3384,7 @@ let Check7 = evaluateSet4.filter((item) => item.value === 7);
   } else {
   }
 
- let Check10 = evaluateSet4.filter((item) => item.value === 10);
+  let Check10 = evaluateSet4.filter((item) => item.value === 10);
   if (Check10.length === 2) {
     Pair4.push("Pair1");
   } else if (Check10.length === 3) {
@@ -3230,7 +3394,7 @@ let Check7 = evaluateSet4.filter((item) => item.value === 7);
   } else {
   }
 
- let Check11 = evaluateSet4.filter((item) => item.value === 11);
+  let Check11 = evaluateSet4.filter((item) => item.value === 11);
   if (Check11.length === 2) {
     Pair4.push("Pair1");
   } else if (Check11.length === 3) {
@@ -3240,7 +3404,7 @@ let Check7 = evaluateSet4.filter((item) => item.value === 7);
   } else {
   }
 
- let Check12 = evaluateSet4.filter((item) => item.value === 12);
+  let Check12 = evaluateSet4.filter((item) => item.value === 12);
   if (Check12.length === 2) {
     Pair4.push("Pair1");
   } else if (Check12.length === 3) {
@@ -3250,7 +3414,7 @@ let Check7 = evaluateSet4.filter((item) => item.value === 7);
   } else {
   }
 
- let Check13 = evaluateSet4.filter((item) => item.value === 13);
+  let Check13 = evaluateSet4.filter((item) => item.value === 13);
   if (Check13.length === 2) {
     Pair4.push("Pair1");
   } else if (Check13.length === 3) {
@@ -3260,7 +3424,7 @@ let Check7 = evaluateSet4.filter((item) => item.value === 7);
   } else {
   }
 
- let Check14 = evaluateSet4.filter((item) => item.value === 14);
+  let Check14 = evaluateSet4.filter((item) => item.value === 14);
   if (Check14.length === 2) {
     Pair4.push("Pair1");
   } else if (Check14.length === 3) {
@@ -3273,37 +3437,36 @@ let Check7 = evaluateSet4.filter((item) => item.value === 7);
   //CheckVF = [];
 
   let Royal = [];
-  
-    if (evaluateSet4[0].value === 10) {
-      Royal.push("success");
-    } else {
-    }
 
-    if (evaluateSet4[1].value === 11) {
-      Royal.push("success");
-    } else {
-    }
+  if (evaluateSet4[0].value === 10) {
+    Royal.push("success");
+  } else {
+  }
 
-    if (evaluateSet4[2].value === 12) {
-      Royal.push("success");
-    } else {
-    }
+  if (evaluateSet4[1].value === 11) {
+    Royal.push("success");
+  } else {
+  }
 
-    if (evaluateSet4[3].value === 13) {
-      Royal.push("success");
-    } else {
-    }
+  if (evaluateSet4[2].value === 12) {
+    Royal.push("success");
+  } else {
+  }
 
-    if (evaluateSet4[4].value === 14) {
-      Royal.push("success");
-    } else {
-    }
+  if (evaluateSet4[3].value === 13) {
+    Royal.push("success");
+  } else {
+  }
 
-    if (Royal.length === 5) {
-      Royal4.push("Royal");
-    } else {
-    }
-  
+  if (evaluateSet4[4].value === 14) {
+    Royal.push("success");
+  } else {
+  }
+
+  if (Royal.length === 5) {
+    Royal4.push("Royal");
+  } else {
+  }
 
   if (
     evaluateSet4[1].value === evaluateSet4[0].value + 1 &&
@@ -3315,43 +3478,43 @@ let Check7 = evaluateSet4.filter((item) => item.value === 7);
   } else {
   }
 
-  console.log("44444444");
-  console.log(Pair4);
+  //console.log("44444444");
+  //console.log(Pair4);
 }
 
 function FiveSetEvaluate() {
   //let flushSuccess=[];
- let CheckClubs = evaluateSet5.filter((item) => item.suit === "Clubs");
+  let CheckClubs = evaluateSet5.filter((item) => item.suit === "Clubs");
   if (CheckClubs.length === 5) {
     Flush5.push("Flush");
   }
 
- let CheckDiamonds = evaluateSet5.filter((item) => item.suit === "Diamonds");
+  let CheckDiamonds = evaluateSet5.filter((item) => item.suit === "Diamonds");
   if (CheckDiamonds.length === 5) {
     Flush5.push("Flush");
   }
 
- let CheckSpades = evaluateSet5.filter((item) => item.suit === "Spades");
+  let CheckSpades = evaluateSet5.filter((item) => item.suit === "Spades");
   if (CheckSpades.length === 5) {
     Flush5.push("Flush");
   }
 
- let CheckHearts = evaluateSet5.filter((item) => item.suit === "Hearts");
+  let CheckHearts = evaluateSet5.filter((item) => item.suit === "Hearts");
   if (CheckHearts.length === 5) {
     Flush5.push("Flush");
   }
 
- let CheckSwords = evaluateSet5.filter((item) => item.suit === "Swords");
+  let CheckSwords = evaluateSet5.filter((item) => item.suit === "Swords");
   if (CheckSwords.length === 5) {
     Flush5.push("Flush");
   }
 
- let CheckSkulls = evaluateSet5.filter((item) => item.suit === "Skulls");
+  let CheckSkulls = evaluateSet5.filter((item) => item.suit === "Skulls");
   if (CheckSkulls.length === 5) {
     Flush5.push("Flush");
   }
 
- let Check2 = evaluateSet5.filter((item) => item.value === 2);
+  let Check2 = evaluateSet5.filter((item) => item.value === 2);
   if (Check2.length === 2) {
     Pair5.push("Pair1");
   } else if (Check2.length === 3) {
@@ -3361,7 +3524,7 @@ function FiveSetEvaluate() {
   } else {
   }
 
- let Check3 = evaluateSet5.filter((item) => item.value === 3);
+  let Check3 = evaluateSet5.filter((item) => item.value === 3);
   if (Check3.length === 2) {
     Pair5.push("Pair1");
   } else if (Check3.length === 3) {
@@ -3371,7 +3534,7 @@ function FiveSetEvaluate() {
   } else {
   }
 
- let Check4 = evaluateSet5.filter((item) => item.value === 4);
+  let Check4 = evaluateSet5.filter((item) => item.value === 4);
   if (Check4.length === 2) {
     Pair5.push("Pair1");
   } else if (Check4.length === 3) {
@@ -3381,7 +3544,7 @@ function FiveSetEvaluate() {
   } else {
   }
 
- let Check5 = evaluateSet5.filter((item) => item.value === 5);
+  let Check5 = evaluateSet5.filter((item) => item.value === 5);
   if (Check5.length === 2) {
     Pair5.push("Pair1");
   } else if (Check5.length === 3) {
@@ -3391,7 +3554,7 @@ function FiveSetEvaluate() {
   } else {
   }
 
- let Check6 = evaluateSet5.filter((item) => item.value === 6);
+  let Check6 = evaluateSet5.filter((item) => item.value === 6);
   if (Check6.length === 2) {
     Pair5.push("Pair1");
   } else if (Check6.length === 3) {
@@ -3401,7 +3564,7 @@ function FiveSetEvaluate() {
   } else {
   }
 
- let Check7 = evaluateSet5.filter((item) => item.value === 7);
+  let Check7 = evaluateSet5.filter((item) => item.value === 7);
   if (Check7.length === 2) {
     Pair5.push("Pair1");
   } else if (Check7.length === 3) {
@@ -3411,7 +3574,7 @@ function FiveSetEvaluate() {
   } else {
   }
 
- let Check8 = evaluateSet5.filter((item) => item.value === 8);
+  let Check8 = evaluateSet5.filter((item) => item.value === 8);
   if (Check8.length === 2) {
     Pair5.push("Pair1");
   } else if (Check8.length === 3) {
@@ -3421,7 +3584,7 @@ function FiveSetEvaluate() {
   } else {
   }
 
- let Check9 = evaluateSet5.filter((item) => item.value === 9);
+  let Check9 = evaluateSet5.filter((item) => item.value === 9);
   if (Check9.length === 2) {
     Pair5.push("Pair1");
   } else if (Check9.length === 3) {
@@ -3431,7 +3594,7 @@ function FiveSetEvaluate() {
   } else {
   }
 
- let Check10 = evaluateSet5.filter((item) => item.value === 10);
+  let Check10 = evaluateSet5.filter((item) => item.value === 10);
   if (Check10.length === 2) {
     Pair5.push("Pair1");
   } else if (Check10.length === 3) {
@@ -3441,7 +3604,7 @@ function FiveSetEvaluate() {
   } else {
   }
 
- let Check11 = evaluateSet5.filter((item) => item.value === 11);
+  let Check11 = evaluateSet5.filter((item) => item.value === 11);
   if (Check11.length === 2) {
     Pair5.push("Pair1");
   } else if (Check11.length === 3) {
@@ -3451,7 +3614,7 @@ function FiveSetEvaluate() {
   } else {
   }
 
- let Check12 = evaluateSet5.filter((item) => item.value === 12);
+  let Check12 = evaluateSet5.filter((item) => item.value === 12);
   if (Check12.length === 2) {
     Pair5.push("Pair1");
   } else if (Check12.length === 3) {
@@ -3461,7 +3624,7 @@ function FiveSetEvaluate() {
   } else {
   }
 
- let Check13 = evaluateSet5.filter((item) => item.value === 13);
+  let Check13 = evaluateSet5.filter((item) => item.value === 13);
   if (Check13.length === 2) {
     Pair5.push("Pair1");
   } else if (Check13.length === 3) {
@@ -3471,7 +3634,7 @@ function FiveSetEvaluate() {
   } else {
   }
 
- let Check14 = evaluateSet5.filter((item) => item.value === 14);
+  let Check14 = evaluateSet5.filter((item) => item.value === 14);
   if (Check14.length === 2) {
     Pair5.push("Pair1");
   } else if (Check14.length === 3) {
@@ -3484,36 +3647,35 @@ function FiveSetEvaluate() {
   //CheckVF = [];
 
   let Royal = [];
-    if (evaluateSet5[0].value === 10) {
-      Royal.push("success");
-    } else {
-    }
+  if (evaluateSet5[0].value === 10) {
+    Royal.push("success");
+  } else {
+  }
 
-    if (evaluateSet5[1].value === 11) {
-      Royal.push("success");
-    } else {
-    }
+  if (evaluateSet5[1].value === 11) {
+    Royal.push("success");
+  } else {
+  }
 
-    if (evaluateSet5[2].value === 12) {
-      Royal.push("success");
-    } else {
-    }
+  if (evaluateSet5[2].value === 12) {
+    Royal.push("success");
+  } else {
+  }
 
-    if (evaluateSet5[3].value === 13) {
-      Royal.push("success");
-    } else {
-    }
+  if (evaluateSet5[3].value === 13) {
+    Royal.push("success");
+  } else {
+  }
 
-    if (evaluateSet5[4].value === 14) {
-      Royal.push("success");
-    } else {
-    }
+  if (evaluateSet5[4].value === 14) {
+    Royal.push("success");
+  } else {
+  }
 
-    if (Royal.length === 5) {
-      Royal5.push("Royal");
-    } else {
-    }
-  
+  if (Royal.length === 5) {
+    Royal5.push("Royal");
+  } else {
+  }
 
   if (
     evaluateSet5[1].value === evaluateSet5[0].value + 1 &&
@@ -3525,8 +3687,8 @@ function FiveSetEvaluate() {
   } else {
   }
 
-  console.log("555555555");
-  console.log(Pair5);
+  //console.log("555555555");
+  //console.log(Pair5);
 }
 
 function SixSetEvaluate() {
@@ -3733,14 +3895,10 @@ function SixSetEvaluate() {
     Straight6.push("Straight");
   } else {
   }
-
 }
 
-
-
 function EvaluateHands() {
-
-    console.log("scores");
+  //console.log("scores");
 
   if (Royal1.length === 1 && Flush1.length === 1) {
     score1.push(90);
@@ -3764,7 +3922,6 @@ function EvaluateHands() {
     score1.push(0);
   }
 
-      
   if (Royal2.length === 1 && Flush2.length === 1) {
     score2.push(90);
   } else if (Straight2.length === 1 && Flush2.length == 1) {
@@ -3786,7 +3943,6 @@ function EvaluateHands() {
   } else {
     score2.push(0);
   }
-
 
   if (Royal3.length === 1 && Flush3.length === 1) {
     score3.push(90);
@@ -3810,8 +3966,6 @@ function EvaluateHands() {
     score3.push(0);
   }
 
-
-   
   if (Royal4.length === 1 && Flush4.length === 1) {
     score4.push(90);
   } else if (Straight4.length === 1 && Flush4.length == 1) {
@@ -3833,9 +3987,6 @@ function EvaluateHands() {
   } else {
     score4.push(0);
   }
-
-
-   
 
   if (Royal5.length === 1 && Flush5.length === 1) {
     score5.push(90);
@@ -3881,203 +4032,50 @@ function EvaluateHands() {
     score6.push(0);
   }
 
+  let finalBonus = bonusScore.reduce((a, c) => a + c);
+  let finalNegative = cocktailNegativeScore.reduce((a, c) => a + c);
+  let finalPositive = cocktailPositiveScore.reduce((a, c) => a + c);
+  //console.log("finalBonus");
+  //console.log(finalBonus);
 
-  let FinalScore =
-    score1[0] + score2[0] + score3[0] + score4[0] + score5[0] + score6[0];
-  window.alert("Your Final Score is " + FinalScore + " points");
+  //console.log(bonusScore);
+  //console.log("cocktailNegativeScore");
+  //console.log(cocktailNegativeScore);
+
+  //console.log("cocktailPositiveScore");
+  //console.log(cocktailPositiveScore);
+
+  finalScore.push(
+    score1[0] +
+      score2[0] +
+      score3[0] +
+      score4[0] +
+      score5[0] +
+      score6[0] +
+      finalBonus +
+      finalPositive -
+      finalNegative
+  );
+  window.alert("Your Final Score is " + finalScore + " points");
 
   document.getElementById("scoreLabel");
-  let finalScore = document.createElement("p");
-  scoreLabel.appendChild(finalScore);
-  finalScore.innerHTML = FinalScore;
-  finalScore.className += "scoreFinal";
-
-
-  console.log(score);
-
-  console.log("score1");
-  console.log(score1);
-  console.log("score2");
-  console.log(score2);
-  console.log("score3");
-  console.log(score3);
-  console.log("score4");
-   console.log(score4);
-   console.log("score5");
-  console.log (score5);
-    console.log("score6");
-        console.log(score6);
-
-
-                                                                              
-
-
-
-
-
-
-
-
-
- 
+  let finalScoreOnScreen = document.createElement("p");
+  scoreLabel.appendChild(finalScoreOnScreen);
+  finalScoreOnScreen.innerHTML = finalScore;
+  finalScoreOnScreen.className += "scoreFinal";
 }
 
-/*
+//console.log(score);
 
-console.log("evaluateSet1");
-    console.log(evaluateSet1);
-
-      console.log("evaluateSet2");
-  console.log(evaluateSet2);
-
-    console.log("evaluateSet3");
-  console.log(evaluateSet3);
-
-    console.log("evaluateSet4");
-  console.log(evaluateSet4);
-
-    console.log("evaluateSet5");
-  console.log(evaluateSet5);
-
-  console.log("collectionNew")
-  console.log(collectionNew)
-
-   console.log("scoresHand1");
-   console.log(score1);
-   
-   console.log("Royal1");
-   console.log(Royal1);
-  console.log("Straight1");
-  console.log(Straight1);
-    console.log("FourKind1");
-    console.log(FourKind1);
-    console.log("ThreeKind1");
-      console.log(ThreeKind1);
-            console.log("Pair1");
-
-            console.log(Pair1);
-            console.log("Flush1");
-                console.log(Flush1);
-
-  console.log("scoresHand2");
-  console.log(score2);
-
-     console.log("Royal2");
-     console.log(Royal2);
-     console.log("Straight2");
-     console.log(Straight2);
-     console.log("FourKind2");
-     console.log(FourKind2);
-     console.log("ThreeKind2");
-     console.log(ThreeKind2);
-          console.log("Pair2");
-
-     console.log(Pair2);
-     console.log("Flush2");
-     console.log(Flush2);
-
-  console.log("scoresHand3");
-  console.log(score3);
-
-   console.log("Royal3");
-   console.log(Royal3);
-   console.log("Straight3");
-   console.log(Straight3);
-   console.log("FourKind3");
-   console.log(FourKind3);
-   console.log("ThreeKind3");
-   console.log(ThreeKind3);
-      console.log("Pair3");
-
-   console.log(Pair3);
-   console.log("Flush3");
-   console.log(Flush3);
-
-  console.log("scoresHand4");
-  console.log(score4);
-
-   console.log("Royal4");
-   console.log(Royal4);
-   console.log("Straight4");
-   console.log(Straight4);
-   console.log("FourKind4");
-   console.log(FourKind4);
-   console.log("ThreeKind4");
-   console.log(ThreeKind4);
-      console.log("Pair4");
-   console.log(Pair4);
-   console.log("Flush4");
-   console.log(Flush4);
-
-  console.log("scoresHand5");
-  console.log(score5);
-
-   console.log("Royal5");
-   console.log(Royal5);
-   console.log("Straight5");
-   console.log(Straight5);
-   console.log("FourKind5");
-   console.log(FourKind5);
-   console.log("ThreeKind5");
-   console.log(ThreeKind5);
-      console.log("Pair5");
-   console.log(Pair5);
-   console.log("Flush5");
-   console.log(Flush5);
-
-console.log("hand1");
-console.log(hand1);
-
-console.log("hand2");
-
-console.log(hand2);
-
-console.log("hand3");
-console.log(hand3);
-
-console.log("hand4");
-console.log(hand4);
-
-console.log("hand5");
-console.log(hand5);
-
-console.log("hand6");
-console.log(hand6);
-
-console.log("hand7");
-console.log(hand7);
-
-console.log("hand8");
-console.log(hand8);
-
-console.log("hand9");
-console.log(hand9);
-
-console.log("hand10");
-console.log(hand10);
-
-console.log("hand11");
-console.log(hand11);
-
-console.log("hand12");
-console.log(hand12);
-
-console.log("hand13");
-console.log(hand13);
-
-console.log("hand14");
-console.log(hand14);
-
-console.log("collection");
-
-console.log(collection);
-
-console.log("valuesTest1");
-console.log(valuesTest1);
-
-console.log("valuesTest2");
-console.log(valuesTest2);
-
-
-console.log(deck);
-*/
+//console.log("score1");
+//console.log(score1);
+//console.log("score2");
+//console.log(score2);
+//console.log("score3");
+//console.log(score3);
+//console.log("score4");
+//console.log(score4);
+//console.log("score5");
+//console.log (score5);
+//console.log("score6");
+//console.log(score6);

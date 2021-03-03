@@ -4122,6 +4122,7 @@ function EvaluateHands() {
   //console.log(cocktailPositiveScore);
   //console.log("cocktailNegativeScore333333333333333333333333");
   //console.log(cocktailNegativeScore);
+  //upload this
 
   let finalBonus = bonusScore.reduce((a, c) => a + c);
   let finalNegative = cocktailNegativeScore.reduce((a, c) => a + c);

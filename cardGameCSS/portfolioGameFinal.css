@@ -5,7 +5,9 @@ html {
     box-sizing: border-box;
 }
 
-
+.uploadThis{
+    display:block
+}
 
 .card1 {
     display:inline-block;

@@ -136,6 +136,18 @@ h5 {
     line-height: 40px;
 }
 
+.messageWager {
+    font-size: 35px;
+    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+    padding: 0px;
+    margin-bottom:20px;
+    margin-right:100px;
+    margin-top:5px;
+    margin-left:25px;
+    color:white;
+    line-height: 40px;
+}
+
 .round {
     float: right;
 }

@@ -4582,8 +4582,8 @@ function EvaluateHands() {
    if (wagerCheck.length < 1) {
 
      hideWagerButton();
-     wagerResultPositive = 0;
-     wagerResultNegative = 0;
+     wagerResultPositive = [0];
+     wagerResultNegative = [0];
 
    } else {
      

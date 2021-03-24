@@ -202,38 +202,7 @@ let collectionAnalysisCocktail = [
   "No",
   "No",
 ];
-let collectionAnalysisCocktailPolarity = [
-  "NA",
-  "NA",
-  "NA",
-  "NA",
-  "NA",
-  "NA",
-  "NA",
-  "NA",
-  "NA",
-  "NA",
-  "NA",
-  "NA",
-  "NA",
-  "NA",
-  "NA",
-  "NA",
-  "NA",
-  "NA",
-  "NA",
-  "NA",
-  "NA",
-  "NA",
-  "NA",
-  "NA",
-  "NA",
-  "NA",
-  "NA",
-  "NA",
-  "NA",
-  "NA",
-];
+
 
 let collectionFinal = [];
 
@@ -246,10 +215,12 @@ let cocktailCardsDifference = [0];
 let wagerResultPositive = [0];
 let wagerResultNegative = [0];
 let wagerDifference = [0];
+let wagerResultDifference = [0];
 let userWager = [];
 let wager = [];
 let finalNegative = [];
 let finalPositive = [];
+
 
 
 
@@ -4582,8 +4553,7 @@ function EvaluateHands() {
    if (wagerCheck.length < 1) {
 
      hideWagerButton();
-     wagerResultPositive = [0];
-     wagerResultNegative = [0];
+     
 
    } else {
      
@@ -4595,7 +4565,7 @@ function EvaluateHands() {
         if (wagerDifference[0] > userWager[0]) {
         } else if (wagerDifference[0] === userWager[0]) {
         } else if (wagerDifference[0] < userWager[0]) {
-          wagerResultPositive.splice(userWager[0]-wagerDifference[0]);
+          wagerResultPositive.splice(0, 1, userWager[0] - wagerDifference[0]);
         } else {
         }
       } else {

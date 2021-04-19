@@ -2915,7 +2915,7 @@ function makeWager () {
         
     } else {
           console.log("false");
-        window.alert("Your wager was not a valid entry. Your wager can't be a negative number or contain a decimal.")
+        window.alert("Your wager was not a valid entry. Your wager has to be a number and can't contain a decimal.")
     }
   } else {
   }
